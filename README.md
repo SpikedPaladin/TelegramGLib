@@ -44,6 +44,9 @@ public class ReadMeBot : Bot {
     $ valac --pkg telegram-glib-0.1 main.vala
     $ ./main
 
+**Result**
+![Screenshot](./result.png)
+
 ## Uploading files
 ```vala
 var config = new SendPhotoConfig();
