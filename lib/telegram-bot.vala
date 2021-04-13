@@ -46,7 +46,7 @@ namespace Telegram {
             message("Authorized on account %s", self.username);
             
             while (true) {
-                var @params = "";
+                var @params = "timeout=60";
                 
                 if (update_id != 0)
                     @params += @"&offset=$update_id";
