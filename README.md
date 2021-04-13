@@ -56,6 +56,13 @@ send.begin(config);
 ```
 
 ### Installation
+**Dependencies**
+> json-glib-1.0  
+> libsoup-2.4  
+> gee-0.8
+
+**Build manualy**
+
     $ meson --prefix=/usr _build
     $ cd _build
     $ ninja install
