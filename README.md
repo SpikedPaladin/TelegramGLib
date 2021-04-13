@@ -7,6 +7,8 @@ TelegramGLib is a bot api for telegram written in Vala
 - File uploading
 
 ## Sample
+
+#### Vala
 ```vala
 using Telegram.Configs;
 using Telegram.Types;
@@ -39,12 +41,12 @@ public class ReadMeBot : Bot {
 }
 ```
 
-**Compile with**
+##### Compile with
 
     $ valac --pkg telegram-glib-0.1 main.vala
     $ ./main
 
-**Result**
+##### Result
 ![Screenshot](./result.png)
 
 ## Uploading files
@@ -58,21 +60,23 @@ config.photo = "file:///home/paladin/Pictures/upload.jpg";
 send.begin(config);
 ```
 
-### Installation
-**Dependencies**
+## Installation
+
+#### Dependencies
 > json-glib-1.0  
 > libsoup-2.4  
 > gee-0.8
 
-**Build manualy**
+#### Build manualy
 
     $ meson --prefix=/usr _build
     $ cd _build
     $ ninja install
 
-##### TODO
+## TODO
 - [ ] Inline mode configs
 - [ ] Webhook support
 - [ ] Write documentation
 - [ ] Create android guide
 - [ ] Add GIR output
+
