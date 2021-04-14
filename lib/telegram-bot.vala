@@ -51,7 +51,7 @@ namespace Telegram {
                 if (update_id != 0)
                     @params += @"&offset=$update_id";
                 
-                var response = yield make_request(@"getUpdates", @params);
+                var response = yield make_request("getUpdates", @params);
                 var array = response.result.get_array();
                 
                 array.foreach_element((array, index, node) => {
