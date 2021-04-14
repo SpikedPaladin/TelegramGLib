@@ -1,5 +1,5 @@
 # TelegramGLib
-[![Chat on telegram](https://img.shields.io/badge/chat-on%20telegram-0088cc.svg)](http://t.me/TgGLib)  
+[![Chat on telegram](https://img.shields.io/badge/chat-on%20telegram-0088cc.svg)](http://t.me/codefaq)  
 TelegramGLib is a bot api for telegram written in Vala
 
 ## Features
