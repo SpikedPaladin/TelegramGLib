@@ -1,5 +1,6 @@
 using Gee;
 
+[CCode (cprefix = "Telegram", lower_case_cprefix = "telegram_")]
 namespace Telegram.Types {
     
     public class Response {

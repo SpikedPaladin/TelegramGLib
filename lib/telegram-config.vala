@@ -1,6 +1,7 @@
 using Telegram.Types;
 using Telegram.Util;
 
+[CCode (cprefix = "Telegram", lower_case_cprefix = "telegram_")]
 namespace Telegram.Configs {
     
     public class SendMessageConfig : BaseConfig {
