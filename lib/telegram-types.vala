@@ -2220,7 +2220,7 @@ namespace Telegram.Types {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value("animation");
+            builder.add_string_value("photo");
             
             builder.set_member_name("media");
             builder.add_string_value(media);
@@ -2290,7 +2290,7 @@ namespace Telegram.Types {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value("animation");
+            builder.add_string_value("video");
             
             builder.set_member_name("media");
             builder.add_string_value(media);
