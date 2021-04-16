@@ -3,6 +3,7 @@
 TelegramGLib is a bot api for telegram written in Vala
 
 ## Features
+- Inline mode support
 - Async request sending
 - File uploading
 
@@ -74,7 +75,6 @@ send.begin(config);
     $ ninja install
 
 ## TODO
-- [ ] Inline mode configs
 - [ ] Webhook support
 - [ ] Write documentation
 - [ ] Create android guide
