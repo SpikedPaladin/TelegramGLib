@@ -2707,12 +2707,1624 @@ namespace Telegram.Types {
         }
     }
     
+    public class InlineQueryResultArticle : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string title;
+        public InputMessageContent input_message_content;
+        public InlineKeyboardMarkup? reply_markup;
+        public string? url;
+        public bool? hide_url;
+        public string? description;
+        public string? thumb_url;
+        public int? thumb_width;
+        public int? thumb_height;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("article");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            builder.set_member_name("input_message_content");
+            builder.add_value(input_message_content.serialize());
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (url != null) {
+                builder.set_member_name("url");
+                builder.add_string_value(url);
+            }
+            
+            if (hide_url != null) {
+                builder.set_member_name("hide_url");
+                builder.add_boolean_value(hide_url);
+            }
+            
+            if (description != null) {
+                builder.set_member_name("description");
+                builder.add_string_value(description);
+            }
+            
+            if (thumb_url != null) {
+                builder.set_member_name("thumb_url");
+                builder.add_string_value(thumb_url);
+            }
+            
+            if (thumb_width != null) {
+                builder.set_member_name("thumb_width");
+                builder.add_int_value(thumb_width);
+            }
+            
+            if (thumb_height != null) {
+                builder.set_member_name("thumb_height");
+                builder.add_int_value(thumb_height);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultAudio : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string audio_url;
+        public string title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public string? performer;
+        public int? audio_duration;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("audio");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("audio_url");
+            builder.add_string_value(audio_url);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (performer != null) {
+                builder.set_member_name("performer");
+                builder.add_string_value(performer);
+            }
+            
+            if (audio_duration != null) {
+                builder.set_member_name("audio_duration");
+                builder.add_int_value(audio_duration);
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedAudio : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string audio_file_id;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("audio");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("audio_file_id");
+            builder.add_string_value(audio_file_id);
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultContact : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string phone_number;
+        public string first_name;
+        public string? last_name;
+        public string? vcard;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent input_message_content;
+        public string? thumb_url;
+        public int? thumb_width;
+        public int? thumb_height;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("contact");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("phone_number");
+            builder.add_string_value(phone_number);
+            
+            builder.set_member_name("first_name");
+            builder.add_string_value(first_name);
+            
+            if (last_name != null) {
+                builder.set_member_name("last_name");
+                builder.add_string_value(last_name);
+            }
+            
+            if (vcard != null) {
+                builder.set_member_name("vcard");
+                builder.add_string_value(vcard);
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            if (thumb_url != null) {
+                builder.set_member_name("thumb_url");
+                builder.add_string_value(thumb_url);
+            }
+            
+            if (thumb_width != null) {
+                builder.set_member_name("thumb_width");
+                builder.add_int_value(thumb_width);
+            }
+            
+            if (thumb_height != null) {
+                builder.set_member_name("thumb_height");
+                builder.add_int_value(thumb_height);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultGame : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string game_short_name;
+        public InlineKeyboardMarkup? reply_markup;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("game");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("game_short_name");
+            builder.add_string_value(game_short_name);
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultDocument : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public string document_url;
+        public string mime_type;
+        public string? description;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        public string? thumb_url;
+        public int? thumb_width;
+        public int? thumb_height;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("document");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            builder.set_member_name("document_url");
+            builder.add_string_value(document_url);
+            
+            builder.set_member_name("mime_type");
+            builder.add_string_value(mime_type);
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (description != null) {
+                builder.set_member_name("description");
+                builder.add_string_value(description);
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            if (thumb_url != null) {
+                builder.set_member_name("thumb_url");
+                builder.add_string_value(thumb_url);
+            }
+            
+            if (thumb_width != null) {
+                builder.set_member_name("thumb_width");
+                builder.add_int_value(thumb_width);
+            }
+            
+            if (thumb_height != null) {
+                builder.set_member_name("thumb_height");
+                builder.add_int_value(thumb_height);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedDocument : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string title;
+        public string document_file_id;
+        public string? description;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("document");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            builder.set_member_name("document_file_id");
+            builder.add_string_value(document_file_id);
+            
+            if (description != null) {
+                builder.set_member_name("description");
+                builder.add_string_value(description);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultGif : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string gif_url;
+        public int? gif_width;
+        public int? gif_height;
+        public int? gif_duration;
+        public string thumb_url;
+        public string? thumb_mime_type;
+        public string? title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("gif");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("gif_url");
+            builder.add_string_value(gif_url);
+            
+            builder.set_member_name("thumb_url");
+            builder.add_string_value(thumb_url);
+            
+            if (gif_width != null) {
+                builder.set_member_name("gif_width");
+                builder.add_int_value(gif_width);
+            }
+            
+            if (gif_height != null) {
+                builder.set_member_name("gif_height");
+                builder.add_int_value(gif_height);
+            }
+            
+            if (gif_duration != null) {
+                builder.set_member_name("gif_duration");
+                builder.add_int_value(gif_duration);
+            }
+            
+            if (thumb_mime_type != null) {
+                builder.set_member_name("thumb_mime_type");
+                builder.add_string_value(thumb_mime_type);
+            }
+            
+            if (title != null) {
+                builder.set_member_name("title");
+                builder.add_string_value(title);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedGif : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string gif_file_id;
+        public string? title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("gif");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("gif_file_id");
+            builder.add_string_value(gif_file_id);
+            
+            if (title != null) {
+                builder.set_member_name("title");
+                builder.add_string_value(title);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultLocation : Object, Serializable, InlineQueryResult {
+        public string id;
+        public double longitude;
+        public double latitude;
+        public string title;
+        public double? horizontal_accuracy;
+        public int? live_period;
+        public int? heading;
+        public int? proximity_alert_radius;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent input_message_content;
+        public string? thumb_url;
+        public int? thumb_width;
+        public int? thumb_height;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("location");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("longitude");
+            builder.add_double_value(longitude);
+            
+            builder.set_member_name("latitude");
+            builder.add_double_value(latitude);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            if (horizontal_accuracy != null) {
+                builder.set_member_name("horizontal_accuracy");
+                builder.add_double_value(horizontal_accuracy);
+            }
+            
+            if (live_period != null) {
+                builder.set_member_name("live_period");
+                builder.add_int_value(live_period);
+            }
+            
+            if (heading != null) {
+                builder.set_member_name("heading");
+                builder.add_int_value(heading);
+            }
+            
+            if (proximity_alert_radius != null) {
+                builder.set_member_name("proximity_alert_radius");
+                builder.add_int_value(proximity_alert_radius);
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            if (thumb_url != null) {
+                builder.set_member_name("thumb_url");
+                builder.add_string_value(thumb_url);
+            }
+            
+            if (thumb_width != null) {
+                builder.set_member_name("thumb_width");
+                builder.add_int_value(thumb_width);
+            }
+            
+            if (thumb_height != null) {
+                builder.set_member_name("thumb_height");
+                builder.add_int_value(thumb_height);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultMpeg4Gif : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string mpeg4_url;
+        public int? mpeg4_width;
+        public int? mpeg4_height;
+        public int? mpeg4_duration;
+        public string thumb_url;
+        public string? thumb_mime_type;
+        public string? title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("mpeg4_gif");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("mpeg4_url");
+            builder.add_string_value(mpeg4_url);
+            
+            builder.set_member_name("thumb_url");
+            builder.add_string_value(thumb_url);
+            
+            if (mpeg4_width != null) {
+                builder.set_member_name("mpeg4_width");
+                builder.add_int_value(mpeg4_width);
+            }
+            
+            if (mpeg4_height != null) {
+                builder.set_member_name("mpeg4_height");
+                builder.add_int_value(mpeg4_height);
+            }
+            
+            if (mpeg4_duration != null) {
+                builder.set_member_name("mpeg4_duration");
+                builder.add_int_value(mpeg4_duration);
+            }
+            
+            if (thumb_mime_type != null) {
+                builder.set_member_name("thumb_mime_type");
+                builder.add_string_value(thumb_mime_type);
+            }
+            
+            if (title != null) {
+                builder.set_member_name("title");
+                builder.add_string_value(title);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedMpeg4Gif : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string mpeg4_file_id;
+        public string? title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("mpeg4_gif");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("mpeg4_file_id");
+            builder.add_string_value(mpeg4_file_id);
+            
+            if (title != null) {
+                builder.set_member_name("title");
+                builder.add_string_value(title);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultPhoto : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string photo_url;
+        public int? photo_width;
+        public int? photo_height;
+        public string? title;
+        public string? description;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("photo");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("photo_url");
+            builder.add_string_value(photo_url);
+            
+            if (photo_width != null) {
+                builder.set_member_name("photo_width");
+                builder.add_int_value(photo_width);
+            }
+            
+            if (photo_height != null) {
+                builder.set_member_name("photo_height");
+                builder.add_int_value(photo_height);
+            }
+            
+            if (title != null) {
+                builder.set_member_name("title");
+                builder.add_string_value(title);
+            }
+            
+            if (description != null) {
+                builder.set_member_name("description");
+                builder.add_string_value(description);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedPhoto : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string photo_file_id;
+        public string? title;
+        public string? description;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("photo");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("photo_file_id");
+            builder.add_string_value(photo_file_id);
+            
+            if (title != null) {
+                builder.set_member_name("title");
+                builder.add_string_value(title);
+            }
+            
+            if (description != null) {
+                builder.set_member_name("description");
+                builder.add_string_value(description);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultVenue : Object, Serializable, InputMessageContent {
+        public string id;
+        public double longitude;
+        public double latitude;
+        public string title;
+        public string address;
+        public string? foursquare_id;
+        public string? foursquare_type;
+        public string? google_place_id;
+        public string? google_place_type;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent input_message_content;
+        public string? thumb_url;
+        public int? thumb_width;
+        public int? thumb_height;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("venue");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("longitude");
+            builder.add_double_value(longitude);
+            
+            builder.set_member_name("latitude");
+            builder.add_double_value(latitude);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            builder.set_member_name("address");
+            builder.add_string_value(address);
+            
+            if (foursquare_id != null) {
+                builder.set_member_name("foursquare_id");
+                builder.add_string_value(foursquare_id);
+            }
+            
+            if (foursquare_type != null) {
+                builder.set_member_name("foursquare_type");
+                builder.add_string_value(foursquare_type);
+            }
+            
+            if (google_place_id != null) {
+                builder.set_member_name("google_place_id");
+                builder.add_string_value(google_place_id);
+            }
+            
+            if (google_place_type != null) {
+                builder.set_member_name("google_place_type");
+                builder.add_string_value(google_place_type);
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            if (thumb_url != null) {
+                builder.set_member_name("thumb_url");
+                builder.add_string_value(thumb_url);
+            }
+            
+            if (thumb_width != null) {
+                builder.set_member_name("thumb_width");
+                builder.add_int_value(thumb_width);
+            }
+            
+            if (thumb_height != null) {
+                builder.set_member_name("thumb_height");
+                builder.add_int_value(thumb_height);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultVideo : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string video_url;
+        public string mime_type;
+        public string thumb_url;
+        public string title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public int? video_width;
+        public int? video_height;
+        public int? video_duration;
+        public string? description;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("video");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("video_url");
+            builder.add_string_value(video_url);
+            
+            builder.set_member_name("mime_type");
+            builder.add_string_value(mime_type);
+            
+            builder.set_member_name("thumb_url");
+            builder.add_string_value(thumb_url);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            if (video_width != null) {
+                builder.set_member_name("video_width");
+                builder.add_int_value(video_width);
+            }
+            
+            if (video_height != null) {
+                builder.set_member_name("video_height");
+                builder.add_int_value(video_height);
+            }
+            
+            if (video_duration != null) {
+                builder.set_member_name("video_duration");
+                builder.add_int_value(video_duration);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedVideo : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string video_file_id;
+        public string title;
+        public string? description;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("video");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("video_file_id");
+            builder.add_string_value(video_file_id);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            if (description != null) {
+                builder.set_member_name("description");
+                builder.add_string_value(description);
+            }
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultVoice : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string voice_url;
+        public string title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public int? voice_duration;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("voice");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("voice_url");
+            builder.add_string_value(voice_url);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (voice_duration != null) {
+                builder.set_member_name("voice_duration");
+                builder.add_int_value(voice_duration);
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedVoice : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string voice_file_id;
+        public string title;
+        public string? caption;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? caption_entities;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("voice");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("voice_file_id");
+            builder.add_string_value(voice_file_id);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            if (caption != null) {
+                builder.set_member_name("caption");
+                builder.add_string_value(caption);
+            }
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (caption_entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in caption_entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("caption_entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InlineQueryResultCachedSticker : Object, Serializable, InlineQueryResult {
+        public string id;
+        public string sticker_file_id;
+        public InlineKeyboardMarkup? reply_markup;
+        public InputMessageContent? input_message_content;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("type");
+            builder.add_string_value("sticker");
+            
+            builder.set_member_name("id");
+            builder.add_string_value(id);
+            
+            builder.set_member_name("sticker_file_id");
+            builder.add_string_value(sticker_file_id);
+            
+            if (reply_markup != null) {
+                builder.set_member_name("reply_markup");
+                builder.add_value(reply_markup.serialize());
+            }
+            
+            if (input_message_content != null) {
+                builder.set_member_name("input_message_content");
+                builder.add_value(input_message_content.serialize());
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InputTextMessageContent : Object, Serializable, InputMessageContent {
+        public string message_text;
+        public Configs.ParseMode? parse_mode;
+        public MessageEntity[]? entities;
+        public bool? disable_web_page_preview;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("message_text");
+            builder.add_string_value(message_text);
+            
+            if (parse_mode != null) {
+                builder.set_member_name("parse_mode");
+                builder.add_string_value(parse_mode.to_string());
+            }
+            
+            if (entities != null) {
+                Serializable[] arr = {};
+                foreach (var entity in entities) {
+                    arr += entity;
+                }
+                
+                builder.set_member_name("entities");
+                builder.add_value(Serializable.serialize_array(arr));
+            }
+            
+            if (disable_web_page_preview != null) {
+                builder.set_member_name("disable_web_page_preview");
+                builder.add_boolean_value(disable_web_page_preview);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InputLocationMessageContent : Object, Serializable, InputMessageContent {
+        public double longitude;
+        public double latitude;
+        public double? horizontal_accuracy;
+        public int? live_period;
+        public int? heading;
+        public int? proximity_alert_radius;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("longitude");
+            builder.add_double_value(longitude);
+            
+            builder.set_member_name("latitude");
+            builder.add_double_value(latitude);
+            
+            if (horizontal_accuracy != null) {
+                builder.set_member_name("horizontal_accuracy");
+                builder.add_double_value(horizontal_accuracy);
+            }
+            
+            if (live_period != null) {
+                builder.set_member_name("live_period");
+                builder.add_int_value(live_period);
+            }
+            
+            if (heading != null) {
+                builder.set_member_name("heading");
+                builder.add_int_value(heading);
+            }
+            
+            if (proximity_alert_radius != null) {
+                builder.set_member_name("proximity_alert_radius");
+                builder.add_int_value(proximity_alert_radius);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InputVenueMessageContent : Object, Serializable, InputMessageContent {
+        public double longitude;
+        public double latitude;
+        public string title;
+        public string address;
+        public string? foursquare_id;
+        public string? foursquare_type;
+        public string? google_place_id;
+        public string? google_place_type;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("longitude");
+            builder.add_double_value(longitude);
+            
+            builder.set_member_name("latitude");
+            builder.add_double_value(latitude);
+            
+            builder.set_member_name("title");
+            builder.add_string_value(title);
+            
+            builder.set_member_name("address");
+            builder.add_string_value(address);
+            
+            if (foursquare_id != null) {
+                builder.set_member_name("foursquare_id");
+                builder.add_string_value(foursquare_id);
+            }
+            
+            if (foursquare_type != null) {
+                builder.set_member_name("foursquare_type");
+                builder.add_string_value(foursquare_type);
+            }
+            
+            if (google_place_id != null) {
+                builder.set_member_name("google_place_id");
+                builder.add_string_value(google_place_id);
+            }
+            
+            if (google_place_type != null) {
+                builder.set_member_name("google_place_type");
+                builder.add_string_value(google_place_type);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
+    public class InputContactMessageContent : Object, Serializable, InputMessageContent {
+        public string phone_number;
+        public string first_name;
+        public string? last_name;
+        public string? vcard;
+        
+        public Json.Node serialize() {
+            var builder = new Json.Builder();
+            
+            builder.begin_object();
+            
+            builder.set_member_name("phone_number");
+            builder.add_string_value(phone_number);
+            
+            builder.set_member_name("first_name");
+            builder.add_string_value(first_name);
+            
+            if (last_name != null) {
+                builder.set_member_name("last_name");
+                builder.add_string_value(last_name);
+            }
+            
+            if (vcard != null) {
+                builder.set_member_name("vcard");
+                builder.add_string_value(vcard);
+            }
+            
+            builder.end_object();
+            
+            return builder.get_root();
+        }
+    }
+    
     protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
     
     protected interface InputMedia : Object, Serializable {
         public abstract bool has_attachments();
         public abstract async InputFile[] append(int index) throws Error;
     }
+    
+    protected interface InputMessageContent : Object, Serializable {}
+    
+    protected interface InlineQueryResult : Object, Serializable {}
     
     public struct InputFile {
         string name;
