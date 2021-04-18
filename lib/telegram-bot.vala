@@ -29,7 +29,7 @@ namespace Telegram {
                 
                 return new Response(node.get_object());
             } catch (Error e) {
-                warning("Error while making request: " + e.message);
+                Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
                 return null;
             }
         }
@@ -38,12 +38,12 @@ namespace Telegram {
             self = yield get_me();
             
             if (self == null) {
-                warning("Failed to authorize");
+                Util.log(Util.LogLevel.ERROR, "Failed to authorize");
                 
                 return;
             }
             
-            message("Authorized on account %s", self.username);
+            Util.log(Util.LogLevel.INFO, @"Authorized on account $(self.username)");
             
             while (true) {
                 var @params = "timeout=60";
@@ -108,7 +108,7 @@ namespace Telegram {
                     
                     return new Response(node.get_object());
                 } catch (Error e) {
-                    warning("Error while making request: " + e.message);
+                    Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
                 }
             }
             return yield make_request(config.method(), config.queue());
