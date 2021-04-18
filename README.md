@@ -27,6 +27,9 @@ public class ReadMeBot : Bot {
         // Token from variable:
         // token = Environment.get_variable("TOKEN");
         token = "YOUR_BOT_TOKEN";
+        
+        // Debug mode.
+        debug = true;
     }
     
     public override void update_recieved(Update update) {
