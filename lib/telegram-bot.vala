@@ -8,6 +8,7 @@ namespace Telegram {
         private int update_id;
         public string token;
         public User? self;
+        public bool debug;
         
         construct {
             session = new Soup.Session();
@@ -27,6 +28,9 @@ namespace Telegram {
                 
                 var node = parser.get_root();
                 var response = new Response(node.get_object());
+                
+                if (debug)
+                    Util.log(Util.LogLevel.DEBUG, @"$endpoint: $(Json.to_string(node, false))");
                 
                 if (!response.ok)
                     Util.log(Util.LogLevel.WARNING, @"$endpoint: $(response.description)");
@@ -110,6 +114,9 @@ namespace Telegram {
                     
                     var node = parser.get_root();
                     var response = new Response(node.get_object());
+                    
+                    if (debug)
+                        Util.log(Util.LogLevel.DEBUG, @"$(config.method()): $(Json.to_string(node, false))");
                     
                     if (!response.ok)
                         Util.log(Util.LogLevel.WARNING, @"$(config.method()): $(response.description)");
