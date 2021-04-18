@@ -26,8 +26,12 @@ namespace Telegram {
                 yield parser.load_from_stream_async(stream);
                 
                 var node = parser.get_root();
+                var response = new Response(node.get_object());
                 
-                return new Response(node.get_object());
+                if (!response.ok)
+                    Util.log(Util.LogLevel.WARNING, @"$endpoint: $(response.description)");
+                
+                return response;
             } catch (Error e) {
                 Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
                 return null;
@@ -105,8 +109,12 @@ namespace Telegram {
                     yield parser.load_from_stream_async(stream);
                     
                     var node = parser.get_root();
+                    var response = new Response(node.get_object());
                     
-                    return new Response(node.get_object());
+                    if (!response.ok)
+                        Util.log(Util.LogLevel.WARNING, @"$(config.method()): $(response.description)");
+                    
+                    return response;
                 } catch (Error e) {
                     Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
                 }
