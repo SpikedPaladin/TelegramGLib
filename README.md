@@ -81,5 +81,4 @@ send.begin(config);
 - [ ] Webhook support
 - [ ] Write documentation
 - [ ] Create android guide
-- [ ] Add GIR output
 

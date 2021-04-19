@@ -1,3 +1,4 @@
+[CCode (gir_version = "1.0", gir_namespace = "TelegramUtil")]
 namespace Telegram.Util {
     
     public static string serialize_array(string[] array) {

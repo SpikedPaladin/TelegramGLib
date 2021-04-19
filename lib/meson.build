@@ -17,7 +17,8 @@ lib = library(lib_name,
     lib_sources,
     dependencies: lib_deps,
     install: true,
-    install_dir: [true, true, true]
+    vala_gir: '@0@.gir'.format(lib_name),
+    install_dir: [true, true, true, true]
 )
 
 configure_file(
