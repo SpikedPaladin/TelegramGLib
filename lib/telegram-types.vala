@@ -56,8 +56,29 @@ namespace Telegram.Types {
             if (object.has_member("inline_query"))
                 inline_query = new InlineQuery(object.get_object_member("inline_query"));
             
+            if (object.has_member("chosen_inline_result"))
+                chosen_inline_result = new ChosenInlineResult(object.get_object_member("chosen_inline_result"));
+            
             if (object.has_member("callback_query"))
                 callback_query = new CallbackQuery(object.get_object_member("callback_query"));
+            
+            if (object.has_member("shipping_query"))
+                shipping_query = new ShippingQuery(object.get_object_member("shipping_query"));
+            
+            if (object.has_member("pre_checkout_query"))
+                pre_checkout_query = new PreCheckoutQuery(object.get_object_member("pre_checkout_query"));
+            
+            if (object.has_member("poll"))
+                poll = new Poll(object.get_object_member("poll"));
+            
+            if (object.has_member("poll_answer"))
+                poll_answer = new Poll.Answer(object.get_object_member("poll_answer"));
+            
+            if (object.has_member("my_chat_member"))
+                my_chat_member = new ChatMemberUpdated(object.get_object_member("my_chat_member"));
+            
+            if (object.has_member("chat_member"))
+                chat_member = new ChatMemberUpdated(object.get_object_member("chat_member"));
         }
     }
     
