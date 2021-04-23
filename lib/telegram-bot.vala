@@ -82,6 +82,19 @@ namespace Telegram {
             return new User(response.result.get_object());
         }
         
+        public async BotCommand[]? get_my_commands() {
+            var response = yield make_request("getMyCommands");
+            
+            if (response == null || !response.ok)
+                return null;
+            
+            BotCommand[] result = {};
+            foreach (var element in response.result.get_array().get_elements())
+                result += new BotCommand(element.get_object());
+            
+            return result;
+        }
+        
         public async TelegramFile? get_file(string file_id) {
             var response = yield make_request("getFile", @"file_id=$file_id");
             
