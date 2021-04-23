@@ -1808,6 +1808,22 @@ namespace Telegram.Configs {
         }
     }
     
+    public class SetMyCommandsConfig : BaseConfig {
+        public BotCommand[] commands;
+        
+        public override string method() {
+            return "setMyCommands";
+        }
+        
+        public override string queue() {
+            Serializable[] arr = {};
+            foreach (var element in commands) {
+                arr += element;
+            }
+            return @"commands=$(Serializable.array_to_string(arr))";
+        }
+    }
+    
     public enum ChatAction {
         TYPING,
         UPLOAD_PHOTO,
