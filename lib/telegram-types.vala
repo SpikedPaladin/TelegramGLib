@@ -1750,6 +1750,16 @@ namespace Telegram.Types {
         }
     }
     
+    public class BotCommand {
+        public string command;
+        public string description;
+        
+        public BotCommand(Json.Object object) {
+            command = object.get_string_member("command");
+            description = object.get_string_member("description");
+        }
+    }
+    
     public class PassportData {
         public EncryptedPassportElement[] data;
         public EncryptedCredentials credentials;
