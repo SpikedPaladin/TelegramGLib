@@ -25,9 +25,7 @@ configure_file(
     output: '@0@.deps'.format(lib_name),
     copy: true,
     install: true,
-    install_dir: join_paths(
-        get_option('datadir'), 'vala', 'vapi'
-    )
+    install_dir: get_option('datadir') / 'vala' / 'vapi'
 )
 
 pkg.generate(
