@@ -1233,9 +1233,9 @@ namespace Telegram.Types {
     public class InlineQuery {
         public string id;
         public User from;
-        public Location? location;
         public string query;
         public string offset;
+        public Location? location;
         
         public InlineQuery(Json.Object object) {
             id = object.get_string_member("id");
