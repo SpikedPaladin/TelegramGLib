@@ -1340,6 +1340,14 @@ namespace Telegram.Types {
     
     public class CallbackGame {}
     
+    public class VoiceChatScheduled {
+        public int64 start_date;
+        
+        public VoiceChatScheduled(Json.Object object) {
+            start_date = object.get_int_member("start_date");
+        }
+    }
+    
     public class VoiceChatStarted {}
     
     public class VoiceChatEnded {
