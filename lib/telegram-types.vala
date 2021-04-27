@@ -326,6 +326,7 @@ namespace Telegram.Types {
         public string? connected_website;
         public PassportData? passport_data;
         public ProximityAlertTriggered? proximity_alert_triggered;
+        public VoiceChatScheduled? voice_chat_scheduled;
         public VoiceChatStarted? voice_chat_started;
         public VoiceChatEnded? voice_chat_ended;
         public VoiceChatParticipantsInvited? voice_chat_participants_invited;
@@ -504,6 +505,9 @@ namespace Telegram.Types {
             
             if (object.has_member("proximity_alert_triggered"))
                 proximity_alert_triggered = new ProximityAlertTriggered(object.get_object_member("proximity_alert_triggered"));
+            
+            if (object.has_member("voice_chat_scheduled"))
+                voice_chat_scheduled = new VoiceChatScheduled(object.get_object_member("voice_chat_scheduled"));
             
             if (object.has_member("voice_chat_started"))
                 voice_chat_started = new VoiceChatStarted();
