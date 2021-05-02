@@ -1984,6 +1984,37 @@ namespace Telegram.Configs {
         }
     }
     
+    public class SendGameConfig : BaseConfig {
+        public int64 chat_id;
+        public string game_short_name;
+        public bool? disable_notification;
+        public int? reply_to_message_id;
+        public bool? allow_sending_without_reply;
+        public ReplyMarkup? reply_markup;
+        
+        public override string method() {
+            return "sendGame";
+        }
+        
+        public override string queue() {
+            var queue = @"chat_id=$chat_id&game_short_name=$game_short_name";
+            
+            if (disable_notification != null)
+                queue += @"&disable_notification=$disable_notification";
+            
+            if (reply_to_message_id != null)
+                queue += @"&reply_to_message_id=$reply_to_message_id";
+            
+            if (allow_sending_without_reply != null)
+                queue += @"&allow_sending_without_reply=$allow_sending_without_reply";
+            
+            if (reply_markup != null)
+                queue += @"&reply_markup=$reply_markup";
+            
+            return queue;
+        }
+    }
+    
     public enum ChatAction {
         TYPING,
         UPLOAD_PHOTO,
