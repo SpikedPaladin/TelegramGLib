@@ -2050,6 +2050,32 @@ namespace Telegram.Configs {
         }
     }
     
+    public class GetGameHighScoresConfig : BaseConfig {
+        public int64 user_id;
+        public int64? chat_id;
+        public int? message_id;
+        public string? inline_message_id;
+        
+        public override string method() {
+            return "getGameHighScores";
+        }
+        
+        public override string queue() {
+            var queue = @"user_id=$user_id";
+            
+            if (chat_id != null)
+                queue += @"&chat_id=$chat_id";
+            
+            if (message_id != null)
+                queue += @"&message_id=$message_id";
+            
+            if (inline_message_id != null)
+                queue += @"&inline_message_id=$inline_message_id";
+            
+            return queue;
+        }
+    }
+    
     public enum ChatAction {
         TYPING,
         UPLOAD_PHOTO,
