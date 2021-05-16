@@ -22,7 +22,7 @@ lib = library(lib_name,
 
 configure_file(
     input: 'deps.in',
-    output: '@0@.deps'.format(lib_name),
+    output: lib_name + '.deps',
     copy: true,
     install: true,
     install_dir: get_option('datadir') / 'vala' / 'vapi'
