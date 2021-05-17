@@ -10,6 +10,6 @@ project('telegram-glib', ['c', 'vala'],
 pkg = import('pkgconfig')
 
 api_version = '0.1'
-lib_name = '@0@-@1@'.format(meson.project_name(), api_version)
+lib_name = meson.project_name() + '-' + api_version
 
 subdir('lib')
