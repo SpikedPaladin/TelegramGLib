@@ -135,7 +135,7 @@ namespace Telegram.Configs {
                 var arr = yield media[i].append(i);
                 
                 foreach (var file in arr) {
-                    multipart.append_form_file(file.name, file.filename, "", file.buffer);
+                    multipart.append_form_file(file.name, file.filename, "", file.body);
                 }
             }
             
@@ -357,11 +357,9 @@ namespace Telegram.Configs {
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
             var file = File.new_for_path(photo.replace("file://", ""));
-            uint8[] content;
+            var body = yield file.load_bytes_async(null, null);
             
-            yield file.load_contents_async(null, out content, null);
-            
-            multipart.append_form_file("photo", file.get_basename(), "", new Soup.Buffer.take(content));
+            multipart.append_form_file("photo", file.get_basename(), "", body);
             
             return multipart;
         }
@@ -442,20 +440,16 @@ namespace Telegram.Configs {
             
             if (audio.has_prefix("file://")) {
                 var file = File.new_for_path(audio.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("audio", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("audio", file.get_basename(), "", body);
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("thumb", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("thumb", file.get_basename(), "", body);
                 thumb = "attach://thumb";
             }
             
@@ -530,20 +524,16 @@ namespace Telegram.Configs {
             
             if (document.has_prefix("file://")) {
                 var file = File.new_for_path(document.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("document", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("document", file.get_basename(), "", body);
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("thumb", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("thumb", file.get_basename(), "", body);
                 thumb = "attach://thumb";
             }
             
@@ -630,20 +620,16 @@ namespace Telegram.Configs {
             
             if (video.has_prefix("file://")) {
                 var file = File.new_for_path(video.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("video", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("video", file.get_basename(), "", body);
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("thumb", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("thumb", file.get_basename(), "", body);
                 thumb = "attach://thumb";
             }
             
@@ -726,20 +712,16 @@ namespace Telegram.Configs {
             
             if (animation.has_prefix("file://")) {
                 var file = File.new_for_path(animation.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("animation", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("animation", file.get_basename(), "", body);
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("thumb", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("thumb", file.get_basename(), "", body);
                 thumb = "attach://thumb";
             }
             
@@ -808,11 +790,9 @@ namespace Telegram.Configs {
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
             var file = File.new_for_path(voice.replace("file://", ""));
-            uint8[] content;
+            var body = yield file.load_bytes_async(null, null);
             
-            yield file.load_contents_async(null, out content, null);
-            
-            multipart.append_form_file("voice", file.get_basename(), "", new Soup.Buffer.take(content));
+            multipart.append_form_file("voice", file.get_basename(), "", body);
             
             return multipart;
         }
@@ -889,20 +869,16 @@ namespace Telegram.Configs {
             
             if (video_note.has_prefix("file://")) {
                 var file = File.new_for_path(video_note.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("video_note", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("video_note", file.get_basename(), "", body);
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
+                var body = yield file.load_bytes_async(null, null);
                 
-                yield file.load_contents_async(null, out content, null);
-                
-                multipart.append_form_file("thumb", file.get_basename(), "", new Soup.Buffer.take(content));
+                multipart.append_form_file("thumb", file.get_basename(), "", body);
                 thumb = "attach://thumb";
             }
             
@@ -961,7 +937,7 @@ namespace Telegram.Configs {
                 var arr = yield media[i].append(i);
                 
                 foreach (var file in arr) {
-                    multipart.append_form_file(file.name, file.filename, "", file.buffer);
+                    multipart.append_form_file(file.name, file.filename, "", file.body);
                 }
             }
             
@@ -1562,11 +1538,9 @@ namespace Telegram.Configs {
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
             var file = File.new_for_path(photo.replace("file://", ""));
-            uint8[] content;
+            var body = yield file.load_bytes_async(null, null);
             
-            yield file.load_contents_async(null, out content, null);
-            
-            multipart.append_form_file("photo", file.get_basename(), "", new Soup.Buffer.take(content));
+            multipart.append_form_file("photo", file.get_basename(), "", body);
             
             return multipart;
         }
