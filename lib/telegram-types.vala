@@ -2371,14 +2371,12 @@ namespace Telegram.Types {
             InputFile[] arr = {};
             
             var file = File.new_for_path(media.replace("file://", ""));
-            uint8[] content;
-            
-            yield file.load_contents_async(null, out content, null);
+            var body = yield file.load_bytes_async(null, null);
             
             arr += InputFile() {
                 name = @"media$index",
                 filename = file.get_basename(),
-                buffer = new Soup.Buffer.take(content)
+                body = body
             };
             media = @"attach://media$index";
             
@@ -2472,28 +2470,24 @@ namespace Telegram.Types {
             InputFile[] arr = {};
             if (media.has_prefix("file://")) {
                 var file = File.new_for_path(media.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"media$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 media = @"attach://media$index";
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"thumb$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 thumb = @"attach://thumb$index";
             }
@@ -2582,28 +2576,24 @@ namespace Telegram.Types {
             InputFile[] arr = {};
             if (media.has_prefix("file://")) {
                 var file = File.new_for_path(media.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"media$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 media = @"attach://media$index";
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"thumb$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 thumb = @"attach://thumb$index";
             }
@@ -2692,28 +2682,24 @@ namespace Telegram.Types {
             InputFile[] arr = {};
             if (media.has_prefix("file://")) {
                 var file = File.new_for_path(media.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"media$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 media = @"attach://media$index";
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"thumb$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 thumb = @"attach://thumb$index";
             }
@@ -2790,28 +2776,24 @@ namespace Telegram.Types {
             InputFile[] arr = {};
             if (media.has_prefix("file://")) {
                 var file = File.new_for_path(media.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"media$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 media = @"attach://media$index";
             }
             
             if (thumb != null && thumb.has_prefix("file://")) {
                 var file = File.new_for_path(thumb.replace("file://", ""));
-                uint8[] content;
-                
-                yield file.load_contents_async(null, out content, null);
+                var body = yield file.load_bytes_async(null, null);
                 
                 arr += InputFile() {
                     name = @"thumb$index",
                     filename = file.get_basename(),
-                    buffer = new Soup.Buffer.take(content)
+                    body = body
                 };
                 thumb = @"attach://thumb$index";
             }
@@ -4590,7 +4572,7 @@ namespace Telegram.Types {
     public struct InputFile {
         string name;
         string filename;
-        Soup.Buffer buffer;
+        Bytes body;
     }
     
     protected interface ReplyMarkup : Object, Serializable {}

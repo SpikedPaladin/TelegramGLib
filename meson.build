@@ -3,7 +3,7 @@ project('telegram-glib', ['c', 'vala'],
         'warning_level=2'
     ],
     
-    version: '0.1.2',
+    version: '0.1.3',
     meson_version: '>= 0.50.0',
 )
 

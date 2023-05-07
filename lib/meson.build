@@ -3,7 +3,7 @@ lib_deps = [
     dependency('gobject-2.0'),
     dependency('gee-0.8'),
     dependency('json-glib-1.0'),
-    dependency('libsoup-2.4')
+    dependency('libsoup-3.0')
 ]
 
 lib_sources = [
@@ -36,5 +36,5 @@ pkg.generate(
     version: meson.project_version(),
     subdirs: lib_name,
     filebase: lib_name,
-    requires: ['gee-0.8', 'json-glib-1.0', 'libsoup-2.4']
+    requires: ['gee-0.8', 'json-glib-1.0', 'libsoup-3.0']
 )
