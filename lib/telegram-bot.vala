@@ -19,7 +19,7 @@ namespace Telegram {
         }
         
         public async Response? make_request(string endpoint, string? @params = null) {
-            var message = new Soup.Message("POST", @"https://api.telegram.org/bot$token/$endpoint?$(params ?? "")");
+            var message = new Soup.Message("GET", @"https://api.telegram.org/bot$token/$endpoint?$(params ?? "")");
             
             try {
                 var stream = yield session.send_async(message, Priority.DEFAULT, null);
