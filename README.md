@@ -12,7 +12,7 @@ TelegramGLib is a bot api for telegram written in Vala
 
 #### Vala
 ```vala
-using Telegram.Configs;
+using Telegram.Requests;
 using Telegram.Types;
 using Telegram;
 
@@ -35,7 +35,7 @@ public class ReadMeBot : Bot {
     
     public override void update_recieved(Update update) {
         if (update.message != null && update.message.text != null) {
-            var msg = new SendMessageConfig();
+            var msg = new SendMessage();
             msg.chat_id = update.message.chat.id;
             msg.reply_to_message_id = update.message.message_id;
             msg.text = @"Your message: $(update.message.text)";
@@ -48,7 +48,7 @@ public class ReadMeBot : Bot {
 
 ##### Compile with
 
-    $ valac --pkg telegram-glib-0.1 main.vala
+    $ valac --pkg telegram-glib-0.2 main.vala
     $ ./main
 
 ##### Result
@@ -56,13 +56,13 @@ public class ReadMeBot : Bot {
 
 ## Uploading files
 ```vala
-var config = new SendPhotoConfig();
-config.chat_id = update.message.chat.id;
+var request = new SendPhoto();
+request.chat_id = update.message.chat.id;
 // To upload local file use prefix 'file://'
 // File will be uploaded from local folder (/home/paladin/Pictures/upload.jpg)
-config.photo = "file:///home/paladin/Pictures/upload.jpg";
+request.photo = "file:///home/paladin/Pictures/upload.jpg";
 
-send.begin(config);
+send.begin(request);
 ```
 
 ## Installation

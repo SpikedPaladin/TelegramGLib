@@ -4,7 +4,7 @@ namespace Telegram.Types {
         public string id;
         public string audio_file_id;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public InlineKeyboardMarkup? reply_markup;
         public InputMessageContent? input_message_content;

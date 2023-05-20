@@ -4,7 +4,7 @@ namespace Telegram.Types {
         public string id;
         public string title;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public string document_url;
         public string mime_type;

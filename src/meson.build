@@ -11,7 +11,7 @@ lib_sources = [
     'util.vala',
 ]
 
-subdir('configs')
+subdir('requests')
 subdir('types')
 
 lib = library(lib_name,
