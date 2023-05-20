@@ -74,8 +74,8 @@ send.begin(request);
 
 #### Build manualy
 
-    $ meson --prefix=/usr _build
-    $ cd _build
+    $ meson setup --prefix=/usr build
+    $ cd build
     $ ninja install
 
 ## TODO
