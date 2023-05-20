@@ -7,7 +7,7 @@ namespace Telegram.Types {
         public string thumbnail_url;
         public string title;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? video_width;
         public int? video_height;

@@ -3,7 +3,7 @@ namespace Telegram.Types {
     public class InputMediaPhoto : Object, Serializable, InputMedia, InputMediaGroupable {
         public string media;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public bool? has_spoiler;
         
@@ -73,7 +73,7 @@ namespace Telegram.Types {
         public string media;
         public string? thumbnail;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? width;
         public int? height;
@@ -191,7 +191,7 @@ namespace Telegram.Types {
         public string media;
         public string? thumbnail;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? width;
         public int? height;
@@ -303,7 +303,7 @@ namespace Telegram.Types {
         public string media;
         public string? thumbnail;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? duration;
         public string? performer;
@@ -409,7 +409,7 @@ namespace Telegram.Types {
         public string media;
         public string? thumbnail;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public bool? disable_content_type_detection;
         

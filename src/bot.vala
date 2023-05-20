@@ -1,4 +1,4 @@
-using Telegram.Configs;
+using Telegram.Requests;
 using Telegram.Types;
 
 namespace Telegram {
@@ -307,13 +307,13 @@ namespace Telegram {
             }
         }
         
-        public async Response? send(BaseConfig config) {
-            if (config is UploadConfig && config.has_attachments()) {
-                var upload_config = config as UploadConfig;
+        public async Response? send(BaseRequest request) {
+            if (request is UploadRequest && request.has_attachments()) {
+                var upload_request = request as UploadRequest;
                 
                 try {
-                    var multipart = yield upload_config.create_multipart();
-                    var message = new Soup.Message.from_multipart(@"https://api.telegram.org/bot$token/$(config.method())?$(config.queue())", multipart);
+                    var multipart = yield upload_request.create_multipart();
+                    var message = new Soup.Message.from_multipart(@"https://api.telegram.org/bot$token/$(request.method())?$(request.queue())", multipart);
                     
                     var stream = yield session.send_async(message, Priority.DEFAULT, null);
                     var parser = new Json.Parser();
@@ -323,17 +323,17 @@ namespace Telegram {
                     var response = new Response(node.get_object());
                     
                     if (debug)
-                        Util.log(Util.LogLevel.DEBUG, @"$(config.method()): $(Json.to_string(node, false))");
+                        Util.log(Util.LogLevel.DEBUG, @"$(request.method()): $(Json.to_string(node, false))");
                     
                     if (!response.ok)
-                        Util.log(Util.LogLevel.WARNING, @"$(config.method()): $(response.description)");
+                        Util.log(Util.LogLevel.WARNING, @"$(request.method()): $(response.description)");
                     
                     return response;
                 } catch (Error e) {
                     Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
                 }
             }
-            return yield make_request(config.method(), config.queue());
+            return yield make_request(request.method(), request.queue());
         }
         
         public abstract void update_recieved(Update update);
@@ -378,7 +378,7 @@ namespace Telegram {
     }
     
     [CCode (cprefix = "Telegram", lower_case_cprefix = "telegram_")]
-    namespace Configs {
+    namespace Requests {
         
         public enum ParseMode {
             MARKDOWN,
@@ -399,12 +399,12 @@ namespace Telegram {
             }
         }
         
-        public abstract class BaseConfig {
+        public abstract class BaseRequest {
             public abstract string method();
             public abstract string queue();
         }
         
-        public abstract class UploadConfig : BaseConfig {
+        public abstract class UploadRequest : BaseRequest {
             public abstract bool has_attachments();
             public abstract async Soup.Multipart create_multipart() throws Error;
         }

@@ -5,7 +5,7 @@ namespace Telegram.Types {
         public string voice_url;
         public string title;
         public string? caption;
-        public Configs.ParseMode? parse_mode;
+        public Requests.ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? voice_duration;
         public InlineKeyboardMarkup? reply_markup;
