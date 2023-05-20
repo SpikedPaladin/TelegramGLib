@@ -12,4 +12,4 @@ pkg = import('pkgconfig')
 api_version = '0.1'
 lib_name = meson.project_name() + '-' + api_version
 
-subdir('lib')
+subdir('src')
