@@ -7,11 +7,12 @@ lib_deps = [
 ]
 
 lib_sources = [
-    'telegram-bot.vala',
-    'telegram-util.vala',
-    'telegram-types.vala',
-    'telegram-config.vala',
+    'bot.vala',
+    'util.vala',
 ]
+
+subdir('configs')
+subdir('types')
 
 lib = library(lib_name,
     lib_sources,
