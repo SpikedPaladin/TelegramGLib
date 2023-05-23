@@ -80,6 +80,11 @@ lib_sources += files([
     'response-parameters.vala',
     
     'input-media/input-media.vala',
+    'input-media/input-media-animation.vala',
+    'input-media/input-media-document.vala',
+    'input-media/input-media-audio.vala',
+    'input-media/input-media-photo.vala',
+    'input-media/input-media-video.vala',
     
     'stickers/sticker.vala',
     'stickers/sticker-set.vala',
