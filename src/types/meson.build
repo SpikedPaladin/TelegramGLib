@@ -64,6 +64,12 @@ lib_sources += files([
     'chat-administrator-rights.vala',
     
     'chat/member/chat-member.vala',
+    'chat/member/chat-member-owner.vala',
+    'chat/member/chat-member-administrator.vala',
+    'chat/member/chat-member-member.vala',
+    'chat/member/chat-member-restricted.vala',
+    'chat/member/chat-member-left.vala',
+    'chat/member/chat-member-banned.vala',
     'chat/member/chat-member-updated.vala',
     
     'chat/chat-join-request.vala',
