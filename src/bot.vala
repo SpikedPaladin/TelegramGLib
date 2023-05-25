@@ -68,7 +68,7 @@ namespace Telegram {
             if (response != null || !response.ok)
                 return null;
             
-            return new ChatMember(response.result.get_object());
+            return ChatMember.from_json(response.result.get_object());
         }
         
         public async int? get_chat_member_count(int64 chat_id) {
@@ -86,7 +86,7 @@ namespace Telegram {
             if (response != null || !response.ok)
                 return null;
             
-            return new ChatMember(response.result.get_object());
+            return ChatMember.from_json(response.result.get_object());
         }
         
         public async Sticker[]? get_forum_topic_icon_stickers() {

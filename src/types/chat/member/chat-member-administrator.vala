@@ -1,6 +1,8 @@
 namespace Telegram.Types {
 	
-    public class ChatMemberAdministrator : ChatMember {
+    public class ChatMemberAdministrator : Object, ChatMember {
+        public Status status;
+        public User user;
         public bool can_be_edited;
         public bool is_anonymous;
         public bool can_manage_chat;
@@ -17,8 +19,8 @@ namespace Telegram.Types {
         public string? custom_title;
         
         public ChatMemberAdministrator(Json.Object object) {
-            base(object);
-            
+            status = Status.parse(object.get_string_member("status"));
+            user = new User(object.get_object_member("user"));
             can_be_edited = object.get_boolean_member("can_be_edited");
             is_anonymous = object.get_boolean_member("is_anonymous");
             can_manage_chat = object.get_boolean_member("can_manage_chat");

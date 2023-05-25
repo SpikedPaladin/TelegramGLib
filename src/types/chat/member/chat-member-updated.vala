@@ -13,8 +13,8 @@ namespace Telegram.Types {
             chat = new Chat(object.get_object_member("chat"));
             from = new User(object.get_object_member("from"));
             date = object.get_int_member("date");
-            old_chat_member = new ChatMember(object.get_object_member("old_chat_member"));
-            new_chat_member = new ChatMember(object.get_object_member("new_chat_member"));
+            old_chat_member = ChatMember.from_json(object.get_object_member("old_chat_member"));
+            new_chat_member = ChatMember.from_json(object.get_object_member("new_chat_member"));
             
             if (object.has_member("invite_link"))
                 invite_link = new ChatInviteLink(object.get_object_member("invite_link"));

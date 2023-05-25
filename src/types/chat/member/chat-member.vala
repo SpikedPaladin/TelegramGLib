@@ -1,12 +1,24 @@
 namespace Telegram.Types {
 	
-    public class ChatMember {
-        public Status status;
-        public User user;
+    public interface ChatMember : Object {
         
-        public ChatMember(Json.Object object) {
-            status = Status.parse(object.get_string_member("status"));
-            user = new User(object.get_object_member("user"));
+        public static ChatMember from_json(Json.Object object) {
+            Status status = Status.parse(object.get_string_member("status"));
+            
+            switch (status) {
+                case Status.CREATOR:
+                    return new ChatMemberOwner(object);
+                case Status.ADMINISTRATOR:
+                    return new ChatMemberAdministrator(object);
+                case Status.RESTRICTED:
+                    return new ChatMemberRestricted(object);
+                case Status.LEFT:
+                    return new ChatMemberLeft(object);
+                case Status.KICKED:
+                    return new ChatMemberBanned(object);
+                default:
+                    return new ChatMemberMember(object);
+            }
         }
         
         public enum Status {

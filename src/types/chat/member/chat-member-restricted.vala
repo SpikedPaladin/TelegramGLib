@@ -1,6 +1,8 @@
 namespace Telegram.Types {
 	
-    public class ChatMemberRestricted : ChatMember {
+    public class ChatMemberRestricted : Object, ChatMember {
+        public Status status;
+        public User user;
         public bool is_member;
         public bool can_send_messages;
         public bool can_send_audios;
@@ -18,10 +20,9 @@ namespace Telegram.Types {
         public bool can_manage_topics;
         public int64 until_date;
         
-        
         public ChatMemberRestricted(Json.Object object) {
-            base(object);
-            
+            status = Status.parse(object.get_string_member("status"));
+            user = new User(object.get_object_member("user"));
             is_member = object.get_boolean_member("is_member");
             can_send_messages = object.get_boolean_member("can_send_messages");
             can_send_audios = object.get_boolean_member("can_send_audios");
