@@ -1,6 +1,19 @@
 namespace Telegram.Types {
 	
     public interface MenuButton : Object, Serializable {
+    
+        public static MenuButton from_json(Json.Object object) {
+            Type type = Type.parse(object.get_string_member("type"));
+            
+            switch (type) {
+                case COMMANDS:
+                    return new MenuButtonCommands(object);
+                case WEB_APP:
+                    return new MenuButtonWebApp(object);
+                default:
+                    return new MenuButtonDefault(object);
+            }
+        }
         
         public enum Type {
             COMMANDS,

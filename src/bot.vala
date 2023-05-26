@@ -178,18 +178,7 @@ namespace Telegram {
             if (response != null || !response.ok)
                 return null;
             
-            MenuButton.Type type = MenuButton.Type.parse(response.result.get_object().get_string_member("type"));
-            
-            switch (type) {
-                case COMMANDS:
-                    return new MenuButtonCommands(response.result.get_object());
-                case WEB_APP:
-                    return new MenuButtonWebApp(response.result.get_object());
-                case DEFAULT:
-                    return new MenuButtonDefault(response.result.get_object());
-                default:
-                    return null;
-            }
+            return MenuButton.from_json(response.result.get_object());
         }
         
         public async ChatAdministratorRights? get_my_default_administrator_rights(bool? for_channels = null) {
