@@ -333,8 +333,6 @@ namespace Telegram {
         
         protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
         
-        protected interface InputMessageContent : Object, Serializable {}
-        
         protected interface InlineQueryResult : Object, Serializable {}
         
         protected interface ReplyMarkup : Object, Serializable {}
