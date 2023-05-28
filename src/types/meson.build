@@ -121,6 +121,7 @@ lib_sources += files([
     'inline/result/inline-query-result-cached-voice.vala',
     'inline/result/inline-query-result-cached-audio.vala',
     
+    'inline/input-message/input-message-content.vala',
     'inline/input-message/input-text-message-content.vala',
     'inline/input-message/input-location-message-content.vala',
     'inline/input-message/input-venue-message-content.vala',
