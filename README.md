@@ -7,6 +7,7 @@ TelegramGLib is a bot api for telegram written in Vala
 - Inline mode support
 - Async request sending
 - File uploading
+- Android support (NEW!)
 
 ## Sample
 
@@ -54,6 +55,10 @@ public class ReadMeBot : Bot {
 ##### Result
 ![Screenshot](./result.png)
 
+##### More examples
+
+* [TelegramGLib-Examples](https://github.com/SpikedPaladin/TelegramGLib-Examples) repository
+
 ## Uploading files
 ```vala
 var request = new SendPhoto();
@@ -66,6 +71,8 @@ send.begin(request);
 ```
 
 ## Installation
+
+**[Installation for Android (Guide)](https://gist.github.com/SpikedPaladin/c51d95773fa851c6e54e8ae1cf4e5b10)**
 
 #### Dependencies
 > json-glib-1.0  
@@ -81,6 +88,5 @@ send.begin(request);
 ## TODO
 - [ ] Webhook support
 - [ ] Write documentation
-- [ ] Create android guide
 - [ ] Telegram passport support
 
