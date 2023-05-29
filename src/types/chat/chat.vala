@@ -123,7 +123,8 @@ namespace Telegram.Types {
             PRIVATE,
             GROUP,
             SUPERGROUP,
-            CHANNEL;
+            CHANNEL,
+            SENDER;
             
             public static Type? parse(string type) {
                 switch (type) {
@@ -135,6 +136,8 @@ namespace Telegram.Types {
                         return SUPERGROUP;
                     case "channel":
                         return CHANNEL;
+                    case "sender":
+                        return SENDER;
                     default:
                         return null;
                 }
@@ -150,6 +153,8 @@ namespace Telegram.Types {
                         return "supergroup";
                     case CHANNEL:
                         return "channel";
+                    case SENDER:
+                        return "sender";
                     default:
                         return "Undefined";
                 }
