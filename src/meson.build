@@ -14,19 +14,18 @@ lib_sources = [
 subdir('requests')
 subdir('types')
 
+install_data(
+    'deps.in',
+    
+    rename: lib_name + '.deps',
+    install_dir: get_option('datadir') / 'vala' / 'vapi'
+)
+
 lib = library(lib_name,
     lib_sources,
     dependencies: lib_deps,
     install: true,
     install_dir: [true, true, true]
-)
-
-configure_file(
-    input: 'deps.in',
-    output: lib_name + '.deps',
-    copy: true,
-    install: true,
-    install_dir: get_option('datadir') / 'vala' / 'vapi'
 )
 
 pkg.generate(
