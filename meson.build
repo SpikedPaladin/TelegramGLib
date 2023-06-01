@@ -11,5 +11,6 @@ pkg = import('pkgconfig')
 
 api_version = '0.2'
 lib_name = meson.project_name() + '-' + api_version
+typelib_name = 'TelegramGLib-' + api_version
 
 subdir('src')

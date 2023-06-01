@@ -21,11 +21,14 @@ install_data(
     install_dir: get_option('datadir') / 'vala' / 'vapi'
 )
 
-lib = library(lib_name,
+lib = library(
+    lib_name,
+    
     lib_sources,
+    vala_gir: typelib_name + '.gir',
     dependencies: lib_deps,
     install: true,
-    install_dir: [true, true, true]
+    install_dir: [true, true, true, true]
 )
 
 pkg.generate(
@@ -38,3 +41,23 @@ pkg.generate(
     filebase: lib_name,
     requires: ['gee-0.8', 'json-glib-1.0', 'libsoup-3.0']
 )
+
+if get_option('introspection')
+    g_ir_compiler = find_program('g-ir-compiler')
+    
+    typelib_cmd = [g_ir_compiler,
+        '--shared-library=' + lib.full_path().split('/')[-1],
+        '--output=@OUTPUT@',
+        meson.current_build_dir() / (typelib_name + '.gir')
+    ]
+    
+    custom_target(
+        'typelib',
+        
+        command: typelib_cmd,
+        output: typelib_name + '.typelib',
+        depends: lib,
+        install: true,
+        install_dir: get_option('libdir') / 'girepository-1.0')
+endif
+
