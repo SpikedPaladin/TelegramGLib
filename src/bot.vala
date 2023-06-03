@@ -3,11 +3,26 @@ using Telegram.Types;
 
 namespace Telegram {
     
+    /**
+     * A client to use the Telegram Bot API
+     */
     public abstract class Bot : Object {
+        /**
+         * Http session
+         */
         public Soup.Session session;
         private int update_id;
+        /**
+         * API token
+         */
         public string token;
+        /**
+         * Information about bot
+         */
         public User? self;
+        /**
+         * Enable debug log
+         */
         public bool debug;
         
         construct {
@@ -296,6 +311,11 @@ namespace Telegram {
             }
         }
         
+        /**
+         * Send request to Bot API
+         * @param request A request to send
+         * @return {@link Types.Response} from Bot API
+         */
         public async Response? send(BaseRequest request) {
             if (request is UploadRequest && request.has_attachments()) {
                 var upload_request = request as UploadRequest;

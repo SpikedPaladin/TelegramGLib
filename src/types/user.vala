@@ -1,16 +1,60 @@
 namespace Telegram.Types {
     
+    /**
+     * This object represents a Telegram user or bot.
+     */
     public class User : Object, Serializable {
+        /**
+         * Unique identifier for this user or bot.
+         */
         public int64 id;
+        /**
+         * ''True'', if this user is a bot
+         */
         public bool is_bot;
+        /**
+         * User's or bot's first name
+         */
         public string first_name;
+        /**
+         * //Optional.//
+         * User's or bot's last name
+         */
         public string? last_name;
+        /**
+         * //Optional.//
+         * User's or bot's username
+         */
         public string? username;
+        /**
+         * //Optional.//
+         * [[https://en.wikipedia.org/wiki/IETF_language_tag|IETF language tag]] of the user's language
+         */
         public string? language_code;
+        /**
+         * //Optional.//
+         * ''True'', if this user is a Telegram Premium user
+         */
         public bool is_premium;
+        /**
+         * //Optional.//
+         * True, if this user added the bot to the attachment menu
+         */
         public bool added_to_attachment_menu;
+        /**
+         * //Optional.//
+         * True, if the bot can be invited to groups. Returned only in {@link Bot.get_me}.
+         */
         public bool? can_join_groups;
+        /**
+         * //Optional.//
+         * True, if privacy mode is disabled for the bot. Returned only in {@link Bot.get_me}.
+         */
         public bool? can_read_all_group_messages;
+        /**
+         * //Optional.//
+         * True, if the bot supports inline queries. Returned only in {@link Bot.get_me}.
+         */
         public bool? supports_inline_queries;
         
         public User(Json.Object object) {
