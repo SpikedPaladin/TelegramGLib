@@ -1,4 +1,13 @@
 option(
+    'docs',
+    
+    type: 'array',
+    choices: ['valadoc', 'gtkdoc'],
+    value: [],
+    description: 'Documentations that will be built'
+)
+
+option(
     'introspection',
     
     type: 'boolean',

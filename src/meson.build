@@ -6,10 +6,10 @@ lib_deps = [
     dependency('libsoup-3.0')
 ]
 
-lib_sources = [
+lib_sources = files(
     'bot.vala',
     'util.vala',
-]
+)
 
 subdir('requests')
 subdir('types')
