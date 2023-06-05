@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class UserShared {
         public int? request_id;
         public int64? user_id;

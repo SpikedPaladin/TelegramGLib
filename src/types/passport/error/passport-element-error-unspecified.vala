@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class PassportElementErrorUnspecified : Object, Serializable, PassportElementError {
         public EncryptedPassportElement.Type type;
         public string element_hash;

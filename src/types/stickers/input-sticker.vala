@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InputSticker : Object, Serializable, InputMedia, InputMediaGroupable {
         public string sticker;
         public string[] emoji_list;

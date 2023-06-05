@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ForumTopic {
         public int message_thread_id;
         public string name;

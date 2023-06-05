@@ -1,7 +1,7 @@
 using Gee;
 
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class UserProfilePhotos {
         public int total_count;
         public ArrayList<ArrayList<PhotoSize>> photos;

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultGame : Object, Serializable, InlineQueryResult {
         public string id;
         public string game_short_name;

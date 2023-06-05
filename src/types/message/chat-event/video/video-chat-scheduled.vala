@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class VideoChatScheduled {
         public int64 start_date;
         

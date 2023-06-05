@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ForumTopicCreated {
         public string name;
         public int icon_color;

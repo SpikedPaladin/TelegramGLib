@@ -1,4 +1,4 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     public class Message {
         public int message_id;
@@ -310,13 +310,13 @@ namespace Telegram.Types {
         
         public bool is_command() {
             if (
-	            entities != null &&
-	            entities[0].offset == 0 &&
-	            entities[0].type == MessageEntity.Type.BOT_COMMAND
-	        ) {
-	            return true;
-	        }
-	        return false;
+                entities != null &&
+                entities[0].offset == 0 &&
+                entities[0].type == MessageEntity.Type.BOT_COMMAND
+            ) {
+                return true;
+            }
+            return false;
         }
     }
 }

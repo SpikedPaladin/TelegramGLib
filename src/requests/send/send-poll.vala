@@ -1,8 +1,5 @@
-using Telegram.Types;
-using Telegram.Util;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SendPoll : BaseRequest {
         public int64 chat_id;
         public int? message_thread_id;
@@ -28,7 +25,7 @@ namespace Telegram.Requests {
             return "sendPoll";
         }
         public override string queue() {
-            var queue = @"chat_id=$chat_id&question=$question&options=$(serialize_array(options))";
+            var queue = @"chat_id=$chat_id&question=$question&options=$(Util.serialize_array(options))";
             
             if (message_thread_id != null)
                 queue += @"&message_thread_id=$message_thread_id";

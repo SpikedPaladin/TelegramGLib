@@ -1,7 +1,7 @@
 using Gee;
 
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ReplyKeyboardMarkup : Object, Serializable, ReplyMarkup {
         public ArrayList<ArrayList<KeyboardButton>> keyboard;
         public bool? is_persistent;

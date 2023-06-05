@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InputContactMessageContent : Object, Serializable, InputMessageContent {
         public string phone_number;
         public string first_name;

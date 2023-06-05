@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultArticle : Object, Serializable, InlineQueryResult {
         public string id;
         public string title;

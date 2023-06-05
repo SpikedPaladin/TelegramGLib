@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class AnswerPreCheckoutQuery : BaseRequest {
         public string pre_checkout_query_id;
         public bool ok;

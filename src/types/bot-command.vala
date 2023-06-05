@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class BotCommand : Object, Serializable {
         public string command;
         public string description;

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class KeyboardButtonPollType : Object, Serializable {
         public Poll.Type type;
         

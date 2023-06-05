@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ChatPermissions : Object, Serializable {
         public bool? can_send_messages;
         public bool? can_send_audios;

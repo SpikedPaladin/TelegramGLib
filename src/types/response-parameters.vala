@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ResponseParameters {
         public int64? migrate_to_chat_id;
         public int? retry_after;

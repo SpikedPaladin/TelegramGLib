@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class PassportData {
         public EncryptedPassportElement[] data;
         public EncryptedCredentials credentials;

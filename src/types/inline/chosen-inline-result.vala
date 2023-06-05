@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ChosenInlineResult {
         public string result_id;
         public User from;

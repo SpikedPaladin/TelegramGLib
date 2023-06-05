@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetStickerTitle : BaseRequest {
         public string sticker;
         public string title;

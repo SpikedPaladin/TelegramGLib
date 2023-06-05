@@ -7,20 +7,18 @@ TelegramGLib is a bot api for telegram written in Vala
 - Inline mode support
 - Async request sending
 - File uploading
-- Android support (NEW!)
+- Android support
 
 ## Sample
 
 #### Vala
 ```vala
-using Telegram.Requests;
-using Telegram.Types;
 using Telegram;
 
 void main() {
-	var bot = new ReadMeBot();
-	bot.start();
-	new MainLoop().run();
+    var bot = new ReadMeBot();
+    bot.start();
+    new MainLoop().run();
 }
 
 public class ReadMeBot : Bot {
@@ -49,7 +47,7 @@ public class ReadMeBot : Bot {
 
 ##### Compile with
 
-    $ valac --pkg telegram-glib-0.2 main.vala
+    $ valac --pkg telegram-glib-0.3 main.vala
     $ ./main
 
 ##### Result

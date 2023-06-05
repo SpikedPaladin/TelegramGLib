@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class WriteAccessAllowed {
         public string? web_app_name;
         

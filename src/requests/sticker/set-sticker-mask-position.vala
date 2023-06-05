@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetStickerMaskPosition : BaseRequest {
         public string sticker;
         public MaskPosition? mask_position;

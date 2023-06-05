@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class SentWebAppMessage {
         public string? inline_message_id;
         

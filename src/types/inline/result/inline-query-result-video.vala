@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultVideo : Object, Serializable, InlineQueryResult {
         public string id;
         public string video_url;
@@ -7,7 +7,7 @@ namespace Telegram.Types {
         public string thumbnail_url;
         public string title;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? video_width;
         public int? video_height;

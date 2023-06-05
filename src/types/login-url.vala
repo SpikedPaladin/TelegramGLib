@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class LoginUrl : Object, Serializable {
         public string url;
         public string? forward_text;

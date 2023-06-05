@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class WebAppData : Object, Serializable {
         public string data;
         public string button_text;

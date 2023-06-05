@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetStickerEmojiList : BaseRequest {
         public string sticker;
         public string[] emoji_list;

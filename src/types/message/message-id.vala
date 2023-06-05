@@ -1,4 +1,4 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     public class MessageId {
         public int message_id;

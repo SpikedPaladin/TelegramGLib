@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class Audio {
         public string file_id;
         public string file_unique_id;

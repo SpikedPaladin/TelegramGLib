@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetMyCommands : BaseRequest {
         public BotCommand[] commands;
         public BotCommandScope? scope;

@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class DeleteStickerFromSet : BaseRequest {
         public string sticker;
         

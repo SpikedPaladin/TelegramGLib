@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class PassportElementErrorDataField : Object, Serializable, PassportElementError {
         public EncryptedPassportElement.Type type;
         public string field_name;

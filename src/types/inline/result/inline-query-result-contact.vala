@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultContact : Object, Serializable, InlineQueryResult {
         public string id;
         public string phone_number;

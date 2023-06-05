@@ -1,4 +1,4 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     /**
      * This object represents a chat.

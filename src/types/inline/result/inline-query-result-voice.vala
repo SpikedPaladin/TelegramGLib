@@ -1,11 +1,11 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultVoice : Object, Serializable, InlineQueryResult {
         public string id;
         public string voice_url;
         public string title;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? voice_duration;
         public InlineKeyboardMarkup? reply_markup;

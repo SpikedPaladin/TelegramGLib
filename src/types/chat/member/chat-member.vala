@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public interface ChatMember : Object {
         
         public static ChatMember from_json(Json.Object object) {

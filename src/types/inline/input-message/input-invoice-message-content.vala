@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InputInvoiceMessageContent : Object, Serializable, InputMessageContent {
         public string title;
         public string description;

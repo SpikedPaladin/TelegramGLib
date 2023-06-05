@@ -1,10 +1,10 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultDocument : Object, Serializable, InlineQueryResult {
         public string id;
         public string title;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public string document_url;
         public string mime_type;

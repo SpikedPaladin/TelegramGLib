@@ -1,10 +1,10 @@
-namespace Telegram.Types {
-	
-	public class InlineQueryResultsButton : Object, Serializable {
-	    public string text;
-	    public WebAppInfo? web_app;
-	    public string? start_parameter;
-	    
+namespace Telegram {
+    
+    public class InlineQueryResultsButton : Object, Serializable {
+        public string text;
+        public WebAppInfo? web_app;
+        public string? start_parameter;
+        
         public Json.Node serialize() {
             var builder = new Json.Builder();
             
@@ -27,5 +27,5 @@ namespace Telegram.Types {
             
             return builder.get_root();
         }
-	}
+    }
 }

@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetMyName : BaseRequest {
         public string? name;
         public string? language_code;

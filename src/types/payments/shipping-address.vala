@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ShippingAddress {
         public string country_code;
         public string state;

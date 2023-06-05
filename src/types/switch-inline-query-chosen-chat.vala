@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class SwitchInlineQueryChosenChat : Object, Serializable {
         public string? query;
         public bool? allow_user_chats;

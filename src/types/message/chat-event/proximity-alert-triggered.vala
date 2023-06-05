@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ProximityAlertTriggered {
         public User traveler;
         public User watcher;

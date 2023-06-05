@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetStickerSetThumbnail : UploadRequest {
         public string name;
         public int64 user_id;

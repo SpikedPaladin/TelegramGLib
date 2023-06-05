@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultCachedSticker : Object, Serializable, InlineQueryResult {
         public string id;
         public string sticker_file_id;

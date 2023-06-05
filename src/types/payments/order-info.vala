@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class OrderInfo {
         public string? name;
         public string? phone_number;

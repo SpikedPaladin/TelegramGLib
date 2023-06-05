@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class EncryptedCredentials {
         public string data;
         public string hash;

@@ -1,4 +1,4 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     public class Update {
         public int update_id;

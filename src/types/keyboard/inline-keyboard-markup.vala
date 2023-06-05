@@ -1,7 +1,7 @@
 using Gee;
 
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineKeyboardMarkup : Object, Serializable, ReplyMarkup {
         public ArrayList<ArrayList<InlineKeyboardButton>> inline_keyboard;
         

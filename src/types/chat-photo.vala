@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ChatPhoto {
         public string small_file_id;
         public string small_file_unique_id;

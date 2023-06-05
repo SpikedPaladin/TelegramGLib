@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetChatStickerSet : BaseRequest {
         public int64 chat_id;
         public string sticker_set_name;

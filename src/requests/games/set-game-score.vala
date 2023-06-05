@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetGameScore : BaseRequest {
         public int64 user_id;
         public int64 score;

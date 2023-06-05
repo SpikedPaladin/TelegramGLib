@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultLocation : Object, Serializable, InlineQueryResult {
         public string id;
         public double longitude;

@@ -1,6 +1,3 @@
-using Telegram.Requests;
-using Telegram.Types;
-
 namespace Telegram {
     
     /**
@@ -314,7 +311,7 @@ namespace Telegram {
         /**
          * Send request to Bot API
          * @param request A request to send
-         * @return {@link Types.Response} from Bot API
+         * @return {@link Response} from Bot API
          */
         public async Response? send(BaseRequest request) {
             if (request is UploadRequest && request.has_attachments()) {
@@ -348,72 +345,64 @@ namespace Telegram {
         public abstract void update_recieved(Update update);
     }
     
-    [CCode (cprefix = "Telegram", lower_case_cprefix = "telegram_")]
-    namespace Types {
+    protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
+    
+    protected interface InlineQueryResult : Object, Serializable {}
+    
+    protected interface ReplyMarkup : Object, Serializable {}
+    
+    protected interface Serializable : Object {
+        public abstract Json.Node serialize();
         
-        protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
+        public virtual string to_string() {
+            return Json.to_string(serialize(), false);
+        }
         
-        protected interface InlineQueryResult : Object, Serializable {}
-        
-        protected interface ReplyMarkup : Object, Serializable {}
-        
-        protected interface Serializable : Object {
-            public abstract Json.Node serialize();
+        public static Json.Node serialize_array(Serializable[] array) {
+            var builder = new Json.Builder();
             
-            public virtual string to_string() {
-                return Json.to_string(serialize(), false);
+            builder.begin_array();
+            
+            foreach (var item in array) {
+                builder.add_value(item.serialize());
             }
             
-            public static Json.Node serialize_array(Serializable[] array) {
-                var builder = new Json.Builder();
-                
-                builder.begin_array();
-                
-                foreach (var item in array) {
-                    builder.add_value(item.serialize());
-                }
-                
-                builder.end_array();
-                
-                return builder.get_root();
-            }
+            builder.end_array();
             
-            public static string array_to_string(Serializable[] array) {
-                return Json.to_string(serialize_array(array), false);
-            } 
+            return builder.get_root();
+        }
+        
+        public static string array_to_string(Serializable[] array) {
+            return Json.to_string(serialize_array(array), false);
+        } 
+    }
+    
+    public enum ParseMode {
+        MARKDOWN,
+        MARKDOWNV2,
+        HTML;
+        
+        public string to_string() {
+            switch (this) {
+                case MARKDOWN:
+                    return "Markdown";
+                case MARKDOWNV2:
+                    return "MarkdownV2";
+                case HTML:
+                    return "HTML";
+                default:
+                    return "Undefined";
+            }
         }
     }
     
-    [CCode (cprefix = "Telegram", lower_case_cprefix = "telegram_")]
-    namespace Requests {
-        
-        public enum ParseMode {
-            MARKDOWN,
-            MARKDOWNV2,
-            HTML;
-            
-            public string to_string() {
-                switch (this) {
-                    case MARKDOWN:
-                        return "Markdown";
-                    case MARKDOWNV2:
-                        return "MarkdownV2";
-                    case HTML:
-                        return "HTML";
-                    default:
-                        return "Undefined";
-                }
-            }
-        }
-        
-        public abstract class BaseRequest {
-            public abstract string method();
-            public abstract string queue();
-        }
-        
-        public abstract class UploadRequest : BaseRequest {
-            public abstract bool has_attachments();
-            public abstract async Soup.Multipart create_multipart() throws Error;
-        }
+    public abstract class BaseRequest {
+        public abstract string method();
+        public abstract string queue();
+    }
+    
+    public abstract class UploadRequest : BaseRequest {
+        public abstract bool has_attachments();
+        public abstract async Soup.Multipart create_multipart() throws Error;
     }
 }

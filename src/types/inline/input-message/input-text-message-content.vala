@@ -1,8 +1,8 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InputTextMessageContent : Object, Serializable, InputMessageContent {
         public string message_text;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? entities;
         public bool? disable_web_page_preview;
         

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ReplyKeyboardRemove : Object, Serializable, ReplyMarkup {
         private bool? selective;
         

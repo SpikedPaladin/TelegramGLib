@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class EditChatInviteLink : BaseRequest {
         public int64 chat_id;
         public string invite_link;

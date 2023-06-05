@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public interface BotCommandScope : Object, Serializable {
         
         public enum Type {

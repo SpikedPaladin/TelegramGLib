@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SendDocument : UploadRequest {
         public int64 chat_id;
         public int? message_thread_id;

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultPhoto : Object, Serializable, InlineQueryResult {
         public string id;
         public string photo_url;
@@ -9,7 +9,7 @@ namespace Telegram.Types {
         public string? title;
         public string? description;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public InlineKeyboardMarkup? reply_markup;
         public InputMessageContent? input_message_content;

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ChatInviteLink {
         public string invite_link;
         public User creator;

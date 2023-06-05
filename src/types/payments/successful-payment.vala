@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class SuccessfulPayment {
         public string currency;
         public int total_amount;

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class KeyboardButton : Object, Serializable {
         public string text;
         public KeyboardButtonRequestUser? request_user;
