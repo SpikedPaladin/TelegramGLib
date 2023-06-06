@@ -21,13 +21,27 @@ namespace Telegram {
          * Enable debug log
          */
         public bool debug;
+        /**
+         * Enable {@link GLib.MainLoop} creation inside bot
+         * Don't change it if you're only running one {@link Bot} at a time
+         */
+        public bool create_main_loop = true;
+        /**
+         * {@link GLib.MainLoop} which created when bot started with {@link create_main_loop} set to ''True''
+         */
+        public MainLoop? main_loop;
         
         construct {
             session = new Soup.Session();
         }
         
         public void start() {
+            if (create_main_loop)
+                main_loop = new MainLoop();
+            
             get_updates.begin();
+            
+            main_loop?.run();
         }
         
         public async User? get_me() {

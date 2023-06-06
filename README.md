@@ -16,9 +16,7 @@ TelegramGLib is a bot api for telegram written in Vala
 using Telegram;
 
 void main() {
-    var bot = new ReadMeBot();
-    bot.start();
-    new MainLoop().run();
+    new ReadMeBot().start();
 }
 
 public class ReadMeBot : Bot {
