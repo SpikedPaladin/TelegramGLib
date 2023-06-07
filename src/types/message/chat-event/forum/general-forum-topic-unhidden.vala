@@ -1,4 +1,4 @@
 namespace Telegram {
     
-    public class GeneralForumTopicUnhidden {}
+    public class GeneralForumTopicUnhidden : Object {}
 }

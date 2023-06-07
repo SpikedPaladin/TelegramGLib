@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ShippingAddress {
+    public class ShippingAddress : Object {
         public string country_code;
         public string state;
         public string city;

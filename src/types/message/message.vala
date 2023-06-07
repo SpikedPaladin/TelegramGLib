@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Message {
+    public class Message : Object {
         public int message_id;
         public int? message_thread_id;
         public User? from;

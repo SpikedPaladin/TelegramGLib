@@ -3,7 +3,7 @@ namespace Telegram {
     /**
      * This object represents a chat.
      */
-    public class Chat {
+    public class Chat : Object {
         /**
          * Unique identifier for this chat.
          */

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class EncryptedPassportElement {
+    public class EncryptedPassportElement : Object {
         public Type type;
         public string? data;
         public string? phone_number;

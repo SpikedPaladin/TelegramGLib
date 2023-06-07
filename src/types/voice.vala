@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Voice {
+    public class Voice : Object {
         public string file_id;
         public string file_unique_id;
         public int duration;

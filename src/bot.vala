@@ -410,7 +410,7 @@ namespace Telegram {
         }
     }
     
-    public abstract class BaseRequest {
+    public abstract class BaseRequest : Object {
         public abstract string method();
         public abstract string queue();
     }

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class MessageAutoDeleteTimerChanged {
+    public class MessageAutoDeleteTimerChanged : Object {
         public int message_auto_delete_time;
         
         public MessageAutoDeleteTimerChanged(Json.Object object) {

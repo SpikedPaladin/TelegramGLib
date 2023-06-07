@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ChatShared {
+    public class ChatShared : Object {
         public int request_id;
         public int64 chat_id;
         

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class OrderInfo {
+    public class OrderInfo : Object {
         public string? name;
         public string? phone_number;
         public string? email;

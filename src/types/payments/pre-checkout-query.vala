@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class PreCheckoutQuery {
+    public class PreCheckoutQuery : Object {
         public string id;
         public User from;
         public string currency;

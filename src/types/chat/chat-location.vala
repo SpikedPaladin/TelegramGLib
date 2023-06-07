@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ChatLocation {
+    public class ChatLocation : Object {
         public Location location;
         public string address;
         

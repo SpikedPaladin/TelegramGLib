@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class PassportData {
+    public class PassportData : Object {
         public EncryptedPassportElement[] data;
         public EncryptedCredentials credentials;
         

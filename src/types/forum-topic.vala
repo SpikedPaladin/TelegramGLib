@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ForumTopic {
+    public class ForumTopic : Object {
         public int message_thread_id;
         public string name;
         public int icon_color;

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class PassportFile {
+    public class PassportFile : Object {
         public string file_id;
         public string file_unique_id;
         public int file_size;

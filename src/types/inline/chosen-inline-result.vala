@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ChosenInlineResult {
+    public class ChosenInlineResult : Object {
         public string result_id;
         public User from;
         public Location? location;

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class TelegramFile {
+    public class TelegramFile : Object {
         public string file_id;
         public string file_unique_id;
         public int64? file_size;

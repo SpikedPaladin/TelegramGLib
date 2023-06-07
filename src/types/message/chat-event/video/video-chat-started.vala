@@ -1,4 +1,4 @@
 namespace Telegram {
     
-    public class VideoChatStarted {}
+    public class VideoChatStarted : Object {}
 }

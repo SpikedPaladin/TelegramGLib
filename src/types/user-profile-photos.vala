@@ -2,7 +2,7 @@ using Gee;
 
 namespace Telegram {
     
-    public class UserProfilePhotos {
+    public class UserProfilePhotos : Object {
         public int total_count;
         public ArrayList<ArrayList<PhotoSize>> photos;
         

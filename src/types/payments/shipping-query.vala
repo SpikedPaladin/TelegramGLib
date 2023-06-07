@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ShippingQuery {
+    public class ShippingQuery : Object {
         public string id;
         public User from;
         public string invoice_payload;

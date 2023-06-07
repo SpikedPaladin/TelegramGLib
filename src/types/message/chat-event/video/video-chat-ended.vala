@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class VideoChatEnded {
+    public class VideoChatEnded : Object {
         public int64 duration;
         
         public VideoChatEnded(Json.Object object) {

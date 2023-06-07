@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class MessageId {
+    public class MessageId : Object {
         public int message_id;
         
         public MessageId(Json.Object object) {

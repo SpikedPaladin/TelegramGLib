@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SentWebAppMessage {
+    public class SentWebAppMessage : Object {
         public string? inline_message_id;
         
         public SentWebAppMessage(Json.Object object) {

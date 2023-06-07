@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Document {
+    public class Document : Object {
         public string file_id;
         public string file_unique_id;
         public PhotoSize? thumbnail;

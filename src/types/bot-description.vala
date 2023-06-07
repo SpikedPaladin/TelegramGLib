@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class BotDescription {
+    public class BotDescription : Object {
         public string description;
         
         public BotDescription(Json.Object object) {

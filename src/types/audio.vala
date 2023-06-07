@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Audio {
+    public class Audio : Object {
         public string file_id;
         public string file_unique_id;
         public int duration;

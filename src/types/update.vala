@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Update {
+    public class Update : Object {
         public int update_id;
         public Message? message;
         public Message? edited_message;

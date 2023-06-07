@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Poll {
+    public class Poll : Object {
         public string id;
         public string question;
         public Option[] options;

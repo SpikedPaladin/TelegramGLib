@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class CallbackQuery {
+    public class CallbackQuery : Object {
         public string id;
         public User from;
         public Message? message;

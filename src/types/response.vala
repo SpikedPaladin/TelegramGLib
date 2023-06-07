@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Response {
+    public class Response : Object {
         public bool ok;
         public Json.Node? result;
         public string? description;

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class Sticker {
+    public class Sticker : Object {
         public string file_id;
         public string file_unique_id;
         public Type type;

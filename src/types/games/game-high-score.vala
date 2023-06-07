@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class GameHighScore {
+    public class GameHighScore : Object {
         public int position;
         public User user;
         public int64 score;
