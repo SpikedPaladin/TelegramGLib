@@ -72,8 +72,7 @@ send.begin(request);
 
 #### Dependencies
 > json-glib-1.0  
-> libsoup-3.0  
-> gee-0.8
+> libsoup-3.0
 
 #### Build manualy
 

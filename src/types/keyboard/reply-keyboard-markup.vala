@@ -1,9 +1,7 @@
-using Gee;
-
 namespace Telegram {
     
     public class ReplyKeyboardMarkup : Object, Serializable, ReplyMarkup {
-        public ArrayList<ArrayList<KeyboardButton>> keyboard;
+        public List<List<KeyboardButton>> keyboard;
         public bool? is_persistent;
         public bool? resize_keyboard;
         public bool? one_time_keyboard;
@@ -11,20 +9,20 @@ namespace Telegram {
         public bool? selective;
         
         public ReplyKeyboardMarkup() {
-            keyboard = new ArrayList<ArrayList<KeyboardButton>>();
+            keyboard = new List<List<KeyboardButton>>();
         }
         
         public ReplyKeyboardMarkup add_button(KeyboardButton button) {
-            if (keyboard.size == 0) {
-                keyboard.add(new ArrayList<KeyboardButton>());
+            if (keyboard.length() == 0) {
+                keyboard.append(new List<KeyboardButton>());
             }
             
-            keyboard.get(keyboard.size - 1).add(button);
+            keyboard.last().data.append(button);
             return this;
         }
         
         public ReplyKeyboardMarkup new_row() {
-            keyboard.add(new ArrayList<KeyboardButton>());
+            keyboard.append(new List<KeyboardButton>());
             
             return this;
         }
@@ -37,16 +35,15 @@ namespace Telegram {
             builder.set_member_name("keyboard");
             builder.begin_array();
             
-            foreach (var array in keyboard) {
+            keyboard.foreach(row => {
                 builder.begin_array();
                 
-                foreach (var button in array) {
+                row.foreach(button => {
                     builder.add_value(button.serialize());
-                }
+                });
                 
                 builder.end_array();
-            }
-            
+            });
             builder.end_array();
             
             if (is_persistent != null) {
