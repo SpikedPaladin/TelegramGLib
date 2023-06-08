@@ -309,6 +309,20 @@ namespace Telegram {
                     @params += @"&offset=$update_id";
                 
                 var response = yield make_request("getUpdates", @params);
+                
+                // Response will be null if something wrong with connection
+                // Like timed out or no network
+                if (response == null) {
+                    
+                    // Retry after one second to protect from log spaming
+                    Timeout.add(1000,
+                        () => get_updates.callback(),
+                        Priority.DEFAULT
+                    );
+                    
+                    yield; continue;
+                }
+                
                 var array = response.result.get_array();
                 
                 array.foreach_element((array, index, node) => {
