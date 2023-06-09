@@ -7,6 +7,7 @@ lib_deps = [
 
 lib_sources = files(
     'bot.vala',
+    'config.vala',
     'util.vala',
 )
 

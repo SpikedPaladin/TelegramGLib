@@ -5,6 +5,11 @@ namespace Telegram {
      */
     public abstract class Bot : Object {
         /**
+         * Bot configuration
+         */
+        public BotConfig config = BotConfig.default();
+        
+        /**
          * Http session
          */
         public Soup.Session session;
@@ -18,16 +23,15 @@ namespace Telegram {
          */
         public User? self;
         /**
-         * Enable debug log
+         * Enable debug log  
+         * Deprecated. Use {@link BotConfig.debug} to enable debug mode
+         * Will be removed in 0.4.0
          */
-        public bool debug;
+        [CCode(notify = false)]
+        [Version (deprecated = true, deprecated_since = "0.3.0", replacement = "config")]
+        public bool debug { set { config.debug = value; } get { return config.debug; } }
         /**
-         * Enable {@link GLib.MainLoop} creation inside bot
-         * Don't change it if you're only running one {@link Bot} at a time
-         */
-        public bool create_main_loop = true;
-        /**
-         * {@link GLib.MainLoop} which created when bot started with {@link create_main_loop} set to ''True''
+         * {@link GLib.MainLoop} which created when bot started with {@link BotConfig.create_main_loop} set to ''True''
          */
         public MainLoop? main_loop;
         
@@ -36,7 +40,7 @@ namespace Telegram {
         }
         
         public void start() {
-            if (create_main_loop)
+            if (config.create_main_loop)
                 main_loop = new MainLoop();
             
             get_updates.begin();
@@ -303,7 +307,13 @@ namespace Telegram {
             Util.log(Util.LogLevel.INFO, @"Authorized on account $(self.username)");
             
             while (true) {
-                var @params = "timeout=60";
+                var @params = @"timeout=$(config.timeout)";
+                
+                if (config.limit != null)
+                    @params += @"&limit=$(config.limit)";
+                
+                if (config.allowed_updates != null)
+                    @params += @"allowed_updates=$(config.allowed_updates)";
                 
                 if (update_id != 0)
                     @params += @"&offset=$update_id";
@@ -356,7 +366,7 @@ namespace Telegram {
                     var node = parser.get_root();
                     var response = new Response(node.get_object());
                     
-                    if (debug)
+                    if (config.debug)
                         Util.log(Util.LogLevel.DEBUG, @"$(request.method()): $(Json.to_string(node, false))");
                     
                     if (!response.ok)
