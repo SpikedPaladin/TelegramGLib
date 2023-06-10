@@ -16,30 +16,21 @@ TelegramGLib is a bot api for telegram written in Vala
 using Telegram;
 
 void main() {
-    new ReadMeBot().start();
-}
-
-public class ReadMeBot : Bot {
+    var bot = new Bot() {
+        token = "YOUR_BOT_TOKEN"
+    };
     
-    construct {
-        // Token from variable:
-        // token = Environment.get_variable("TOKEN");
-        token = "YOUR_BOT_TOKEN";
-        
-        // Debug mode.
-        debug = true;
-    }
-    
-    public override void update_recieved(Update update) {
-        if (update.message != null && update.message.text != null) {
-            var msg = new SendMessage();
-            msg.chat_id = update.message.chat.id;
-            msg.reply_to_message_id = update.message.message_id;
-            msg.text = @"Your message: $(update.message.text)";
-            
-            send.begin(msg);
+    bot.update = update => {
+        if (update.message != null && message.text != null) {
+            bot.send.begin(new SendMessage() {
+                chat_id = message.chat.id,
+                reply_to_message_id = message.message_id,
+                text = @"Your message: $(message.text)"
+            });
         }
-    }
+    };
+    
+    bot.start();
 }
 ```
 

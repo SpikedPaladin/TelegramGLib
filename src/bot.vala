@@ -35,6 +35,8 @@ namespace Telegram {
          */
         public MainLoop? main_loop;
         
+        public UpdateDelegate? update;
+        
         construct {
             session = new Soup.Session();
         }
@@ -341,6 +343,9 @@ namespace Telegram {
                     if (update.update_id >= update_id)
                         update_id = update.update_id + 1;
                     
+                    if (this.update != null) this.update(update);
+                    
+                    on_update(update);
                     update_recieved(update);
                 });
             }
@@ -379,6 +384,11 @@ namespace Telegram {
             }
             return yield make_request(request.method(), request.queue());
         }
+        
+        /**
+         * Override this method to do update processing
+         */
+        public virtual signal void on_update(Update update) {}
         
         /**
          * Deprecated feature
