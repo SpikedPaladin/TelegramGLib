@@ -3,7 +3,7 @@ namespace Telegram {
     /**
      * A client to use the Telegram Bot API
      */
-    public abstract class Bot : Object {
+    public class Bot : Object {
         /**
          * Bot configuration
          */
@@ -380,7 +380,12 @@ namespace Telegram {
             return yield make_request(request.method(), request.queue());
         }
         
-        public abstract void update_recieved(Update update);
+        /**
+         * Deprecated feature
+         * Will be removed in 0.4.0
+         */
+        [Version (deprecated = true, deprecated_since = "0.3.0", replacement = "on_update")]
+        public virtual void update_recieved(Update update) {}
     }
     
     protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
