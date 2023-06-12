@@ -5,7 +5,7 @@ namespace Telegram {
         public int64 score;
         public bool? force;
         public bool? disable_edit_message;
-        public int64? chat_id;
+        public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;
         

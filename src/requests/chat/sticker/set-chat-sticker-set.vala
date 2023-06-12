@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SetChatStickerSet : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public string sticker_set_name;
         
         public override string method() {

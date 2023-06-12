@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class ReopenGeneralForumTopic : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         
         public override string method() {
             return "reopenGeneralForumTopic";

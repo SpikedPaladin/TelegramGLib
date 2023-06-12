@@ -99,7 +99,7 @@ namespace Telegram {
             return new TelegramFile(response.result.get_object());
         }
         
-        public async Chat? get_chat(string chat_id) {
+        public async Chat? get_chat(ChatId chat_id) {
             var response = yield make_request("getChat", @"chat_id=$chat_id");
             
             if (response != null || !response.ok)
@@ -108,7 +108,7 @@ namespace Telegram {
             return new Chat(response.result.get_object());
         }
         
-        public async ChatMember? get_chat_administrators(int64 chat_id) {
+        public async ChatMember? get_chat_administrators(ChatId chat_id) {
             var response = yield make_request("getChatAdministrators", @"chat_id=$chat_id");
             
             if (response != null || !response.ok)
@@ -117,7 +117,7 @@ namespace Telegram {
             return ChatMember.from_json(response.result.get_object());
         }
         
-        public async int? get_chat_member_count(int64 chat_id) {
+        public async int? get_chat_member_count(ChatId chat_id) {
             var response = yield make_request("getChatMemberCount", @"chat_id=$chat_id");
             
             if (response != null || !response.ok)
@@ -126,7 +126,7 @@ namespace Telegram {
             return (int) response.result.get_int();
         }
         
-        public async ChatMember? get_chat_member(int64 chat_id, int64 user_id) {
+        public async ChatMember? get_chat_member(ChatId chat_id, int64 user_id) {
             var response = yield make_request("getChatMember", @"chat_id=$chat_id&user_id=$user_id");
             
             if (response != null || !response.ok)
@@ -213,7 +213,7 @@ namespace Telegram {
             return new BotShortDescription(response.result.get_object());
         }
         
-        public async MenuButton? get_chat_menu_button(int64? chat_id = null) {
+        public async MenuButton? get_chat_menu_button(ChatId? chat_id = null) {
             string queue = null;
             
             if (chat_id != null)
@@ -263,7 +263,7 @@ namespace Telegram {
             return result;
         }
         
-        public async GameHighScore[]? get_game_high_scores(int64 user_id, int64? chat_id = null, int? message_id = null, string? inline_message_id = null) {
+        public async GameHighScore[]? get_game_high_scores(int64 user_id, ChatId? chat_id = null, int? message_id = null, string? inline_message_id = null) {
             var queue = @"user_id=$user_id";
             
             if (chat_id != null)

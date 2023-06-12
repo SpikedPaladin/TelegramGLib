@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SendGame : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int? message_thread_id;
         public string game_short_name;
         public bool? disable_notification;

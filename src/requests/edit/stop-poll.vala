@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class StopPoll : BaseRequest {
-        public int64? chat_id;
+        public ChatId? chat_id;
         public int? message_id;
         public InlineKeyboardMarkup? reply_markup;
         

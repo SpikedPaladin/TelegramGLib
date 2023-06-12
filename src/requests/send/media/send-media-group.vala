@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SendMediaGroup : UploadRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int? message_thread_id;
         public InputMediaGroupable[] media;
         public bool? disable_notification;

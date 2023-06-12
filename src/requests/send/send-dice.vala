@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SendDice : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int? message_thread_id;
         public string? emoji;
         public bool? disable_notification;

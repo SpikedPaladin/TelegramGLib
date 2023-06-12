@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class StopMessageLiveLocation : BaseRequest {
-        public int64? chat_id;
+        public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;
         public InlineKeyboardMarkup? reply_markup;

@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class EditGeneralForumTopic : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public string name;
         
         public override string method() {

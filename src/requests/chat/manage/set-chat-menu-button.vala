@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SetChatMenuButton : BaseRequest {
-        public int64? chat_id;
+        public ChatId? chat_id;
         public MenuButton? menu_button;
         
         public override string method() {

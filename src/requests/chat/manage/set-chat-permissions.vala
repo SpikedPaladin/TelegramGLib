@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SetChatPermissions : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public ChatPermissions permissions;
         public bool? use_independent_chat_permissions;
         

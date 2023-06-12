@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SendAnimation : UploadRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int? message_thread_id;
         public string animation;
         public int? duration;

@@ -75,6 +75,7 @@ lib_sources += files([
     'chat/chat-join-request.vala',
     'chat/chat-permissions.vala',
     'chat/chat-location.vala',
+    'chat/chat-id.vala',
     
     'forum-topic.vala',
     'bot-command.vala',

@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class SetChatTitle : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public string title;
         
         public override string method() {
