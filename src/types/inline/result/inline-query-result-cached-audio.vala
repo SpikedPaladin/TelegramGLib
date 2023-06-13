@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultCachedAudio : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string audio_file_id;
         public string? caption;
         public ParseMode? parse_mode;

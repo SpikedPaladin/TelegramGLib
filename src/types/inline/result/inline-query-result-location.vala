@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultLocation : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public double longitude;
         public double latitude;
         public string title;

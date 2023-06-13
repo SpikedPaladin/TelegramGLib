@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultDocument : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string title;
         public string? caption;
         public ParseMode? parse_mode;

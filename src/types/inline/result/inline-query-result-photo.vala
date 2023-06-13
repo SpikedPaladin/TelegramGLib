@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultPhoto : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string photo_url;
         public string thumbnail_url;
         public int? photo_width;

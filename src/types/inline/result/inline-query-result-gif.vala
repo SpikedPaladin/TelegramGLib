@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultGif : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string gif_url;
         public int? gif_width;
         public int? gif_height;

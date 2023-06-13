@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultVideo : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string video_url;
         public string mime_type;
         public string thumbnail_url;

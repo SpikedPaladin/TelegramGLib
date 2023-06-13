@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultCachedSticker : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string sticker_file_id;
         public InlineKeyboardMarkup? reply_markup;
         public InputMessageContent? input_message_content;

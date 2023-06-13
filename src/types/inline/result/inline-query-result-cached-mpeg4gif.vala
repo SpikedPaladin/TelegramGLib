@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultCachedMpeg4Gif : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string mpeg4_file_id;
         public string? title;
         public string? caption;

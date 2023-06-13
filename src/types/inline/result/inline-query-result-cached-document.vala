@@ -1,7 +1,7 @@
 namespace Telegram {
     
     public class InlineQueryResultCachedDocument : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string title;
         public string document_file_id;
         public string? description;
