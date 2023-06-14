@@ -7,7 +7,7 @@ namespace Telegram {
         /**
          * Bot configuration
          */
-        public BotConfig config = BotConfig.default();
+        public BotConfig config = new BotConfig.default();
         
         /**
          * Http session

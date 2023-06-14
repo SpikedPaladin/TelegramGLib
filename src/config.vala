@@ -3,17 +3,18 @@ namespace Telegram {
     /**
      * 
      */
-    public struct BotConfig {
+    [Compact]
+    public class BotConfig {
         /**
          * Limits the number of updates retrieved at a time. Values between 1-100 are accepted.  
          * Defaults to 100.
          */
-        int? limit;
+        public int? limit;
         /**
          * Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling.  
          * Should be positive, short polling should be used for testing purposes only.
          */
-        int timeout;
+        public int timeout;
         /**
          * List of the update types you want your bot to receive.  
          * For example, specify {{{{ message = true, edited_channel_post = true, callback_query = true }}}} to only receive updates of these types.  
@@ -22,16 +23,16 @@ namespace Telegram {
          * If not specified, the previous setting will be used.
          * Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.
          */
-        UpdateConfig? allowed_updates;
+        public UpdateConfig? allowed_updates;
         /**
          * Enable debug log
          */
-        bool debug;
+        public bool debug;
         /**
          * Enable {@link GLib.MainLoop} creation inside bot
          * Don't change it if you're only running one {@link Bot} at a time
          */
-        bool create_main_loop;
+        public bool create_main_loop;
         
         public BotConfig() {
             timeout = 5;
@@ -43,21 +44,22 @@ namespace Telegram {
         }
     }
     
-    public struct UpdateConfig {
-        bool message;
-        bool edited_message;
-        bool channel_post;
-        bool edited_channel_post;
-        bool inline_query;
-        bool chosen_inline_result;
-        bool callback_query;
-        bool shipping_query;
-        bool pre_checkout_query;
-        bool poll;
-        bool poll_answer;
-        bool my_chat_member;
-        bool chat_member;
-        bool chat_join_request;
+    [Compact]
+    public class UpdateConfig {
+        public bool message;
+        public bool edited_message;
+        public bool channel_post;
+        public bool edited_channel_post;
+        public bool inline_query;
+        public bool chosen_inline_result;
+        public bool callback_query;
+        public bool shipping_query;
+        public bool pre_checkout_query;
+        public bool poll;
+        public bool poll_answer;
+        public bool my_chat_member;
+        public bool chat_member;
+        public bool chat_join_request;
         
         public UpdateConfig.empty() {}
         
