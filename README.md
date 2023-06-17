@@ -39,6 +39,35 @@ void main() {
     $ valac --pkg telegram-glib-0.3 main.vala
     $ ./main
 
+<details><summary><b>Python</b></summary>
+
+```python
+import gi
+
+gi.require_version('Telegram', '0.3')
+from gi.repository import Telegram
+
+class PingBot(Telegram.Bot):
+    
+    def __init__(self, **kargs):
+        super().__init__(**kargs)
+        self.token = 'YOUR_BOT_TOKEN'
+    
+    def do_on_message(self, message):
+        if message.text is not None:
+            msg = Telegram.SendMessage()
+            msg.chat_id = message.chat.id
+            msg.text = 'Your message: ' + message.text
+            
+            self.send(msg)
+        
+        return True
+
+bot = PingBot()
+bot.start()
+```
+</details>
+
 ##### Result
 ![Screenshot](./result.png)
 
