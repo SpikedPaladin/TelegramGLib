@@ -68,8 +68,7 @@ send.begin(request);
 #### Build manualy
 
     $ meson setup --prefix=/usr build
-    $ cd build
-    $ ninja install
+    $ ninja -C build install
 
 ## TODO
 - [ ] Webhook support
