@@ -38,7 +38,7 @@ pkg.generate(
     version: meson.project_version(),
     subdirs: lib_name,
     filebase: lib_name,
-    requires: ['gee-0.8', 'json-glib-1.0', 'libsoup-3.0']
+    requires: ['json-glib-1.0', 'libsoup-3.0']
 )
 
 if get_option('introspection')
