@@ -90,11 +90,18 @@ send.begin(request);
 
 **[Installation for Android (Guide)](https://gist.github.com/SpikedPaladin/c51d95773fa851c6e54e8ae1cf4e5b10)**
 
+### ArchLinux
+Download TelegramGLib from AUR
+
+    $ yay -S telegram-glib
+
+### Build manualy
+
 #### Dependencies
 > json-glib-1.0  
 > libsoup-3.0
 
-#### Build manualy
+#### Installing
 
     $ meson setup --prefix=/usr build
     $ ninja -C build install
