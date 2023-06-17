@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class WriteAccessAllowed {
+namespace Telegram {
+    
+    public class WriteAccessAllowed : Object {
         public string? web_app_name;
         
         public WriteAccessAllowed(Json.Object object) {

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineKeyboardButton : Object, Serializable {
         public string text;
         public string? url;

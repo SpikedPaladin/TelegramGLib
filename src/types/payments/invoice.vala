@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Invoice {
+namespace Telegram {
+    
+    public class Invoice : Object {
         public string title;
         public string description;
         public string start_parameter;

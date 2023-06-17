@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class ChatJoinRequest {
+namespace Telegram {
+    
+    public class ChatJoinRequest : Object {
         public Chat chat;
         public User from;
         public int64 user_chat_id;

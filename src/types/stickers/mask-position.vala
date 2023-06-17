@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class MaskPosition : Object, Serializable {
         public string point;
         public double x_shift;

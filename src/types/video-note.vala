@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class VideoNote {
+namespace Telegram {
+    
+    public class VideoNote : Object {
         public string file_id;
         public string file_unique_id;
         public int length;

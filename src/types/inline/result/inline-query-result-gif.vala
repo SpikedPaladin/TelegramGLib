@@ -1,7 +1,7 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultGif : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string gif_url;
         public int? gif_width;
         public int? gif_height;
@@ -10,7 +10,7 @@ namespace Telegram.Types {
         public string? thumbnail_mime_type;
         public string? title;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public InlineKeyboardMarkup? reply_markup;
         public InputMessageContent? input_message_content;

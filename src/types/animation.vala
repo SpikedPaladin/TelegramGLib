@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Animation {
+namespace Telegram {
+    
+    public class Animation : Object {
         public string file_id;
         public string file_unique_id;
         public int width;

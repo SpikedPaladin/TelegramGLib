@@ -7,49 +7,36 @@ TelegramGLib is a bot api for telegram written in Vala
 - Inline mode support
 - Async request sending
 - File uploading
-- Android support (NEW!)
+- Android support
 
 ## Sample
 
 #### Vala
 ```vala
-using Telegram.Requests;
-using Telegram.Types;
 using Telegram;
 
 void main() {
-	var bot = new ReadMeBot();
-	bot.start();
-	new MainLoop().run();
-}
-
-public class ReadMeBot : Bot {
+    var bot = new Bot() {
+        token = "YOUR_BOT_TOKEN"
+    };
     
-    construct {
-        // Token from variable:
-        // token = Environment.get_variable("TOKEN");
-        token = "YOUR_BOT_TOKEN";
-        
-        // Debug mode.
-        debug = true;
-    }
-    
-    public override void update_recieved(Update update) {
-        if (update.message != null && update.message.text != null) {
-            var msg = new SendMessage();
-            msg.chat_id = update.message.chat.id;
-            msg.reply_to_message_id = update.message.message_id;
-            msg.text = @"Your message: $(update.message.text)";
-            
-            send.begin(msg);
+    bot.update = update => {
+        if (update.message != null && message.text != null) {
+            bot.send.begin(new SendMessage() {
+                chat_id = message.chat.id,
+                reply_to_message_id = message.message_id,
+                text = @"Your message: $(message.text)"
+            });
         }
-    }
+    };
+    
+    bot.start();
 }
 ```
 
 ##### Compile with
 
-    $ valac --pkg telegram-glib-0.2 main.vala
+    $ valac --pkg telegram-glib-0.3 main.vala
     $ ./main
 
 ##### Result
@@ -76,8 +63,7 @@ send.begin(request);
 
 #### Dependencies
 > json-glib-1.0  
-> libsoup-3.0  
-> gee-0.8
+> libsoup-3.0
 
 #### Build manualy
 

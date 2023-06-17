@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Contact {
+namespace Telegram {
+    
+    public class Contact : Object {
         public string phone_number;
         public string first_name;
         public string? last_name;

@@ -3,15 +3,15 @@ project('telegram-glib', ['c', 'vala'],
         'warning_level=2'
     ],
     
-    version: '0.2.0',
+    version: '0.3.0',
     meson_version: '>= 0.50.0',
 )
 
 pkg = import('pkgconfig')
 
-api_version = '0.2'
+api_version = '0.3'
 lib_name = meson.project_name() + '-' + api_version
-typelib_name = 'TelegramGLib-' + api_version
+typelib_name = 'Telegram-' + api_version
 
 subdir('src')
 

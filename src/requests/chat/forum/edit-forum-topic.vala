@@ -1,9 +1,7 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class EditForumTopic : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int message_thread_id;
         public string? name;
         public bool? icon_custom_emoji_id;

@@ -1,4 +1,4 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     public struct InputFile {
         string name;

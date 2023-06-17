@@ -1,13 +1,11 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetGameScore : BaseRequest {
         public int64 user_id;
         public int64 score;
         public bool? force;
         public bool? disable_edit_message;
-        public int64? chat_id;
+        public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;
         

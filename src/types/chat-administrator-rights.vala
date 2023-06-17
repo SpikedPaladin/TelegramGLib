@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ChatAdministratorRights : Object, Serializable {
         public bool is_anonymous;
         public bool can_manage_chat;

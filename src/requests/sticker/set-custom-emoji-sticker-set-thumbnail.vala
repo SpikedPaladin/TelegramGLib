@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetCustomEmojiStickerSetThumbnail : BaseRequest {
         public string sticker;
         public string? custom_emoji_id;

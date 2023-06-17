@@ -1,7 +1,7 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultArticle : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string title;
         public InputMessageContent input_message_content;
         public InlineKeyboardMarkup? reply_markup;

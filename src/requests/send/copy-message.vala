@@ -1,11 +1,9 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class CopyMessage : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int? message_thread_id;
-        public int64 from_chat_id;
+        public ChatId from_chat_id;
         public int message_id;
         public string? caption;
         public ParseMode? parse_mode;

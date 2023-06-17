@@ -1,7 +1,7 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultVenue : Object, Serializable, InputMessageContent {
-        public string id;
+        public string id = Uuid.string_random();
         public double latitude;
         public double longitude;
         public string title;

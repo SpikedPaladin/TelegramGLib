@@ -1,9 +1,7 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class PromoteChatMember : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int64 user_id;
         public bool? is_anonymous;
         public bool? can_manage_chat;

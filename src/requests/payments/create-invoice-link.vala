@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class CreateInvoiceLink : BaseRequest {
         public string title;
         public string description;

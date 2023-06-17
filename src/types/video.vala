@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Video {
+namespace Telegram {
+    
+    public class Video : Object {
         public string file_id;
         public string file_unique_id;
         public int width;

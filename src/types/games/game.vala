@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Game {
+namespace Telegram {
+    
+    public class Game : Object {
         public string title;
         public string description;
         public PhotoSize[] photo;

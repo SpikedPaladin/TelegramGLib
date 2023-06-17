@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public interface MenuButton : Object, Serializable {
     
         public static MenuButton from_json(Json.Object object) {

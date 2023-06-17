@@ -1,34 +1,32 @@
-using Gee;
-
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineKeyboardMarkup : Object, Serializable, ReplyMarkup {
-        public ArrayList<ArrayList<InlineKeyboardButton>> inline_keyboard;
+        public List<List<InlineKeyboardButton>> inline_keyboard;
         
         public InlineKeyboardMarkup(Json.Object? object = null) {
-            inline_keyboard = new ArrayList<ArrayList<InlineKeyboardButton>>();
+            inline_keyboard = new List<List<InlineKeyboardButton>>();
             if (object != null) {
                 foreach (var array in object.get_array_member("inline_keyboard").get_elements()) {
-                    inline_keyboard.add(new ArrayList<InlineKeyboardButton>());
+                    inline_keyboard.append(new List<InlineKeyboardButton>());
                     
                     foreach (var button in array.get_array().get_elements()) {
-                        inline_keyboard.get(inline_keyboard.size - 1).add(new InlineKeyboardButton(button.get_object()));
+                        inline_keyboard.last().data.append(new InlineKeyboardButton(button.get_object()));
                     }
                 }
             }
         }
         
         public InlineKeyboardMarkup add_button(InlineKeyboardButton button) {
-            if (inline_keyboard.size == 0) {
-                inline_keyboard.add(new ArrayList<InlineKeyboardButton>());
+            if (inline_keyboard.length() == 0) {
+                inline_keyboard.append(new List<InlineKeyboardButton>());
             }
             
-            inline_keyboard.get(inline_keyboard.size - 1).add(button);
+            inline_keyboard.last().data.append(button);
             return this;
         }
         
         public InlineKeyboardMarkup new_row() {
-            inline_keyboard.add(new ArrayList<InlineKeyboardButton>());
+            inline_keyboard.append(new List<InlineKeyboardButton>());
             
             return this;
         }
@@ -41,15 +39,15 @@ namespace Telegram.Types {
             builder.set_member_name("inline_keyboard");
             builder.begin_array();
             
-            foreach (var array in inline_keyboard) {
+            inline_keyboard.foreach(row => {
                 builder.begin_array();
                 
-                foreach (var button in array) {
+                row.foreach(button => {
                     builder.add_value(button.serialize());
-                }
+                });
                 
                 builder.end_array();
-            }
+            });
             
             builder.end_array();
             builder.end_object();

@@ -1,4 +1,4 @@
-namespace Telegram.Types {
-	
-    public class VideoChatStarted {}
+namespace Telegram {
+    
+    public class VideoChatStarted : Object {}
 }

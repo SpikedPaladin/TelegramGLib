@@ -1,10 +1,10 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InputMediaVideo : Object, Serializable, InputMedia, InputMediaGroupable {
         public string media;
         public string? thumbnail;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public int? width;
         public int? height;

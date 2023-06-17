@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class PreCheckoutQuery {
+namespace Telegram {
+    
+    public class PreCheckoutQuery : Object {
         public string id;
         public User from;
         public string currency;

@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class AnswerCallbackQuery : BaseRequest {
         public string callback_query_id;
         public string? text;

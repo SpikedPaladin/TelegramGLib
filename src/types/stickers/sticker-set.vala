@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class StickerSet {
+namespace Telegram {
+    
+    public class StickerSet : Object {
         public string name;
         public string title;
         public Sticker.Type sticker_type;

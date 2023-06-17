@@ -1,11 +1,9 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class ForwardMessage : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public int? message_thread_id;
-        public int64 from_chat_id;
+        public ChatId from_chat_id;
         public bool? disable_notification;
         public bool? protect_content;
         public int message_id;

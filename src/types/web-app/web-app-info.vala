@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class WebAppInfo : Object, Serializable {
         public string url;
         

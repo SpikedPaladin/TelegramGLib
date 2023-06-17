@@ -1,9 +1,7 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetChatPhoto : UploadRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public string photo;
         
         public override string method() {

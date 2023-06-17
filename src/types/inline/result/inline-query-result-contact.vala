@@ -1,7 +1,7 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultContact : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string phone_number;
         public string first_name;
         public string? last_name;

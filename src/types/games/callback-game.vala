@@ -1,4 +1,4 @@
-namespace Telegram.Types {
-	
-    public class CallbackGame {}
+namespace Telegram {
+    
+    public class CallbackGame : Object {}
 }

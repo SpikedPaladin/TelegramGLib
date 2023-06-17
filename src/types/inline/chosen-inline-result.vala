@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class ChosenInlineResult {
+namespace Telegram {
+    
+    public class ChosenInlineResult : Object {
         public string result_id;
         public User from;
         public Location? location;

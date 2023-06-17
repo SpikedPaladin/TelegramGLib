@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetMyDefaultAdministratorRights : BaseRequest {
         public ChatAdministratorRights? rights;
         public bool? for_channels;

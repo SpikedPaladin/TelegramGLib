@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public interface BotCommandScope : Object, Serializable {
         
         public enum Type {
@@ -141,15 +141,11 @@ namespace Telegram.Types {
     
     public class BotCommandScopeChat : Object, Serializable, BotCommandScope {
         public Type type;
-        public int64? chat_id;
-        public string? chat_username;
+        public ChatId chat_id;
         
         public BotCommandScopeChat(Json.Object object) {
             type = Type.parse(object.get_string_member("type"));
-            chat_username = object.get_string_member("chat_id");
-            
-            if (chat_username == null)
-                chat_id = object.get_int_member("chat_id");
+            chat_id = ChatId.parse(object);
         }
         
         public new Json.Node serialize() {
@@ -160,11 +156,7 @@ namespace Telegram.Types {
             builder.set_member_name("type");
             builder.add_string_value(type.to_string());
             
-            builder.set_member_name("chat_id");
-            if (chat_id != null)
-                builder.add_int_value(chat_id);
-            else
-                builder.add_string_value(chat_username);
+            chat_id.append(builder);
             
             builder.end_object();
             
@@ -174,15 +166,11 @@ namespace Telegram.Types {
     
     public class BotCommandScopeChatAdministrators : Object, Serializable, BotCommandScope {
         public Type type;
-        public int64? chat_id;
-        public string? chat_username;
+        public ChatId chat_id;
         
         public BotCommandScopeChatAdministrators(Json.Object object) {
             type = Type.parse(object.get_string_member("type"));
-            chat_username = object.get_string_member("chat_id");
-            
-            if (chat_username == null)
-                chat_id = object.get_int_member("chat_id");
+            chat_id = ChatId.parse(object);
         }
         
         public new Json.Node serialize() {
@@ -193,11 +181,7 @@ namespace Telegram.Types {
             builder.set_member_name("type");
             builder.add_string_value(type.to_string());
             
-            builder.set_member_name("chat_id");
-            if (chat_id != null)
-                builder.add_int_value(chat_id);
-            else
-                builder.add_string_value(chat_username);
+            chat_id.append(builder);
             
             builder.end_object();
             
@@ -207,17 +191,12 @@ namespace Telegram.Types {
     
     public class BotCommandScopeChatMember : Object, Serializable, BotCommandScope {
         public Type type;
-        public int64? chat_id;
-        public string? chat_username;
+        public ChatId chat_id;
         public int64 user_id;
         
         public BotCommandScopeChatMember(Json.Object object) {
             type = Type.parse(object.get_string_member("type"));
-            chat_username = object.get_string_member("chat_id");
-            
-            if (chat_username == null)
-                chat_id = object.get_int_member("chat_id");
-            
+            chat_id = ChatId.parse(object);
             user_id = object.get_int_member("user_id");
         }
         
@@ -229,11 +208,7 @@ namespace Telegram.Types {
             builder.set_member_name("type");
             builder.add_string_value(type.to_string());
             
-            builder.set_member_name("chat_id");
-            if (chat_id != null)
-                builder.add_int_value(chat_id);
-            else
-                builder.add_string_value(chat_username);
+            chat_id.append(builder);
             
             builder.set_member_name("user_id");
             builder.add_int_value(user_id);

@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class ForumTopicCreated {
+namespace Telegram {
+    
+    public class ForumTopicCreated : Object {
         public string name;
         public int icon_color;
         public string? icon_custom_emoji_id;

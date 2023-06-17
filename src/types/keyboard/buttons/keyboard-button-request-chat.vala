@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class KeyboardButtonRequestChat : Object, Serializable {
         public int request_id;
         public bool chat_is_channel;

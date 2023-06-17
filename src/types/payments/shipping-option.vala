@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ShippingOption : Object, Serializable {
         public string id;
         public string title;

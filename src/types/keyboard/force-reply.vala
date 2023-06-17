@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ForceReply : Object, Serializable, ReplyMarkup {
         private string? input_field_placeholder;
         private bool? selective;

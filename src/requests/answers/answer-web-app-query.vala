@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class AnswerWebAppQuery : BaseRequest {
         public string web_app_query_id;
         public InlineQueryResult result;

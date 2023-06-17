@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class InlineQuery {
+namespace Telegram {
+    
+    public class InlineQuery : Object {
         public string id;
         public User from;
         public string query;

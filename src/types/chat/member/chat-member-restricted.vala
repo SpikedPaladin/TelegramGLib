@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class ChatMemberRestricted : Object, ChatMember {
         public Status status;
         public User user;

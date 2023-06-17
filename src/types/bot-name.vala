@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class BotName {
+namespace Telegram {
+    
+    public class BotName : Object {
         public string name;
         
         public BotName(Json.Object object) {

@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Location {
+namespace Telegram {
+    
+    public class Location : Object {
         public double longitude;
         public double latitude;
         public double? horizontal_accuracy;

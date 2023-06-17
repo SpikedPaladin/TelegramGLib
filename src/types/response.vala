@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Response {
+namespace Telegram {
+    
+    public class Response : Object {
         public bool ok;
         public Json.Node? result;
         public string? description;

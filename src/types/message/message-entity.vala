@@ -1,4 +1,4 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     public class MessageEntity : Object, Serializable {
         public Type type;

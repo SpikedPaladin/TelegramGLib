@@ -1,9 +1,7 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class RevokeChatInviteLink : BaseRequest {
-        public int64 chat_id;
+        public ChatId chat_id;
         public string invite_link;
         
         public override string method() {

@@ -1,13 +1,13 @@
-namespace Telegram.Types {
+namespace Telegram {
     
     /**
      * This object represents a chat.
      */
-    public class Chat {
+    public class Chat : Object {
         /**
          * Unique identifier for this chat.
          */
-        public int64 id;
+        public ChatId id;
         /**
          * Type of chat, can be either “private”, “group”, “supergroup” or “channel”
          * @see Chat.Type
@@ -166,7 +166,7 @@ namespace Telegram.Types {
         public ChatLocation? location;
         
         public Chat(Json.Object object) {
-            id = object.get_int_member("id");
+            id = ChatId.parse(object, "id");
             type = Type.parse(object.get_string_member("type"));
             
             if (object.has_member("title"))

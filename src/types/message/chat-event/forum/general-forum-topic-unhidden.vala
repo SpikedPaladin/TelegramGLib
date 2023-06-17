@@ -1,4 +1,4 @@
-namespace Telegram.Types {
-	
-	public class GeneralForumTopicUnhidden {}
+namespace Telegram {
+    
+    public class GeneralForumTopicUnhidden : Object {}
 }

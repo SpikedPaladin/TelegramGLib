@@ -1,4 +1,4 @@
-namespace Telegram.Types {
-	
-	public interface PassportElementError : Object, Serializable {}
+namespace Telegram {
+    
+    public interface PassportElementError : Object, Serializable {}
 }

@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class KeyboardButtonRequestUser : Object, Serializable {
         public int request_id;
         public bool? user_is_bot;

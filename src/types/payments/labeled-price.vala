@@ -1,5 +1,5 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class LabeledPrice : Object, Serializable {
         public string label;
         public int amount;

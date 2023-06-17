@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class SetPassportDataErrors : BaseRequest {
         public string user_id;
         public PassportElementError[] errors;

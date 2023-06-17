@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class VideoChatParticipantsInvited {
+namespace Telegram {
+    
+    public class VideoChatParticipantsInvited : Object {
         public User[] users;
         
         public VideoChatParticipantsInvited(Json.Object object) {

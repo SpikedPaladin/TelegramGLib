@@ -1,7 +1,5 @@
-using Telegram.Types;
-
-namespace Telegram.Requests {
-	
+namespace Telegram {
+    
     public class DeleteMyCommands : BaseRequest {
         public BotCommandScope? scope;
         public string? language_code;

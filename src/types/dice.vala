@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class Dice {
+namespace Telegram {
+    
+    public class Dice : Object {
         public string emoji;
         public int @value;
         

@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class VideoChatEnded {
+namespace Telegram {
+    
+    public class VideoChatEnded : Object {
         public int64 duration;
         
         public VideoChatEnded(Json.Object object) {

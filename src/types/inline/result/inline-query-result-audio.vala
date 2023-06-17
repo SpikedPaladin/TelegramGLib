@@ -1,11 +1,11 @@
-namespace Telegram.Types {
-	
+namespace Telegram {
+    
     public class InlineQueryResultAudio : Object, Serializable, InlineQueryResult {
-        public string id;
+        public string id = Uuid.string_random();
         public string audio_url;
         public string title;
         public string? caption;
-        public Requests.ParseMode? parse_mode;
+        public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
         public string? performer;
         public int? audio_duration;

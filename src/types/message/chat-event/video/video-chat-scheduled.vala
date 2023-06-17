@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class VideoChatScheduled {
+namespace Telegram {
+    
+    public class VideoChatScheduled : Object {
         public int64 start_date;
         
         public VideoChatScheduled(Json.Object object) {

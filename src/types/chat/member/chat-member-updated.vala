@@ -1,6 +1,6 @@
-namespace Telegram.Types {
-	
-    public class ChatMemberUpdated {
+namespace Telegram {
+    
+    public class ChatMemberUpdated : Object {
         public Chat chat;
         public User from;
         public int64 date;
