@@ -21,11 +21,11 @@ void main() {
     };
     
     bot.update = update => {
-        if (update.message != null && message.text != null) {
+        if (update.message != null && update.message.text != null) {
             bot.send.begin(new SendMessage() {
-                chat_id = message.chat.id,
-                reply_to_message_id = message.message_id,
-                text = @"Your message: $(message.text)"
+                chat_id = update.message.chat.id,
+                reply_to_message_id = update.message.message_id,
+                text = @"Your message: $(update.message.text)"
             });
         }
     };
