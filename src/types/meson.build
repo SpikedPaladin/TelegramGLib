@@ -78,11 +78,13 @@ lib_sources += files([
     'chat/chat-id.vala',
     
     'forum-topic.vala',
-    'bot-command.vala',
-    'bot-command-scope.vala',
-    'bot-name.vala',
-    'bot-description.vala',
-    'bot-short-description.vala',
+    
+    'bot/bot-command.vala',
+    'bot/bot-command-scope.vala',
+    'bot/bot-name.vala',
+    'bot/bot-description.vala',
+    'bot/bot-short-description.vala',
+    
     'menu-button.vala',
     'response-parameters.vala',
     
