@@ -39,15 +39,15 @@ namespace Telegram {
             builder.set_member_name("inline_keyboard");
             builder.begin_array();
             
-            inline_keyboard.foreach(row => {
+            foreach (var row in inline_keyboard.copy()) {
                 builder.begin_array();
                 
-                row.foreach(button => {
+                foreach (var button in row) {
                     builder.add_value(button.serialize());
-                });
+                }
                 
                 builder.end_array();
-            });
+            }
             
             builder.end_array();
             builder.end_object();

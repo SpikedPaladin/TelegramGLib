@@ -35,15 +35,16 @@ namespace Telegram {
             builder.set_member_name("keyboard");
             builder.begin_array();
             
-            keyboard.foreach(row => {
+            foreach (var row in keyboard.copy()) {
                 builder.begin_array();
                 
-                row.foreach(button => {
+                foreach (var button in row) {
                     builder.add_value(button.serialize());
-                });
+                }
                 
                 builder.end_array();
-            });
+            }
+            
             builder.end_array();
             
             if (is_persistent != null) {
