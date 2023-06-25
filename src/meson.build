@@ -44,7 +44,9 @@ pkg.generate(
 if get_option('introspection')
     g_ir_compiler = find_program('g-ir-compiler')
     
-    typelib_cmd = [g_ir_compiler,
+    typelib_cmd = [
+        g_ir_compiler,
+        
         '--shared-library=' + lib.full_path().split('/')[-1],
         '--output=@OUTPUT@',
         meson.current_build_dir() / (typelib_name + '.gir')

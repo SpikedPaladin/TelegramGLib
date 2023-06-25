@@ -1,4 +1,4 @@
-lib_sources += files([
+lib_sources += files(
     'response.vala',
     
     'update.vala',
@@ -170,4 +170,4 @@ lib_sources += files([
     'games/game.vala',
     'games/callback-game.vala',
     'games/game-high-score.vala',
-])
+)

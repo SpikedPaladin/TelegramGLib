@@ -1,8 +1,10 @@
-project('telegram-glib', ['c', 'vala'],
+project(
+    'telegram-glib',
+    
+    ['c', 'vala'],
     default_options: [
         'warning_level=2'
     ],
-    
     version: '0.3.0',
     meson_version: '>= 0.50.0',
 )

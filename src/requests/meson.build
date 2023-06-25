@@ -1,4 +1,4 @@
-lib_sources += files([
+lib_sources += files(
     'send/send-message.vala',
     'send/forward-message.vala',
     'send/copy-message.vala',
@@ -110,4 +110,4 @@ lib_sources += files([
     'send/send-game.vala',
     
     'games/set-game-score.vala',
-])
+)
