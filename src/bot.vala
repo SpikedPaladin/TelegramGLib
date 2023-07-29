@@ -84,7 +84,7 @@ namespace Telegram {
             
             var response = yield make_request("getUserProfilePhotos", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new UserProfilePhotos(response.result.get_object());
@@ -93,7 +93,7 @@ namespace Telegram {
         public async TelegramFile? get_file(string file_id) {
             var response = yield make_request("getFile", @"file_id=$file_id");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new TelegramFile(response.result.get_object());
@@ -102,7 +102,7 @@ namespace Telegram {
         public async Chat? get_chat(ChatId chat_id) {
             var response = yield make_request("getChat", @"chat_id=$chat_id");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new Chat(response.result.get_object());
@@ -111,7 +111,7 @@ namespace Telegram {
         public async ChatMember? get_chat_administrators(ChatId chat_id) {
             var response = yield make_request("getChatAdministrators", @"chat_id=$chat_id");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return ChatMember.from_json(response.result.get_object());
@@ -120,7 +120,7 @@ namespace Telegram {
         public async int? get_chat_member_count(ChatId chat_id) {
             var response = yield make_request("getChatMemberCount", @"chat_id=$chat_id");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return (int) response.result.get_int();
@@ -129,7 +129,7 @@ namespace Telegram {
         public async ChatMember? get_chat_member(ChatId chat_id, int64 user_id) {
             var response = yield make_request("getChatMember", @"chat_id=$chat_id&user_id=$user_id");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return ChatMember.from_json(response.result.get_object());
@@ -179,7 +179,7 @@ namespace Telegram {
             
             var response = yield make_request("getMyName", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new BotName(response.result.get_object());
@@ -193,7 +193,7 @@ namespace Telegram {
             
             var response = yield make_request("getMyDescription", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new BotDescription(response.result.get_object());
@@ -207,7 +207,7 @@ namespace Telegram {
             
             var response = yield make_request("getMyShortDescription", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new BotShortDescription(response.result.get_object());
@@ -221,7 +221,7 @@ namespace Telegram {
             
             var response = yield make_request("getChatMenuButton", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return MenuButton.from_json(response.result.get_object());
@@ -235,7 +235,7 @@ namespace Telegram {
             
             var response = yield make_request("getMyDefaultAdministratorRights", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new ChatAdministratorRights(response.result.get_object());
@@ -244,7 +244,7 @@ namespace Telegram {
         public async StickerSet? get_sticker_set(string name) {
             var response = yield make_request("getStickerSet", @"name=$name");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             return new StickerSet(response.result.get_object());
@@ -253,7 +253,7 @@ namespace Telegram {
         public async Sticker[]? get_custom_emoji_stickers(string[] custom_emoji_ids) {
             var response = yield make_request("getCustomEmojiStickers", @"custom_emoji_ids=$(Util.serialize_array(custom_emoji_ids))");
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             Sticker[] result = {};
@@ -277,7 +277,7 @@ namespace Telegram {
             
             var response = yield make_request("getGameHighScores", queue);
             
-            if (response != null || !response.ok)
+            if (response == null || !response.ok)
                 return null;
             
             GameHighScore[] result = {};
