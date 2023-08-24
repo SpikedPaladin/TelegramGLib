@@ -308,6 +308,9 @@ namespace Telegram {
                 reply_markup = new InlineKeyboardMarkup(object.get_object_member("reply_markup"));
         }
         
+        /**
+         * Checks if message is command
+         */
         public bool is_command() {
             if (
                 entities != null &&
@@ -317,6 +320,34 @@ namespace Telegram {
                 return true;
             }
             return false;
+        }
+        
+        /**
+         * Determinates if command points to specific bot  
+         * Example: '/command@TestBot'
+         */
+        public bool is_pointed_command() {
+            if (
+                is_command() &&
+                text.substring(0, entities[0].length).contains("@")
+            ) {
+                return true;
+            }
+            return false;
+        }
+        
+        /**
+         * This method returns username from pointed command
+         *
+         * @return Username without '@'
+         */
+        public string? get_command_username() {
+            if (is_pointed_command()) {
+                var index = text.index_of("@") + 1;
+                
+                return text.substring(index, entities[0].length - index);
+            }
+            return null;
         }
     }
 }
