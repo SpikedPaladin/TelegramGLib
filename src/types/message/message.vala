@@ -337,6 +337,16 @@ namespace Telegram {
         }
         
         /**
+         * This method returns command name in lowercase without '/' and pointed bot username
+         */
+        public string? get_command_name() {
+            if (is_command()) {
+                return text.substring(1, (is_pointed_command() ? text.index_of("@") : entities[0].length) - 1).down();
+            }
+            return null;
+        }
+        
+        /**
          * This method returns username from pointed command
          *
          * @return Username without '@'
