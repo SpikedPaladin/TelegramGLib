@@ -347,6 +347,16 @@ namespace Telegram {
         }
         
         /**
+         *
+         */
+        public string? get_command_arguments() {
+            if (is_command()) {
+                return text.substring(entities[0].length + 1);
+            }
+            return null;
+        }
+        
+        /**
          * This method returns username from pointed command
          *
          * @return Username without '@'
