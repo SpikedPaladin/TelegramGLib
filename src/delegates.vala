@@ -1,5 +1,6 @@
 namespace Telegram {
     public delegate void UpdateDelegate(Update update);
+    public delegate bool CommandDelegate(Message message);
     public delegate bool MessageDelegate(Message message);
     public delegate bool EditedMessageDelegate(Message edited_message);
     public delegate bool ChannelPostDelegate(Message channel_post);

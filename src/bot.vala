@@ -36,6 +36,7 @@ namespace Telegram {
         public MainLoop? main_loop;
         
         public UpdateDelegate? update;
+        public CommandDelegate? command;
         public MessageDelegate? message;
         public EditedMessageDelegate? edited_message;
         public ChannelPostDelegate? channel_post;
@@ -358,6 +359,9 @@ namespace Telegram {
                         update_id = update.update_id + 1;
                     
                     // Route update processing to specific signal or delegate
+                    if (update.message != null && update.message.is_command() && ((command != null && command(update.message)) || on_command(update.message)))
+                        return;
+                    
                     if (update.message != null && ((message != null && message(update.message)) || on_message(update.message)))
                         return;
                     
@@ -448,6 +452,8 @@ namespace Telegram {
          * Override this method to do update processing
          */
         public virtual signal void on_update(Update update) {}
+        
+        public virtual signal bool on_command(Message message) { return false; }
         
         public virtual signal bool on_message(Message message) { return false; }
         
