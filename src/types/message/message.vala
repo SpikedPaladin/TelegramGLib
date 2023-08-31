@@ -347,11 +347,12 @@ namespace Telegram {
         }
         
         /**
-         *
+         * Get command arguments if present
          */
         public string? get_command_arguments() {
             if (is_command()) {
-                return text.substring(entities[0].length + 1);
+                if (text.contains(" "))
+                    return text.substring(entities[0].length + 1);
             }
             return null;
         }
