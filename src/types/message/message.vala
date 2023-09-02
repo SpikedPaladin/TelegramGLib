@@ -28,6 +28,7 @@ namespace Telegram {
         public Document? document;
         public PhotoSize[]? photo;
         public Sticker? sticker;
+        public Story? story;
         public Video? video;
         public VideoNote? video_note;
         public Voice? voice;
@@ -159,6 +160,9 @@ namespace Telegram {
             
             if (object.has_member("sticker"))
                 sticker = new Sticker(object.get_object_member("sticker"));
+            
+            if (object.has_member("story"))
+                story = new Story(object.get_object_member("story"));
             
             if (object.has_member("video"))
                 video = new Video(object.get_object_member("video"));

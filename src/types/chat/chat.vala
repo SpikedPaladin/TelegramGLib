@@ -58,6 +58,12 @@ namespace Telegram {
         public string? emoji_status_custom_emoji_id;
         /**
          * //Optional.//
+         * Expiration date of the emoji status of the other party in a private chat in Unix time, if any.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public int64? emoji_status_expiration_date;
+        /**
+         * //Optional.//
          * Bio of the other party in a private chat.
          * Returned only in {@link Bot.get_chat}.
          */
@@ -198,6 +204,9 @@ namespace Telegram {
             
             if (object.has_member("emoji_status_custom_emoji_id"))
                 emoji_status_custom_emoji_id = object.get_string_member("emoji_status_custom_emoji_id");
+            
+            if (object.has_member("emoji_status_expiration_date"))
+                emoji_status_expiration_date = object.get_int_member("emoji_status_expiration_date");
             
             if (object.has_member("bio"))
                 bio = object.get_string_member("bio");

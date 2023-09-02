@@ -60,6 +60,7 @@ lib_sources += files(
     'chat/forum/reopen-general-forum-topic.vala',
     'chat/forum/hide-general-forum-topic.vala',
     'chat/forum/unhide-general-forum-topic.vala',
+    'chat/forum/unpin-all-general-forum-topic-messages.vala',
     
     'answers/answer-callback-query.vala',
     

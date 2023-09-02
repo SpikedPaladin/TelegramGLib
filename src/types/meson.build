@@ -14,6 +14,7 @@ lib_sources += files(
     'animation.vala',
     'audio.vala',
     'document.vala',
+    'story.vala',
     'video.vala',
     'video-note.vala',
     'voice.vala',

@@ -54,12 +54,18 @@ namespace Telegram {
         
         public class Answer {
             public string poll_id;
-            public User user;
+            public Chat? voter_chat;
+            public User? user;
             public int[] option_ids;
             
             public Answer(Json.Object object) {
                 poll_id = object.get_string_member("poll_id");
-                user = new User(object.get_object_member("user"));
+                
+                if (object.has_member("voter_chat"))
+                    voter_chat = new Chat(object.get_object_member("voter_chat"));
+                
+                if (object.has_member("user"))
+                    user = new User(object.get_object_member("user"));
                 
                 int[] temp_option_ids = {};
                 foreach (var element in object.get_array_member("option_ids").get_elements()) {
