@@ -501,7 +501,7 @@ namespace Telegram {
                 if (handler is InlineQueryHandler) {
                     var query_handler = handler as InlineQueryHandler;
                     
-                    if (query_handler.query == inline_query.query && (query_handler.condition == null || query_handler.condition(inline_query))) {
+                    if ((query_handler.query == null || query_handler.query == inline_query.query) && (query_handler.condition == null || query_handler.condition(inline_query))) {
                         query_handler.action(inline_query);
                         
                         return true;
