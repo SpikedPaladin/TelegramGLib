@@ -10,6 +10,7 @@ lib_sources = files(
     'util.vala',
 )
 
+subdir('handlers')
 subdir('requests')
 subdir('types')
 

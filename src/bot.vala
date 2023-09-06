@@ -8,6 +8,7 @@ namespace Telegram {
          * Bot configuration
          */
         public BotConfig config = new BotConfig.default();
+        private List<AbstractHandler> handlers = new List<AbstractHandler>();
         
         /**
          * Http session
@@ -63,6 +64,12 @@ namespace Telegram {
             get_updates.begin();
             
             main_loop?.run();
+        }
+        
+        public void add_handler(AbstractHandler handler) {
+            handler.bot = this;
+            
+            handlers.append(handler);
         }
         
         public async User? get_me() {
@@ -453,9 +460,35 @@ namespace Telegram {
          */
         public virtual signal void on_update(Update update) {}
         
-        public virtual signal bool on_command(Message message) { return false; }
+        public virtual signal bool on_command(Message message) {
+            foreach (var handler in handlers) {
+                if (handler is CommandHandler) {
+                    var command_handler = handler as CommandHandler;
+                    
+                    if ((command_handler.command == null || command_handler.command == "" || command_handler.command == message.get_command_name()) && (command_handler.condition == null || command_handler.condition(message))) {
+                        command_handler.action(message);
+                        
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         
-        public virtual signal bool on_message(Message message) { return false; }
+        public virtual signal bool on_message(Message message) {
+            foreach (var handler in handlers) {
+                if (handler is MessageHandler) {
+                    var message_handler = handler as MessageHandler;
+                    
+                    if ((message_handler.text == null || message_handler.text == "" || message_handler.text == message.text) && (message_handler.condition == null || message_handler.condition(message))) {
+                        message_handler.action(message);
+                        
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         
         public virtual signal bool on_edited_message(Message edited_message) { return false; }
         
@@ -463,11 +496,37 @@ namespace Telegram {
         
         public virtual signal bool on_edited_channel_post(Message edited_channel_post) { return false; }
         
-        public virtual signal bool on_inline_query(InlineQuery inline_query) { return false; }
+        public virtual signal bool on_inline_query(InlineQuery inline_query) {
+            foreach (var handler in handlers) {
+                if (handler is InlineQueryHandler) {
+                    var query_handler = handler as InlineQueryHandler;
+                    
+                    if (query_handler.query == inline_query.query && (query_handler.condition == null || query_handler.condition(inline_query))) {
+                        query_handler.action(inline_query);
+                        
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         
         public virtual signal bool on_chosen_inline_result(ChosenInlineResult chosen_inline_result) { return false; }
         
-        public virtual signal bool on_callback_query(CallbackQuery callback_query) { return false; }
+        public virtual signal bool on_callback_query(CallbackQuery callback_query) {
+            foreach (var handler in handlers) {
+                if (handler is CallbackQueryHandler) {
+                    var query_handler = handler as CallbackQueryHandler;
+                    
+                    if ((query_handler.data == null || query_handler.data == "" || (callback_query.data != null && query_handler.data == callback_query.data)) && (query_handler.condition == null || query_handler.condition(callback_query))) {
+                        query_handler.action(callback_query);
+                        
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         
         public virtual signal bool on_shipping_query(ShippingQuery shipping_query) { return false; }
         
