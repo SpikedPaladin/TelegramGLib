@@ -1,11 +1,7 @@
 namespace Telegram {
     
     public class BotCommandScopeDefault : Object, Serializable, BotCommandScope {
-        public Type type;
-        
-        public BotCommandScopeDefault(Json.Object object) {
-            type = Type.parse(object.get_string_member("type"));
-        }
+        public Type type = Type.DEFAULT;
         
         public Json.Node serialize() {
             var builder = new Json.Builder();
