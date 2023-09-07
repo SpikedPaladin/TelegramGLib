@@ -4,7 +4,10 @@ namespace Telegram {
         public string command;
         public string description;
         
-        public BotCommand(Json.Object object) {
+        public BotCommand(Json.Object? object = null) {
+            if (object == null)
+                return;
+            
             command = object.get_string_member("command");
             description = object.get_string_member("description");
         }

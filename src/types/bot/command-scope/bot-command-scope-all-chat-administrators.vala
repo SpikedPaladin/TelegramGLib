@@ -1,11 +1,7 @@
 namespace Telegram {
     
     public class BotCommandScopeAllChatAdministrators : Object, Serializable, BotCommandScope {
-        public Type type;
-        
-        public BotCommandScopeAllChatAdministrators(Json.Object object) {
-            type = Type.parse(object.get_string_member("type"));
-        }
+        public Type type = Type.ALL_CHAT_ADMINISTRATORS;
         
         public Json.Node serialize() {
             var builder = new Json.Builder();

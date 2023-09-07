@@ -1,15 +1,9 @@
 namespace Telegram {
     
     public class BotCommandScopeChatMember : Object, Serializable, BotCommandScope {
-        public Type type;
+        public Type type = Type.CHAT_MEMBER;
         public ChatId chat_id;
         public int64 user_id;
-        
-        public BotCommandScopeChatMember(Json.Object object) {
-            type = Type.parse(object.get_string_member("type"));
-            chat_id = ChatId.parse(object);
-            user_id = object.get_int_member("user_id");
-        }
         
         public new Json.Node serialize() {
             var builder = new Json.Builder();
