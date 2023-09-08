@@ -2,6 +2,8 @@ namespace Telegram {
     
     public class InputSticker : Object, Serializable, InputMedia, InputMediaGroupable {
         public string sticker;
+        public string? filename;
+        public Bytes? bytes;
         public string[] emoji_list;
         public MaskPosition? mask_position;
         public string[]? keywords;
@@ -43,7 +45,7 @@ namespace Telegram {
         }
         
         public bool has_attachments() {
-            if (sticker.has_prefix("file://"))
+            if (bytes != null || sticker.has_prefix("file://"))
                 return true;
             
             return false;
@@ -51,13 +53,20 @@ namespace Telegram {
         
         public async InputFile[] append(int index) throws Error {
             InputFile[] arr = {};
-            if (sticker.has_prefix("file://")) {
-                var file = File.new_for_path(sticker.replace("file://", ""));
-                var body = yield file.load_bytes_async(null, null);
+            if (has_attachments()) {
+                Bytes body;
+                
+                if (bytes != null)
+                    body = bytes;
+                else {
+                    var file = File.new_for_path(sticker.replace("file://", ""));
+                    body = yield file.load_bytes_async(null, null);
+                    filename = file.get_basename();
+                }
                 
                 arr += InputFile() {
                     name = @"sticker$index",
-                    filename = file.get_basename(),
+                    filename = filename,
                     body = body
                 };
                 sticker = @"attach://sticker$index";

@@ -63,11 +63,18 @@ namespace Telegram {
         }
         
         public override bool has_attachments() {
-            return photo.has_prefix("file://");
+            return photo.has_prefix("file://") || bytes != null;
         }
         
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
+            
+            if (bytes != null) {
+                multipart.append_form_file("photo", photo, "", bytes);
+                
+                return multipart;
+            }
+            
             var file = File.new_for_path(photo.replace("file://", ""));
             var body = yield file.load_bytes_async(null, null);
             

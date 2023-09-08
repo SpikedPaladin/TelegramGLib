@@ -18,6 +18,13 @@ namespace Telegram {
         
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
+            
+            if (bytes != null) {
+                multipart.append_form_file("photo", photo, "", bytes);
+                
+                return multipart;
+            }
+            
             var file = File.new_for_path(photo.replace("file://", ""));
             var body = yield file.load_bytes_async(null, null);
             

@@ -8,6 +8,7 @@ namespace Telegram {
         public int? width;
         public int? height;
         public string? thumbnail;
+        public Bytes? thumbnail_bytes;
         public string? caption;
         public ParseMode? parse_mode;
         public MessageEntity[]? caption_entities;
@@ -29,7 +30,7 @@ namespace Telegram {
             if (message_thread_id != null)
                 queue += @"&message_thread_id=$message_thread_id";
             
-            if (!video.has_prefix("file://"))
+            if (!video.has_prefix("file://") || bytes != null)
                 queue += @"&video=$video";
             
             if (duration != null)
@@ -83,17 +84,27 @@ namespace Telegram {
         }
         
         public override bool has_attachments() {
-            return video.has_prefix("file://") || (thumbnail != null && thumbnail.has_prefix("file://"));
+            return bytes != null || thumbnail_bytes != null || video.has_prefix("file://") || (thumbnail != null && thumbnail.has_prefix("file://"));
         }
         
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
+            
+            
+            if (bytes != null)
+                multipart.append_form_file("video", video, "", bytes);
             
             if (video.has_prefix("file://")) {
                 var file = File.new_for_path(video.replace("file://", ""));
                 var body = yield file.load_bytes_async(null, null);
                 
                 multipart.append_form_file("video", file.get_basename(), "", body);
+            }
+            
+            if (thumbnail_bytes != null) {
+                multipart.append_form_file("thumbnail", thumbnail, "", thumbnail_bytes);
+                
+                thumbnail = "attach://thumbnail";
             }
             
             if (thumbnail != null && thumbnail.has_prefix("file://")) {

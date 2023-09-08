@@ -607,6 +607,7 @@ namespace Telegram {
     }
     
     public abstract class UploadRequest : BaseRequest {
+        public Bytes? bytes;
         public abstract bool has_attachments();
         public abstract async Soup.Multipart create_multipart() throws Error;
     }
