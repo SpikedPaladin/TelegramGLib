@@ -24,14 +24,6 @@ namespace Telegram {
          */
         public User? self;
         /**
-         * Enable debug log  
-         * Deprecated. Use {@link BotConfig.debug} to enable debug mode
-         * Will be removed in 0.4.0
-         */
-        [CCode(notify = false)]
-        [Version (deprecated = true, deprecated_since = "0.3.0", replacement = "config")]
-        public bool debug { set { config.debug = value; } get { return config.debug; } }
-        /**
          * {@link GLib.MainLoop} which created when bot started with {@link BotConfig.create_main_loop} set to ''True''
          */
         public MainLoop? main_loop;
@@ -289,7 +281,7 @@ namespace Telegram {
                 var node = parser.get_root();
                 var response = new Response(node.get_object());
                 
-                if (debug)
+                if (config.debug)
                     Util.log(@"$endpoint: $(Json.to_string(node, false))", Util.LogLevel.DEBUG);
                 
                 if (!response.ok)
@@ -396,7 +388,6 @@ namespace Telegram {
                     
                     // Update processing with on_update signal
                     on_update(update);
-                    update_recieved(update);
                 });
             }
         }
@@ -534,13 +525,6 @@ namespace Telegram {
         public virtual signal bool on_chat_member(ChatMemberUpdated chat_member) { return false; }
         
         public virtual signal bool on_chat_join_request(ChatJoinRequest chat_join_request) { return false; }
-        
-        /**
-         * Deprecated feature
-         * Will be removed in 0.4.0
-         */
-        [Version (deprecated = true, deprecated_since = "0.3.0", replacement = "on_update")]
-        public virtual void update_recieved(Update update) {}
     }
     
     protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
