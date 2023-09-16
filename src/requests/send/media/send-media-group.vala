@@ -59,9 +59,7 @@ namespace Telegram {
                 if (!media[i].has_attachments())
                     continue;
                 
-                var arr = yield media[i].append(i);
-                
-                foreach (var file in arr) {
+                foreach (var file in yield media[i].append(i)) {
                     multipart.append_form_file(file.name, file.filename, "", file.body);
                 }
             }

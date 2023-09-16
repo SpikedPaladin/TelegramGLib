@@ -79,10 +79,7 @@ namespace Telegram {
         }
         
         public bool has_attachments() {
-            if (media.has_prefix("file://"))
-                return true;
-            
-            if (thumbnail != null && thumbnail.has_prefix("file://"))
+            if (media.has_prefix("file://") || (thumbnail != null && thumbnail.has_prefix("file://")))
                 return true;
             
             return false;
@@ -90,6 +87,7 @@ namespace Telegram {
         
         public async InputFile[] append(int index) throws Error {
             InputFile[] arr = {};
+            
             if (media.has_prefix("file://")) {
                 var file = File.new_for_path(media.replace("file://", ""));
                 var body = yield file.load_bytes_async(null, null);

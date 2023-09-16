@@ -12,7 +12,6 @@ namespace Telegram {
         }
         
         public override string queue() {
-            
             var queue = @"media=$media";
             
             if (chat_id != null)

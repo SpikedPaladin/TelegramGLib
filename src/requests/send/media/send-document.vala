@@ -74,7 +74,6 @@ namespace Telegram {
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
             
-            
             if (bytes != null)
                 multipart.append_form_file("document", document, "", bytes);
             
