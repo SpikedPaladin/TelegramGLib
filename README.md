@@ -7,6 +7,7 @@ TelegramGLib is a bot api for telegram written in Vala
 - Inline mode support
 - Async request sending
 - File uploading
+- Handlers support
 - Android support
 
 ## Sample
@@ -20,15 +21,33 @@ void main() {
         token = "YOUR_BOT_TOKEN"
     };
     
-    bot.update = update => {
-        if (update.message != null && update.message.text != null) {
-            bot.send.begin(new SendMessage() {
-                chat_id = update.message.chat.id,
-                reply_to_message_id = update.message.message_id,
-                text = @"Your message: $(update.message.text)"
-            });
-        }
-    };
+    // Reply to message with text 'priority'
+    // This MessageHandler will have more priority because
+    // It was added before handler which replies on any message
+    bot.add_handler(new MessageHandler("priority", msg => {
+        bot.send.begin(new SendMessage() {
+            chat_id = msg.chat.id,
+            text = "Handler priority example"
+        });
+    }));
+    
+    // Reply to any message
+    // Except handlers with same type added before this
+    bot.add_handler(new MessageHandler(null, msg => {
+        bot.send.begin(new SendMessage() {
+            chat_id = msg.chat.id,
+            text = @"Your message: $(msg.text)"
+        });
+    }));
+    
+    // Send greeting message if user started bot
+    bot.add_handler(new CommandHandler("start", msg => {
+        bot.send.begin(new SendMessage() {
+            chat_id = msg.chat.id,
+            text = "Welcome!"
+        });
+    // Check if chat is private
+    }, msg => msg.chat.type == Chat.Type.PRIVATE));
     
     bot.start();
 }

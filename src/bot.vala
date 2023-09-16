@@ -36,23 +36,6 @@ namespace Telegram {
          */
         public MainLoop? main_loop;
         
-        public UpdateDelegate? update;
-        public CommandDelegate? command;
-        public MessageDelegate? message;
-        public EditedMessageDelegate? edited_message;
-        public ChannelPostDelegate? channel_post;
-        public EditedChannelPostDelegate? edited_channel_post;
-        public InlineQueryDelegate? inline_query;
-        public ChosenInlineResultDelegate? chosen_inline_result;
-        public CallbackQueryDelegate? callback_query;
-        public ShippingQueryDelegate? shipping_query;
-        public PreCheckoutQueryDelegate? pre_checkout_query;
-        public PollDelegate? poll;
-        public PollAnswerDelegate? poll_answer;
-        public MyChatMemberDelegate? my_chat_member;
-        public ChatMemberDelegate? chat_member;
-        public ChatJoinRequestDelegate? chat_join_request;
-        
         construct {
             session = new Soup.Session();
         }
@@ -366,53 +349,50 @@ namespace Telegram {
                         update_id = update.update_id + 1;
                     
                     // Route update processing to specific signal or delegate
-                    if (update.message != null && update.message.is_command() && ((command != null && command(update.message)) || on_command(update.message)))
+                    if (update.message != null && update.message.is_command() && on_command(update.message))
                         return;
                     
-                    if (update.message != null && ((message != null && message(update.message)) || on_message(update.message)))
+                    if (update.message != null && on_message(update.message))
                         return;
                     
-                    if (update.edited_message != null && ((edited_message != null && edited_message(update.edited_message)) || on_edited_message(update.edited_message)))
+                    if (update.edited_message != null && on_edited_message(update.edited_message))
                         return;
                     
-                    if (update.channel_post != null && ((channel_post != null && channel_post(update.channel_post)) || on_channel_post(update.channel_post)))
+                    if (update.channel_post != null && on_channel_post(update.channel_post))
                         return;
                     
-                    if (update.edited_channel_post != null && ((edited_channel_post != null && edited_channel_post(update.edited_channel_post)) || on_edited_channel_post(update.edited_channel_post)))
+                    if (update.edited_channel_post != null && on_edited_channel_post(update.edited_channel_post))
                         return;
                     
-                    if (update.inline_query != null && ((inline_query != null && inline_query(update.inline_query)) || on_inline_query(update.inline_query)))
+                    if (update.inline_query != null && on_inline_query(update.inline_query))
                         return;
                     
-                    if (update.chosen_inline_result != null && ((chosen_inline_result != null && chosen_inline_result(update.chosen_inline_result)) || on_chosen_inline_result(update.chosen_inline_result)))
+                    if (update.chosen_inline_result != null && on_chosen_inline_result(update.chosen_inline_result))
                         return;
                     
-                    if (update.callback_query != null && ((callback_query != null && callback_query(update.callback_query)) || on_callback_query(update.callback_query)))
+                    if (update.callback_query != null && on_callback_query(update.callback_query))
                         return;
                     
-                    if (update.shipping_query != null && ((shipping_query != null && shipping_query(update.shipping_query)) || on_shipping_query(update.shipping_query)))
+                    if (update.shipping_query != null && on_shipping_query(update.shipping_query))
                         return;
                     
-                    if (update.pre_checkout_query != null && ((pre_checkout_query != null && pre_checkout_query(update.pre_checkout_query)) || on_pre_checkout_query(update.pre_checkout_query)))
+                    if (update.pre_checkout_query != null && on_pre_checkout_query(update.pre_checkout_query))
                         return;
                     
-                    if (update.poll != null && ((poll != null && poll(update.poll)) || on_poll(update.poll)))
+                    if (update.poll != null && on_poll(update.poll))
                         return;
                     
-                    if (update.poll_answer != null && ((poll_answer != null && poll_answer(update.poll_answer)) || on_poll_answer(update.poll_answer)))
+                    if (update.poll_answer != null && on_poll_answer(update.poll_answer))
                         return;
                     
-                    if (update.my_chat_member != null && ((my_chat_member != null && my_chat_member(update.my_chat_member)) || on_my_chat_member(update.my_chat_member)))
+                    if (update.my_chat_member != null && on_my_chat_member(update.my_chat_member))
                         return;
                     
-                    if (update.chat_member != null && ((chat_member != null && chat_member(update.chat_member)) || on_chat_member(update.chat_member)))
+                    if (update.chat_member != null && on_chat_member(update.chat_member))
                         return;
                     
-                    if (update.chat_join_request != null && ((chat_join_request != null && chat_join_request(update.chat_join_request)) || on_chat_join_request(update.chat_join_request)))
+                    if (update.chat_join_request != null && on_chat_join_request(update.chat_join_request))
                         return;
-                    
-                    // Update processing in update delegate if specified
-                    if (this.update != null) this.update(update);
                     
                     // Update processing with on_update signal
                     on_update(update);
