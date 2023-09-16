@@ -56,6 +56,9 @@ namespace Telegram {
             var multipart = new Soup.Multipart("multipart/form-data");
             
             for (int i = 0; i < media.length; i++) {
+                if (!media[i].has_attachments())
+                    continue;
+                
                 var arr = yield media[i].append(i);
                 
                 foreach (var file in arr) {
