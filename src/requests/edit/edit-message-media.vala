@@ -4,7 +4,7 @@ namespace Telegram {
         public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;
-        public InputMedia[] media;
+        public InputMedia media;
         public InlineKeyboardMarkup? reply_markup;
         
         public override string method() {
@@ -12,11 +12,8 @@ namespace Telegram {
         }
         
         public override string queue() {
-            Serializable[] arr = {};
-            foreach (var entity in media) {
-                arr += entity;
-            }
-            var queue = @"media=$(Serializable.array_to_string(arr))";
+            
+            var queue = @"media=$media";
             
             if (chat_id != null)
                 queue += @"&chat_id=$chat_id";
@@ -34,11 +31,8 @@ namespace Telegram {
         }
         
         public override bool has_attachments() {
-            foreach (var element in media) {
-                
-                if (element.has_attachments())
-                    return true;
-            }
+            if (media.has_attachments())
+                return true;
             
             return false;
         }
@@ -46,12 +40,8 @@ namespace Telegram {
         public override async Soup.Multipart create_multipart() throws Error {
             var multipart = new Soup.Multipart("multipart/form-data");
             
-            for (int i = 0; i < media.length; i++) {
-                var arr = yield media[i].append(i);
-                
-                foreach (var file in arr) {
-                    multipart.append_form_file(file.name, file.filename, "", file.body);
-                }
+            foreach (var file in yield media.append(1)) {
+                multipart.append_form_file(file.name, file.filename, "", file.body);
             }
             
             return multipart;
