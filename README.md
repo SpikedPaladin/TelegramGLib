@@ -55,7 +55,7 @@ void main() {
 
 ##### Compile with
 
-    $ valac --pkg telegram-glib-0.3 main.vala
+    $ valac --pkg telegram-glib-1.0 main.vala
     $ ./main
 
 <details><summary><b>Python</b></summary>
@@ -63,7 +63,7 @@ void main() {
 ```python
 import gi
 
-gi.require_version('Telegram', '0.3')
+gi.require_version('Telegram', '1.0')
 from gi.repository import Telegram
 
 class PingBot(Telegram.Bot):

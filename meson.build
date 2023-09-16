@@ -5,13 +5,13 @@ project(
     default_options: [
         'warning_level=2'
     ],
-    version: '0.3.0',
+    version: '1.0.0',
     meson_version: '>= 0.50.0',
 )
 
 pkg = import('pkgconfig')
 
-api_version = '0.3'
+api_version = '1.0'
 lib_name = meson.project_name() + '-' + api_version
 typelib_name = 'Telegram-' + api_version
 
