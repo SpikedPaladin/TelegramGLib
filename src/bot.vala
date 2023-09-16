@@ -491,7 +491,20 @@ namespace Telegram {
             return false;
         }
         
-        public virtual signal bool on_chosen_inline_result(ChosenInlineResult chosen_inline_result) { return false; }
+        public virtual signal bool on_chosen_inline_result(ChosenInlineResult chosen_inline_result) {
+            foreach (var handler in handlers) {
+                if (handler is ChosenInlineQueryResultHandler) {
+                    var result_handler = handler as ChosenInlineQueryResultHandler;
+                    
+                    if ((result_handler.result_id == null || result_handler.result_id == chosen_inline_result.result_id) && (result_handler.condition == null || result_handler.condition(chosen_inline_result))) {
+                        result_handler.action(chosen_inline_result);
+                        
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         
         public virtual signal bool on_callback_query(CallbackQuery callback_query) {
             foreach (var handler in handlers) {
