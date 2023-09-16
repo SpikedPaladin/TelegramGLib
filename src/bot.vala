@@ -340,7 +340,7 @@ namespace Telegram {
                     if (update.update_id >= update_id)
                         update_id = update.update_id + 1;
                     
-                    // Route update processing to specific signal or delegate
+                    // Route update processing to specific signal
                     if (update.message != null && update.message.is_command() && on_command(update.message))
                         return;
                     
@@ -451,7 +451,7 @@ namespace Telegram {
                 if (handler is MessageHandler) {
                     var message_handler = handler as MessageHandler;
                     
-                    if ((message_handler.text == null || message_handler.text == "" || message_handler.text == message.text) && (message_handler.condition == null || message_handler.condition(message))) {
+                    if ((message_handler.text == null || (message.text != null && message_handler.text == "") || message_handler.text == message.text) && (message_handler.condition == null || message_handler.condition(message))) {
                         message_handler.action(message);
                         
                         return true;
