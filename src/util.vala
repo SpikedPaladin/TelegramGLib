@@ -16,7 +16,7 @@ namespace Telegram {
             return Json.to_string(builder.get_root(), false);
         }
         
-        public static void log(LogLevel level, string message) {
+        public static void log(string message, LogLevel level = LogLevel.INFO) {
             print(color("2;37", "["));
             
             switch (level) {

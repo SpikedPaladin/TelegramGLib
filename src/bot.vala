@@ -290,14 +290,14 @@ namespace Telegram {
                 var response = new Response(node.get_object());
                 
                 if (debug)
-                    Util.log(Util.LogLevel.DEBUG, @"$endpoint: $(Json.to_string(node, false))");
+                    Util.log(@"$endpoint: $(Json.to_string(node, false))", Util.LogLevel.DEBUG);
                 
                 if (!response.ok)
-                    Util.log(Util.LogLevel.WARNING, @"$endpoint: $(response.description)");
+                    Util.log(@"$endpoint: $(response.description)", Util.LogLevel.WARNING);
                 
                 return response;
             } catch (Error e) {
-                Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
+                Util.log(@"Error while making request: $(e.message)", Util.LogLevel.WARNING);
                 return null;
             }
         }
@@ -306,12 +306,12 @@ namespace Telegram {
             self = yield get_me();
             
             if (self == null) {
-                Util.log(Util.LogLevel.ERROR, "Failed to authorize");
+                Util.log("Failed to authorize", Util.LogLevel.ERROR);
                 
                 return;
             }
             
-            Util.log(Util.LogLevel.INFO, @"Authorized on account $(self.username)");
+            Util.log(@"Authorized on account $(self.username)");
             
             while (true) {
                 var @params = @"timeout=$(config.timeout)";
@@ -422,14 +422,14 @@ namespace Telegram {
                     var response = new Response(node.get_object());
                     
                     if (config.debug)
-                        Util.log(Util.LogLevel.DEBUG, @"$(request.method()): $(Json.to_string(node, false))");
+                        Util.log(@"$(request.method()): $(Json.to_string(node, false))", Util.LogLevel.DEBUG);
                     
                     if (!response.ok)
-                        Util.log(Util.LogLevel.WARNING, @"$(request.method()): $(response.description)");
+                        Util.log(@"$(request.method()): $(response.description)", Util.LogLevel.WARNING);
                     
                     return response;
                 } catch (Error e) {
-                    Util.log(Util.LogLevel.WARNING, @"Error while making request: $(e.message)");
+                    Util.log(@"Error while making request: $(e.message)", Util.LogLevel.WARNING);
                 }
             }
             return yield make_request(request.method(), request.queue());
