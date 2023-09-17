@@ -1,8 +1,17 @@
 namespace Telegram {
     
+    /**
+     * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
+     */
     public class BotCommandScopeChatMember : Object, Serializable, BotCommandScope {
         public Type type = Type.CHAT_MEMBER;
+        /**
+         * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+         */
         public ChatId chat_id;
+        /**
+         * Unique identifier of the target user
+         */
         public int64 user_id;
         
         public new Json.Node serialize() {

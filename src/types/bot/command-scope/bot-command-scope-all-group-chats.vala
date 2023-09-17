@@ -1,5 +1,8 @@
 namespace Telegram {
     
+    /**
+     * Represents the scope of bot commands, covering all group and supergroup chats.
+     */
     public class BotCommandScopeAllGroupChats : Object, Serializable, BotCommandScope {
         public Type type = Type.ALL_GROUP_CHATS;
         

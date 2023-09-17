@@ -1,5 +1,8 @@
 namespace Telegram {
     
+    /**
+     * Represents the scope of bot commands, covering all group and supergroup chat administrators.
+     */
     public class BotCommandScopeAllChatAdministrators : Object, Serializable, BotCommandScope {
         public Type type = Type.ALL_CHAT_ADMINISTRATORS;
         

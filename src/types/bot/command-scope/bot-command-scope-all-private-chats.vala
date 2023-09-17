@@ -1,5 +1,8 @@
 namespace Telegram {
     
+    /**
+     * Represents the scope of bot commands, covering all private chats.
+     */
     public class BotCommandScopeAllPrivateChats : Object, Serializable, BotCommandScope {
         public Type type = Type.ALL_PRIVATE_CHATS;
         
