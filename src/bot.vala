@@ -42,8 +42,6 @@ namespace Telegram {
         }
         
         public void add_handler(AbstractHandler handler) {
-            handler.bot = this;
-            
             handlers.append(handler);
         }
         
