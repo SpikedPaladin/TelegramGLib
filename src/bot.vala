@@ -91,13 +91,17 @@ namespace Telegram {
             return new Chat(response.result.get_object());
         }
         
-        public async ChatMember? get_chat_administrators(ChatId chat_id) {
+        public async ChatMember[]? get_chat_administrators(ChatId chat_id) {
             var response = yield make_request("getChatAdministrators", @"chat_id=$chat_id");
             
             if (response == null || !response.ok)
                 return null;
             
-            return ChatMember.from_json(response.result.get_object());
+            ChatMember[] result = {};
+            foreach (var element in response.result.get_array().get_elements())
+                result += ChatMember.from_json(element.get_object());
+            
+            return result;
         }
         
         public async int? get_chat_member_count(ChatId chat_id) {
