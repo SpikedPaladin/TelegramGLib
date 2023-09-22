@@ -47,6 +47,10 @@ namespace Telegram {
             handlers.append(handler);
         }
         
+        /**
+         * A simple method for testing your bot's authentication token.  
+         * @return Basic information about the bot in form of a {@link User} object.
+         */
         public async User? get_me() {
             var response = yield make_request("getMe");
             
@@ -56,6 +60,10 @@ namespace Telegram {
             return new User(response.result.get_object());
         }
         
+        /**
+         * Use this method to get a list of profile pictures for a user.
+         * @return A {@link UserProfilePhotos} object.
+         */
         public async UserProfilePhotos? get_user_profile_photos(int64 user_id, int? offset = null, int? limit = null) {
             var queue = @"user_id=$user_id";
             
@@ -72,7 +80,14 @@ namespace Telegram {
             
             return new UserProfilePhotos(response.result.get_object());
         }
-        
+        /**
+         * Use this method to get basic information about a file and prepare it for downloading.  
+         * For the moment, bots can download files of up to 20MB in size.  
+         * On success, a File object is returned.  
+         * The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response.  
+         * It is guaranteed that the link will be valid for at least 1 hour.  
+         * When the link expires, a new one can be requested by calling getFile again.
+         */
         public async TelegramFile? get_file(string file_id) {
             var response = yield make_request("getFile", @"file_id=$file_id");
             
@@ -82,6 +97,11 @@ namespace Telegram {
             return new TelegramFile(response.result.get_object());
         }
         
+        /**
+         * Use this method to get up to date information about the chat
+         * (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.).
+         * @return A {@link Chat} object on success.
+         */
         public async Chat? get_chat(ChatId chat_id) {
             var response = yield make_request("getChat", @"chat_id=$chat_id");
             
@@ -91,6 +111,10 @@ namespace Telegram {
             return new Chat(response.result.get_object());
         }
         
+        /**
+         * Use this method to get a list of administrators in a chat, which aren't bots.
+         * @return An Array of {@link ChatMember} objects.
+         */
         public async ChatMember[]? get_chat_administrators(ChatId chat_id) {
             var response = yield make_request("getChatAdministrators", @"chat_id=$chat_id");
             
@@ -104,6 +128,10 @@ namespace Telegram {
             return result;
         }
         
+        /**
+         * Use this method to get the number of members in a chat.
+         * @return Member count on success.
+         */
         public async int? get_chat_member_count(ChatId chat_id) {
             var response = yield make_request("getChatMemberCount", @"chat_id=$chat_id");
             
@@ -113,6 +141,11 @@ namespace Telegram {
             return (int) response.result.get_int();
         }
         
+        /**
+         * Use this method to get information about a member of a chat.  
+         * The method is only guaranteed to work for other users if the bot is an administrator in the chat.
+         * @returns A {@link ChatMember} object on success.
+         */
         public async ChatMember? get_chat_member(ChatId chat_id, int64 user_id) {
             var response = yield make_request("getChatMember", @"chat_id=$chat_id&user_id=$user_id");
             
