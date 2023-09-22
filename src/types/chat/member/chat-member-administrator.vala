@@ -15,6 +15,9 @@ namespace Telegram {
         public bool? can_post_messages;
         public bool? can_edit_messages;
         public bool? can_pin_messages;
+        public bool? can_post_stories;
+        public bool? can_edit_stories;
+        public bool? can_delete_stories;
         public bool? can_manage_topics;
         public string? custom_title;
         
@@ -39,6 +42,15 @@ namespace Telegram {
             
             if (object.has_member("can_pin_messages"))
                 can_pin_messages = object.get_boolean_member("can_pin_messages");
+            
+            if (object.has_member("can_post_stories"))
+                can_post_stories = object.get_boolean_member("can_post_stories");
+            
+            if (object.has_member("can_edit_stories"))
+                can_edit_stories = object.get_boolean_member("can_edit_stories");
+            
+            if (object.has_member("can_delete_stories"))
+                can_delete_stories = object.get_boolean_member("can_delete_stories");
             
             if (object.has_member("can_manage_topics"))
                 can_manage_topics = object.get_boolean_member("can_manage_topics");

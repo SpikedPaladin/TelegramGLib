@@ -12,6 +12,9 @@ namespace Telegram {
         public bool? can_post_messages;
         public bool? can_edit_messages;
         public bool? can_pin_messages;
+        public bool? can_post_stories;
+        public bool? can_edit_stories;
+        public bool? can_delete_stories;
         public bool? can_manage_topics;
         
         public ChatAdministratorRights(Json.Object object) {
@@ -32,6 +35,15 @@ namespace Telegram {
             
             if (object.has_member("can_pin_messages"))
                 can_pin_messages = object.get_boolean_member("can_pin_messages");
+            
+            if (object.has_member("can_post_stories"))
+                can_post_stories = object.get_boolean_member("can_post_stories");
+            
+            if (object.has_member("can_edit_stories"))
+                can_edit_stories = object.get_boolean_member("can_edit_stories");
+            
+            if (object.has_member("can_delete_stories"))
+                can_delete_stories = object.get_boolean_member("can_delete_stories");
             
             if (object.has_member("can_manage_topics"))
                 can_manage_topics = object.get_boolean_member("can_manage_topics");
@@ -76,12 +88,27 @@ namespace Telegram {
                 builder.add_boolean_value(can_edit_messages);
             }
             
-            if (can_post_messages != null) {
+            if (can_pin_messages != null) {
                 builder.set_member_name("can_pin_messages");
                 builder.add_boolean_value(can_pin_messages);
             }
             
-            if (can_post_messages != null) {
+            if (can_post_stories != null) {
+                builder.set_member_name("can_post_stories");
+                builder.add_boolean_value(can_post_stories);
+            }
+            
+            if (can_edit_stories != null) {
+                builder.set_member_name("can_edit_stories");
+                builder.add_boolean_value(can_edit_stories);
+            }
+            
+            if (can_delete_stories != null) {
+                builder.set_member_name("can_delete_stories");
+                builder.add_boolean_value(can_delete_stories);
+            }
+            
+            if (can_manage_topics != null) {
                 builder.set_member_name("can_manage_topics");
                 builder.add_boolean_value(can_manage_topics);
             }

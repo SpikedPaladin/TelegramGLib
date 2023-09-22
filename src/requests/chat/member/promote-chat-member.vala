@@ -14,6 +14,9 @@ namespace Telegram {
         public bool? can_change_info;
         public bool? can_invite_users;
         public bool? can_pin_messages;
+        public bool? can_post_stories;
+        public bool? can_edit_stories;
+        public bool? can_delete_stories;
         public bool? can_manage_topics;
         
         public override string method() {
@@ -55,6 +58,15 @@ namespace Telegram {
             
             if (can_pin_messages != null)
                 queue += @"&can_pin_messages=$can_pin_messages";
+            
+            if (can_post_stories != null)
+                queue += @"&can_post_stories=$can_post_stories";
+            
+            if (can_edit_stories != null)
+                queue += @"&can_edit_stories=$can_edit_stories";
+            
+            if (can_delete_stories != null)
+                queue += @"&can_delete_stories=$can_delete_stories";
             
             if (can_manage_topics != null)
                 queue += @"&can_manage_topics=$can_manage_topics";
