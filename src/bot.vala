@@ -29,7 +29,9 @@ namespace Telegram {
         public MainLoop? main_loop;
         
         construct {
-            session = new Soup.Session();
+            session = new Soup.Session() {
+                timeout = 30
+            };
         }
         
         public void start() {

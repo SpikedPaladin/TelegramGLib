@@ -35,11 +35,11 @@ namespace Telegram {
         public bool create_main_loop;
         
         public BotConfig() {
-            timeout = 5;
+            timeout = 15;
         }
         
         public BotConfig.default() {
-            timeout = 5;
+            timeout = 15;
             create_main_loop = true;
         }
     }
