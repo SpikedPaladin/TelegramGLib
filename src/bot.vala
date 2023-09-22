@@ -272,7 +272,7 @@ namespace Telegram {
             var message = new Soup.Message("GET", @"https://api.telegram.org/bot$token/$endpoint?$(params ?? "")");
             
             try {
-                var stream = yield session.send_async(message, Priority.DEFAULT, null);
+                var stream = yield session.send_async(message, Priority.HIGH, null);
                 var parser = new Json.Parser();
                 yield parser.load_from_stream_async(stream);
                 
