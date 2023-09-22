@@ -289,7 +289,7 @@ namespace Telegram {
                 
                 return response;
             } catch (Error e) {
-                Util.log(@"Error while making request: $(e.message)", Util.LogLevel.WARNING);
+                Util.log(@"Error while making request ($(endpoint)): $(e.message)", Util.LogLevel.WARNING);
                 return null;
             }
         }
@@ -420,7 +420,7 @@ namespace Telegram {
                     
                     return response;
                 } catch (Error e) {
-                    Util.log(@"Error while making request: $(e.message)", Util.LogLevel.WARNING);
+                    Util.log(@"Error while sending request $(request.method()): $(e.message)", Util.LogLevel.WARNING);
                 }
             }
             return yield make_request(request.method(), request.queue());
