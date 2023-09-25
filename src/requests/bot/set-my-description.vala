@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetMyDescription : BaseRequest {
+    public class SetMyDescription : AbstractRequest {
         public string? description;
         public string? language_code;
         

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class AnswerWebAppQuery : BaseRequest {
+    public class AnswerWebAppQuery : AbstractRequest {
         public string web_app_query_id;
         public InlineQueryResult result;
         

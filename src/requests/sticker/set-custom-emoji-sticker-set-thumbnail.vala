@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetCustomEmojiStickerSetThumbnail : BaseRequest {
+    public class SetCustomEmojiStickerSetThumbnail : AbstractRequest {
         public string sticker;
         public string? custom_emoji_id;
         

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SendDice : BaseRequest {
+    public class SendDice : AbstractRequest {
         public ChatId chat_id;
         public int? message_thread_id;
         public string? emoji;

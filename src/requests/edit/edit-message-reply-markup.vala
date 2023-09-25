@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class EditMessageReplyMarkup : BaseRequest {
+    public class EditMessageReplyMarkup : AbstractRequest {
         public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;

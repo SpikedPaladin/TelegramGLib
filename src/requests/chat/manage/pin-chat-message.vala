@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class PinChatMessage : BaseRequest {
+    public class PinChatMessage : AbstractRequest {
         public ChatId chat_id;
         public int message_id;
         public bool? disable_notification;

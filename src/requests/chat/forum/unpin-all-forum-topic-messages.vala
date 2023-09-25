@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class UnpinAllForumTopicMessages : BaseRequest {
+    public class UnpinAllForumTopicMessages : AbstractRequest {
         public ChatId chat_id;
         public int message_thread_id;
         

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetStickerEmojiList : BaseRequest {
+    public class SetStickerEmojiList : AbstractRequest {
         public string sticker;
         public string[] emoji_list;
         

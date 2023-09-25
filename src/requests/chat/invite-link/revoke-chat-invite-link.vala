@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class RevokeChatInviteLink : BaseRequest {
+    public class RevokeChatInviteLink : AbstractRequest {
         public ChatId chat_id;
         public string invite_link;
         

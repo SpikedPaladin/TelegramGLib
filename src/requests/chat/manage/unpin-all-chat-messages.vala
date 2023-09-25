@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class UnpinAllChatMessages : BaseRequest {
+    public class UnpinAllChatMessages : AbstractRequest {
         public ChatId chat_id;
         
         public override string method() {

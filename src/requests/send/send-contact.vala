@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SendContact : BaseRequest {
+    public class SendContact : AbstractRequest {
         public ChatId chat_id;
         public int? message_thread_id;
         public string phone_number;

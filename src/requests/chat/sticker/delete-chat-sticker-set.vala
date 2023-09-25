@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class DeleteChatStickerSet : BaseRequest {
+    public class DeleteChatStickerSet : AbstractRequest {
         public ChatId chat_id;
         
         public override string method() {

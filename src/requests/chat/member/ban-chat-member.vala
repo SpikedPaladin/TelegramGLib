@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class BanChatMember : BaseRequest {
+    public class BanChatMember : AbstractRequest {
         public ChatId chat_id;
         public int64 user_id;
         public int64? until_date;

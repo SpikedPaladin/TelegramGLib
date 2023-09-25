@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetChatMenuButton : BaseRequest {
+    public class SetChatMenuButton : AbstractRequest {
         public ChatId? chat_id;
         public MenuButton? menu_button;
         

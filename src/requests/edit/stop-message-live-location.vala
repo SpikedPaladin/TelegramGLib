@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class StopMessageLiveLocation : BaseRequest {
+    public class StopMessageLiveLocation : AbstractRequest {
         public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;

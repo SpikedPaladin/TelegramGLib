@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetMyDefaultAdministratorRights : BaseRequest {
+    public class SetMyDefaultAdministratorRights : AbstractRequest {
         public ChatAdministratorRights? rights;
         public bool? for_channels;
         

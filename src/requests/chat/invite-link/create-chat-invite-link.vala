@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class CreateChatInviteLink : BaseRequest {
+    public class CreateChatInviteLink : AbstractRequest {
         public ChatId chat_id;
         public string? name;
         public int64? expire_date;

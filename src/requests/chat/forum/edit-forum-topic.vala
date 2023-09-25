@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class EditForumTopic : BaseRequest {
+    public class EditForumTopic : AbstractRequest {
         public ChatId chat_id;
         public int message_thread_id;
         public string? name;

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class DeleteMyCommands : BaseRequest {
+    public class DeleteMyCommands : AbstractRequest {
         public BotCommandScope? scope;
         public string? language_code;
         

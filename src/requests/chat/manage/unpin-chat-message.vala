@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class UnpinChatMessage : BaseRequest {
+    public class UnpinChatMessage : AbstractRequest {
         public ChatId chat_id;
         public int? message_id;
         

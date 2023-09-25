@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ReopenGeneralForumTopic : BaseRequest {
+    public class ReopenGeneralForumTopic : AbstractRequest {
         public ChatId chat_id;
         
         public override string method() {

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class RestrictChatMember : BaseRequest {
+    public class RestrictChatMember : AbstractRequest {
         public ChatId chat_id;
         public int64 user_id;
         public ChatPermissions permissions;

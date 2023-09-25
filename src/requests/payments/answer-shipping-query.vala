@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class AnswerShippingQuery : BaseRequest {
+    public class AnswerShippingQuery : AbstractRequest {
         public string shipping_query_id;
         public bool ok;
         public ShippingOption[]? shipping_options;

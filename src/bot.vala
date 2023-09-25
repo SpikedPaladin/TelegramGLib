@@ -435,7 +435,7 @@ namespace Telegram {
          * @param request A request to send
          * @return {@link Response} from Bot API
          */
-        public async Response? send(BaseRequest request) {
+        public async Response? send(AbstractRequest request) {
             if (request is UploadRequest && request.has_attachments()) {
                 var upload_request = request as UploadRequest;
                 
@@ -616,12 +616,12 @@ namespace Telegram {
         }
     }
     
-    public abstract class BaseRequest : Object {
+    public abstract class AbstractRequest : Object {
         public abstract string method();
         public abstract string queue();
     }
     
-    public abstract class UploadRequest : BaseRequest {
+    public abstract class UploadRequest : AbstractRequest {
         public Bytes? bytes;
         public abstract bool has_attachments();
         public abstract async Soup.Multipart create_multipart() throws Error;

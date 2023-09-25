@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetPassportDataErrors : BaseRequest {
+    public class SetPassportDataErrors : AbstractRequest {
         public string user_id;
         public PassportElementError[] errors;
         

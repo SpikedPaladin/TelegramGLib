@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ApproveChatJoinRequest : BaseRequest {
+    public class ApproveChatJoinRequest : AbstractRequest {
         public ChatId chat_id;
         public int64 user_id;
         

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class AnswerCallbackQuery : BaseRequest {
+    public class AnswerCallbackQuery : AbstractRequest {
         public string callback_query_id;
         public string? text;
         public bool? show_alert;

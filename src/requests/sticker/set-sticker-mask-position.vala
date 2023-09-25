@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetStickerMaskPosition : BaseRequest {
+    public class SetStickerMaskPosition : AbstractRequest {
         public string sticker;
         public MaskPosition? mask_position;
         

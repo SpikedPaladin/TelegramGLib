@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ExportChatInviteLink : BaseRequest {
+    public class ExportChatInviteLink : AbstractRequest {
         public ChatId chat_id;
         
         public override string method() {

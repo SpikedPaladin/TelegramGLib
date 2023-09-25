@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetStickerPositionInSet : BaseRequest {
+    public class SetStickerPositionInSet : AbstractRequest {
         public string sticker;
         public int position;
         

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SendInvoice : BaseRequest {
+    public class SendInvoice : AbstractRequest {
         public ChatId chat_id;
         public int? message_thread_id;
         public string title;

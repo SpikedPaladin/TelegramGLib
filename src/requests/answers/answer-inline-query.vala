@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class AnswerInlineQuery : BaseRequest {
+    public class AnswerInlineQuery : AbstractRequest {
         public string inline_query_id;
         public InlineQueryResult[] results;
         public int? cache_time;

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class BanChatSenderChat : BaseRequest {
+    public class BanChatSenderChat : AbstractRequest {
         public ChatId chat_id;
         public int64 sender_chat_id;
         

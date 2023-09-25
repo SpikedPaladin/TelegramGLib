@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetChatAdministratorCustomTitle : BaseRequest {
+    public class SetChatAdministratorCustomTitle : AbstractRequest {
         public ChatId chat_id;
         public int64 user_id;
         public string custom_title;

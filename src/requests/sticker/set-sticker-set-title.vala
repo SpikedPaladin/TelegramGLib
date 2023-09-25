@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetStickerTitle : BaseRequest {
+    public class SetStickerTitle : AbstractRequest {
         public string sticker;
         public string title;
         

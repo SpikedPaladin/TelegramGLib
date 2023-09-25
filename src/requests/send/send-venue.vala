@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SendVenue : BaseRequest {
+    public class SendVenue : AbstractRequest {
         public ChatId chat_id;
         public int? message_thread_id;
         public double latitude;

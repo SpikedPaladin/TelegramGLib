@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ForwardMessage : BaseRequest {
+    public class ForwardMessage : AbstractRequest {
         public ChatId chat_id;
         public int? message_thread_id;
         public ChatId from_chat_id;

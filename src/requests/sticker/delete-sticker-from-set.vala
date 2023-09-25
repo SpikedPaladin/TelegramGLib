@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class DeleteStickerFromSet : BaseRequest {
+    public class DeleteStickerFromSet : AbstractRequest {
         public string sticker;
         
         public override string method() {

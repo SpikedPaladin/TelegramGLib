@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class CreateForumTopic : BaseRequest {
+    public class CreateForumTopic : AbstractRequest {
         public ChatId chat_id;
         public string name;
         public int? icon_color;

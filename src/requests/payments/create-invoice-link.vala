@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class CreateInvoiceLink : BaseRequest {
+    public class CreateInvoiceLink : AbstractRequest {
         public string title;
         public string description;
         public string payload;

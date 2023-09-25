@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class EditMessageCaption : BaseRequest {
+    public class EditMessageCaption : AbstractRequest {
         public ChatId? chat_id;
         public int? message_id;
         public string? inline_message_id;

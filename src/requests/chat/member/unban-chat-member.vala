@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class UnbanChatMember : BaseRequest {
+    public class UnbanChatMember : AbstractRequest {
         public ChatId chat_id;
         public int64 user_id;
         public bool? only_if_banned;

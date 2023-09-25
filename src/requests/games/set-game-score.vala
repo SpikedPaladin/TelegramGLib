@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetGameScore : BaseRequest {
+    public class SetGameScore : AbstractRequest {
         public int64 user_id;
         public int64 score;
         public bool? force;

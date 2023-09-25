@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class AnswerPreCheckoutQuery : BaseRequest {
+    public class AnswerPreCheckoutQuery : AbstractRequest {
         public string pre_checkout_query_id;
         public bool ok;
         public string? error_message;

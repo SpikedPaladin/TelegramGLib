@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class DeleteMessage : BaseRequest {
+    public class DeleteMessage : AbstractRequest {
         public ChatId chat_id;
         public int message_id;
         

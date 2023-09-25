@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class LeaveChat : BaseRequest {
+    public class LeaveChat : AbstractRequest {
         public ChatId chat_id;
         
         public override string method() {

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class SetChatDescription : BaseRequest {
+    public class SetChatDescription : AbstractRequest {
         public ChatId chat_id;
         public string? description;
         
