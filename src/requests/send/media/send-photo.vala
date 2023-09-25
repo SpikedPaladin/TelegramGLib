@@ -5,7 +5,7 @@ namespace Telegram {
         public int? message_thread_id;
         public string photo;
         public string? caption;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
         public bool? has_spoiler;
         public bool? disable_notification;

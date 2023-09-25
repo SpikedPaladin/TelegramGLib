@@ -5,7 +5,7 @@ namespace Telegram {
         public string audio_url;
         public string title;
         public string? caption;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
         public string? performer;
         public int? audio_duration;

@@ -1,4 +1,5 @@
 namespace Telegram {
+    public static ParseMode? DEFAULT_PARSE_MODE = null;
     
     /**
      * A client to use the Telegram Bot API

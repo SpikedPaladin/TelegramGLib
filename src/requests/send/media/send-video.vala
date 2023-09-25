@@ -10,7 +10,7 @@ namespace Telegram {
         public string? thumbnail;
         public Bytes? thumbnail_bytes;
         public string? caption;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
         public bool? has_spoiler;
         public bool? supports_streaming;

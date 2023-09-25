@@ -5,7 +5,7 @@ namespace Telegram {
         public string mpeg4_file_id;
         public string? title;
         public string? caption;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
         public InlineKeyboardMarkup? reply_markup;
         public InputMessageContent? input_message_content;

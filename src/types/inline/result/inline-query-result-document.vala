@@ -4,7 +4,7 @@ namespace Telegram {
         public string id = Uuid.string_random();
         public string title;
         public string? caption;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
         public string document_url;
         public string mime_type;

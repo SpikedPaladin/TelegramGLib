@@ -10,7 +10,7 @@ namespace Telegram {
         public bool? allows_multiple_answers;
         public int? correct_option_id;
         public string? explanation;
-        public ParseMode? explanation_parse_mode;
+        public ParseMode? explanation_parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? explanation_entities;
         public int? open_period;
         public int64? close_date;

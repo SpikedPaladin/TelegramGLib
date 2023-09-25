@@ -2,7 +2,7 @@ namespace Telegram {
     
     public class InputTextMessageContent : Object, Serializable, InputMessageContent {
         public string message_text;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? entities;
         public bool? disable_web_page_preview;
         

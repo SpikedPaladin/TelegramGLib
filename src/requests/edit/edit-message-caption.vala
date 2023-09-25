@@ -5,7 +5,7 @@ namespace Telegram {
         public int? message_id;
         public string? inline_message_id;
         public string? caption;
-        public ParseMode? parse_mode;
+        public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
         public InlineKeyboardMarkup? reply_markup;
         
