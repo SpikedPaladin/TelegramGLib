@@ -1,8 +1,10 @@
 namespace Telegram {
     
     public class InputMediaAnimation : Object, Serializable, InputMedia {
+        public Bytes? bytes;
         public string media;
         public string? thumbnail;
+        public Bytes? thumbnail_bytes;
         public string? caption;
         public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? caption_entities;
@@ -73,14 +75,29 @@ namespace Telegram {
         }
         
         public bool has_attachments() {
-            if (media.has_prefix("file://") || (thumbnail != null && thumbnail.has_prefix("file://")))
-                return true;
-            
-            return false;
+            return bytes != null || thumbnail_bytes != null || media.has_prefix("file://") || (thumbnail != null && thumbnail.has_prefix("file://"));
         }
         
         public async InputFile[] append(int index) throws Error {
             InputFile[] arr = {};
+            
+            if (bytes != null) {
+                arr += InputFile() {
+                    name = @"media$index",
+                    filename = media,
+                    body = bytes
+                };
+                media = @"attach://media$index";
+            }
+            
+            if (thumbnail_bytes != null) {
+                arr += InputFile() {
+                    name = @"thumbnail$index",
+                    filename = media,
+                    body = bytes
+                };
+                thumbnail = @"attach://thumbnail$index";
+            }
             
             if (media.has_prefix("file://")) {
                 var file = File.new_for_path(media.replace("file://", ""));

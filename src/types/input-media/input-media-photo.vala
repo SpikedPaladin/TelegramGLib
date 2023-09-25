@@ -1,6 +1,7 @@
 namespace Telegram {
     
     public class InputMediaPhoto : Object, Serializable, InputMedia, InputMediaGroupable {
+        public Bytes? bytes;
         public string media;
         public string? caption;
         public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
@@ -49,11 +50,22 @@ namespace Telegram {
         }
         
         public bool has_attachments() {
-            return media.has_prefix("file://");
+            return bytes != null || media.has_prefix("file://");
         }
         
         public async InputFile[] append(int index) throws Error {
             InputFile[] arr = {};
+            
+            if (bytes != null) {
+                arr += InputFile() {
+                    name = @"media$index",
+                    filename = media,
+                    body = bytes
+                };
+                media = @"attach://media$index";
+                
+                return arr;
+            }
             
             var file = File.new_for_path(media.replace("file://", ""));
             var body = yield file.load_bytes_async(null, null);
