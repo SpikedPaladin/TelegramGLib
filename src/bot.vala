@@ -81,6 +81,7 @@ namespace Telegram {
             
             return new UserProfilePhotos(response.result.get_object());
         }
+        
         /**
          * Use this method to get basic information about a file and prepare it for downloading.  
          * For the moment, bots can download files of up to 20MB in size.  
@@ -322,12 +323,14 @@ namespace Telegram {
                 if (config.debug)
                     Util.log(@"$endpoint: $(Json.to_string(node, false))", Util.LogLevel.DEBUG);
                 
-                if (!response.ok)
+                if (!response.ok && config.warnings)
                     Util.log(@"$endpoint: $(response.description)", Util.LogLevel.WARNING);
                 
                 return response;
             } catch (Error e) {
-                Util.log(@"Error while making request ($(endpoint)): $(e.message)", Util.LogLevel.WARNING);
+                if (config.warnings)
+                    Util.log(@"Error while making request ($(endpoint)): $(e.message)", Util.LogLevel.WARNING);
+                
                 return null;
             }
         }
@@ -453,12 +456,13 @@ namespace Telegram {
                     if (config.debug)
                         Util.log(@"$(request.method()): $(Json.to_string(node, false))", Util.LogLevel.DEBUG);
                     
-                    if (!response.ok)
+                    if (!response.ok && config.warnings)
                         Util.log(@"$(request.method()): $(response.description)", Util.LogLevel.WARNING);
                     
                     return response;
                 } catch (Error e) {
-                    Util.log(@"Error while sending request $(request.method()): $(e.message)", Util.LogLevel.WARNING);
+                    if (config.warnings)
+                        Util.log(@"Error while sending request $(request.method()): $(e.message)", Util.LogLevel.WARNING);
                 }
             }
             return yield make_request(request.method(), request.queue());

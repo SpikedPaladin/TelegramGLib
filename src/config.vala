@@ -29,6 +29,10 @@ namespace Telegram {
          */
         public bool debug;
         /**
+         * Enable warnings log
+         */
+        public bool warnings;
+        /**
          * Enable {@link GLib.MainLoop} creation inside bot
          * Don't change it if you're only running one {@link Bot} at a time
          */
