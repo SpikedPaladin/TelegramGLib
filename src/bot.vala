@@ -28,6 +28,9 @@ namespace Telegram {
          * {@link GLib.MainLoop} which created when bot started with {@link BotConfig.create_main_loop} set to ''True''
          */
         public MainLoop? main_loop;
+        public Thread<void>? updates_thread;
+        public Thread<void>? processing_thread;
+        private AsyncQueue<Update>? async_queue;
         
         construct {
             session = new Soup.Session() {
@@ -39,9 +42,24 @@ namespace Telegram {
             if (config.create_main_loop)
                 main_loop = new MainLoop();
             
-            get_updates.begin();
+            if (config.threading)
+                start_threaded();
+            else
+                get_updates.begin();
             
             main_loop?.run();
+        }
+        
+        private void start_threaded() {
+            async_queue = new AsyncQueue<Update>();
+            updates_thread = new Thread<void>("updates", () => {
+                get_updates.begin();
+            });
+            processing_thread = new Thread<void>("processing", () => {
+                while (true) {
+                    process_update(async_queue.pop());
+                }
+            });
         }
         
         public void add_handler(AbstractHandler handler) {
@@ -390,68 +408,75 @@ namespace Telegram {
                     if (update.update_id >= update_id)
                         update_id = update.update_id + 1;
                     
-                    // Route update processing to specific signal
-                    if (update.message != null && update.message.is_command() && on_command(update.message))
-                        return;
-                    
-                    if (update.message != null && on_message(update.message))
-                        return;
-                    
-                    if (update.edited_message != null && on_edited_message(update.edited_message))
-                        return;
-                    
-                    if (update.channel_post != null && on_channel_post(update.channel_post))
-                        return;
-                    
-                    if (update.edited_channel_post != null && on_edited_channel_post(update.edited_channel_post))
-                        return;
-                    
-                    if (update.message_reaction != null && on_message_reaction(update.message_reaction))
-                        return;
-                    
-                    if (update.message_reaction_count != null && on_message_reaction_count(update.message_reaction_count))
-                        return;
-                    
-                    if (update.inline_query != null && on_inline_query(update.inline_query))
-                        return;
-                    
-                    if (update.chosen_inline_result != null && on_chosen_inline_result(update.chosen_inline_result))
-                        return;
-                    
-                    if (update.callback_query != null && on_callback_query(update.callback_query))
-                        return;
-                    
-                    if (update.shipping_query != null && on_shipping_query(update.shipping_query))
-                        return;
-                    
-                    if (update.pre_checkout_query != null && on_pre_checkout_query(update.pre_checkout_query))
-                        return;
-                    
-                    if (update.poll != null && on_poll(update.poll))
-                        return;
-                    
-                    if (update.poll_answer != null && on_poll_answer(update.poll_answer))
-                        return;
-                    
-                    if (update.my_chat_member != null && on_my_chat_member(update.my_chat_member))
-                        return;
-                    
-                    if (update.chat_member != null && on_chat_member(update.chat_member))
-                        return;
-                    
-                    if (update.chat_join_request != null && on_chat_join_request(update.chat_join_request))
-                        return;
-                    
-                    if (update.chat_boost != null && on_chat_boost(update.chat_boost))
-                        return;
-                    
-                    if (update.removed_chat_boost != null && on_removed_chat_boost(update.removed_chat_boost))
-                        return;
-                    
-                    // Update processing with on_update signal
-                    on_update(update);
+                    if (config.threading)
+                        async_queue.push(update);
+                    else
+                        process_update(update);
                 });
             }
+        }
+        
+        private void process_update(Update update) {
+            // Route update processing to specific signal
+            if (update.message != null && update.message.is_command() && on_command(update.message))
+                return;
+            
+            if (update.message != null && on_message(update.message))
+                return;
+            
+            if (update.edited_message != null && on_edited_message(update.edited_message))
+                return;
+            
+            if (update.channel_post != null && on_channel_post(update.channel_post))
+                return;
+            
+            if (update.edited_channel_post != null && on_edited_channel_post(update.edited_channel_post))
+                return;
+            
+            if (update.message_reaction != null && on_message_reaction(update.message_reaction))
+                return;
+            
+            if (update.message_reaction_count != null && on_message_reaction_count(update.message_reaction_count))
+                return;
+            
+            if (update.inline_query != null && on_inline_query(update.inline_query))
+                return;
+            
+            if (update.chosen_inline_result != null && on_chosen_inline_result(update.chosen_inline_result))
+                return;
+            
+            if (update.callback_query != null && on_callback_query(update.callback_query))
+                return;
+            
+            if (update.shipping_query != null && on_shipping_query(update.shipping_query))
+                return;
+            
+            if (update.pre_checkout_query != null && on_pre_checkout_query(update.pre_checkout_query))
+                return;
+            
+            if (update.poll != null && on_poll(update.poll))
+                return;
+            
+            if (update.poll_answer != null && on_poll_answer(update.poll_answer))
+                return;
+            
+            if (update.my_chat_member != null && on_my_chat_member(update.my_chat_member))
+                return;
+            
+            if (update.chat_member != null && on_chat_member(update.chat_member))
+                return;
+            
+            if (update.chat_join_request != null && on_chat_join_request(update.chat_join_request))
+                return;
+            
+            if (update.chat_boost != null && on_chat_boost(update.chat_boost))
+                return;
+            
+            if (update.removed_chat_boost != null && on_removed_chat_boost(update.removed_chat_boost))
+                return;
+            
+            // Update processing with on_update signal
+            on_update(update);
         }
         
         /**
