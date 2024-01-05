@@ -1,9 +1,10 @@
 namespace Telegram {
     
-    public class KeyboardButtonRequestUser : Object, Serializable {
+    public class KeyboardButtonRequestUsers : Object, Serializable {
         public int request_id;
         public bool? user_is_bot;
         public bool? user_is_premium;
+        public int? max_quantity;
         
         public Json.Node serialize() {
             var builder = new Json.Builder();
@@ -21,6 +22,11 @@ namespace Telegram {
             if (user_is_premium != null) {
                 builder.set_member_name("user_is_premium");
                 builder.add_boolean_value(user_is_premium);
+            }
+            
+            if (max_quantity != null) {
+                builder.set_member_name("max_quantity");
+                builder.add_int_value(max_quantity);
             }
             
             builder.end_object();

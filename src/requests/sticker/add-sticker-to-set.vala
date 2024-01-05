@@ -4,12 +4,6 @@ namespace Telegram {
         public int64 user_id;
         public string name;
         public InputSticker sticker;
-        public string? emoji;
-        public bool? disable_notification;
-        public bool? protect_content;
-        public int? reply_to_message_id;
-        public bool? allow_sending_without_reply;
-        public ReplyMarkup? reply_markup;
         
         public override string method() {
             return "addStickerToSet";

@@ -170,6 +170,15 @@ namespace Telegram {
             return result;
         }
         
+        public async UserChatBoosts? get_user_chat_boosts(ChatId chat_id, int64 user_id) {
+            var response = yield make_request("getUserChatBoosts", @"chat_id=$chat_id&user_id=$user_id");
+            
+            if (response == null || !response.ok)
+                return null;
+            
+            return new UserChatBoosts(response.result.get_object());
+        }
+        
         public async BotCommand[]? get_my_commands(BotCommandScope? scope = null, string? language_code = null) {
             string queue = null;
             
@@ -397,6 +406,12 @@ namespace Telegram {
                     if (update.edited_channel_post != null && on_edited_channel_post(update.edited_channel_post))
                         return;
                     
+                    if (update.message_reaction != null && on_message_reaction(update.message_reaction))
+                        return;
+                    
+                    if (update.message_reaction_count != null && on_message_reaction_count(update.message_reaction_count))
+                        return;
+                    
                     if (update.inline_query != null && on_inline_query(update.inline_query))
                         return;
                     
@@ -425,6 +440,12 @@ namespace Telegram {
                         return;
                     
                     if (update.chat_join_request != null && on_chat_join_request(update.chat_join_request))
+                        return;
+                    
+                    if (update.chat_boost != null && on_chat_boost(update.chat_boost))
+                        return;
+                    
+                    if (update.removed_chat_boost != null && on_removed_chat_boost(update.removed_chat_boost))
                         return;
                     
                     // Update processing with on_update signal
@@ -509,6 +530,10 @@ namespace Telegram {
         
         public virtual signal bool on_edited_channel_post(Message edited_channel_post) { return false; }
         
+        public virtual signal bool on_message_reaction(MessageReactionUpdated message_reaction) { return false; }
+        
+        public virtual signal bool on_message_reaction_count(MessageReactionCountUpdated message_reaction_count) { return false; }
+        
         public virtual signal bool on_inline_query(InlineQuery inline_query) {
             foreach (var handler in handlers) {
                 if (handler is InlineQueryHandler) {
@@ -567,13 +592,17 @@ namespace Telegram {
         public virtual signal bool on_chat_member(ChatMemberUpdated chat_member) { return false; }
         
         public virtual signal bool on_chat_join_request(ChatJoinRequest chat_join_request) { return false; }
+        
+        public virtual signal bool on_chat_boost(ChatBoostUpdated chat_boost) { return false; }
+        
+        public virtual signal bool on_removed_chat_boost(ChatBoostRemoved removed_chat_boost) { return false; }
     }
     
-    protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
+    protected interface InputMediaGroupable : Serializable, InputMedia, Object {}
     
-    protected interface InlineQueryResult : Object, Serializable {}
+    protected interface InlineQueryResult : Serializable, Object {}
     
-    protected interface ReplyMarkup : Object, Serializable {}
+    protected interface ReplyMarkup : Serializable, Object {}
     
     protected interface Serializable : Object {
         public abstract Json.Node serialize();

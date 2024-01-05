@@ -3,7 +3,7 @@ namespace Telegram {
     public class CallbackQuery : Object {
         public string id;
         public User from;
-        public Message? message;
+        public MaybeInaccessibleMessage? message;
         public string? inline_message_id;
         public string chat_instance;
         public string? data;
@@ -15,7 +15,7 @@ namespace Telegram {
             chat_instance = object.get_string_member("chat_instance");
             
             if (object.has_member("message"))
-                message = new Message(object.get_object_member("message"));
+                message = MaybeInaccessibleMessage.from_json(object.get_object_member("message"));
             
             if (object.has_member("inline_message_id"))
                 inline_message_id = object.get_string_member("inline_message_id");

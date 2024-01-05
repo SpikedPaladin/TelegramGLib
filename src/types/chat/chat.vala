@@ -52,6 +52,40 @@ namespace Telegram {
         public string[]? active_usernames;
         /**
          * //Optional.//
+         * List of available reactions allowed in the chat.
+         * If omitted, then all emoji reactions are allowed.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public ReactionType[]? available_reactions;
+        /**
+         * //Optional.//
+         * Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview.
+         * See accent colors for more details.
+         * Returned only in {@link Bot.get_chat}.
+         * Always returned in {@link Bot.get_chat}. 
+         */
+        public int accent_color_id;
+        /**
+         * //Optional.//
+         * Custom emoji identifier of emoji chosen by the chat for the reply header and link preview background.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public string background_custom_emoji_id;
+        /**
+         * //Optional.//
+         * Identifier of the accent color for the chat's profile background.
+         * See profile accent colors for more details.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public int profile_accent_color_id;
+        /**
+         * //Optional.//
+         * Custom emoji identifier of the emoji chosen by the chat for its profile background.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public string profile_background_custom_emoji_id;
+        /**
+         * //Optional.//
          * Custom emoji identifier of emoji status of the other party in a private chat.
          * Returned only in {@link Bot.get_chat}.
          */
@@ -148,6 +182,12 @@ namespace Telegram {
         public bool has_protected_content;
         /**
          * //Optional.//
+         * True, if new chat members will have access to old messages; available only to chat administrators.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public bool has_visible_history;
+        /**
+         * //Optional.//
          * For supergroups, name of group sticker set.
          * Returned only in {@link Bot.get_chat}.
          */
@@ -202,6 +242,27 @@ namespace Telegram {
                 active_usernames = temp;
             }
             
+            if (object.has_member("available_reactions")) {
+                ReactionType[] temp = {};
+                
+                foreach (var element in object.get_array_member("available_reactions").get_elements())
+                    temp += ReactionType.from_json(element.get_object());
+                
+                available_reactions = temp;
+            }
+            
+            if (object.has_member("accent_color_id"))
+                accent_color_id = (int) object.get_int_member("accent_color_id");
+            
+            if (object.has_member("background_custom_emoji_id"))
+                background_custom_emoji_id = object.get_string_member("background_custom_emoji_id");
+            
+            if (object.has_member("profile_accent_color_id"))
+                profile_accent_color_id = (int) object.get_int_member("profile_accent_color_id");
+            
+            if (object.has_member("profile_background_custom_emoji_id"))
+                profile_background_custom_emoji_id = object.get_string_member("profile_background_custom_emoji_id");
+            
             if (object.has_member("emoji_status_custom_emoji_id"))
                 emoji_status_custom_emoji_id = object.get_string_member("emoji_status_custom_emoji_id");
             
@@ -249,6 +310,9 @@ namespace Telegram {
             
             if (object.has_member("has_protected_content"))
                 has_protected_content = object.get_boolean_member("has_protected_content");
+            
+            if (object.has_member("has_visible_history"))
+                has_visible_history = object.get_boolean_member("has_visible_history");
             
             if (object.has_member("sticker_set_name"))
                 sticker_set_name = object.get_string_member("sticker_set_name");

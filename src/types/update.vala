@@ -6,6 +6,8 @@ namespace Telegram {
         public Message? edited_message;
         public Message? channel_post;
         public Message? edited_channel_post;
+        public MessageReactionUpdated? message_reaction;
+        public MessageReactionCountUpdated? message_reaction_count;
         public InlineQuery? inline_query;
         public ChosenInlineResult? chosen_inline_result;
         public CallbackQuery? callback_query;
@@ -16,6 +18,8 @@ namespace Telegram {
         public ChatMemberUpdated? my_chat_member;
         public ChatMemberUpdated? chat_member;
         public ChatJoinRequest? chat_join_request;
+        public ChatBoostUpdated? chat_boost;
+        public ChatBoostRemoved? removed_chat_boost;
         
         public Update(Json.Object object) {
             update_id = (int) object.get_int_member("update_id");
@@ -30,6 +34,12 @@ namespace Telegram {
             
             if (object.has_member("edited_channel_post"))
                 edited_channel_post = new Message(object.get_object_member("edited_channel_post"));
+            
+            if (object.has_member("message_reaction"))
+                message_reaction = new MessageReactionUpdated(object.get_object_member("message_reaction"));
+            
+            if (object.has_member("message_reaction_count"))
+                message_reaction_count = new MessageReactionCountUpdated(object.get_object_member("message_reaction_count"));
             
             if (object.has_member("inline_query"))
                 inline_query = new InlineQuery(object.get_object_member("inline_query"));
@@ -60,6 +70,12 @@ namespace Telegram {
             
             if (object.has_member("chat_join_request"))
                 chat_join_request = new ChatJoinRequest(object.get_object_member("chat_join_request"));
+            
+            if (object.has_member("chat_boost"))
+                chat_boost = new ChatBoostUpdated(object.get_object_member("chat_boost"));
+            
+            if (object.has_member("removed_chat_boost"))
+                removed_chat_boost = new ChatBoostRemoved(object.get_object_member("removed_chat_boost"));
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Telegram {
         public string message_text;
         public ParseMode? parse_mode = DEFAULT_PARSE_MODE;
         public MessageEntity[]? entities;
-        public bool? disable_web_page_preview;
+        public LinkPreviewOptions? link_preview_options;
         
         public Json.Node serialize() {
             var builder = new Json.Builder();
@@ -29,9 +29,9 @@ namespace Telegram {
                 builder.add_value(Serializable.serialize_array(arr));
             }
             
-            if (disable_web_page_preview != null) {
-                builder.set_member_name("disable_web_page_preview");
-                builder.add_boolean_value(disable_web_page_preview);
+            if (link_preview_options != null) {
+                builder.set_member_name("link_preview_options");
+                builder.add_value(link_preview_options.serialize());
             }
             
             builder.end_object();

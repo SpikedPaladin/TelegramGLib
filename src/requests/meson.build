@@ -1,7 +1,9 @@
 lib_sources += files(
     'send/send-message.vala',
     'send/forward-message.vala',
+    'send/forward-messages.vala',
     'send/copy-message.vala',
+    'send/copy-messages.vala',
     
     'send/media/send-photo.vala',
     'send/media/send-audio.vala',
@@ -18,6 +20,7 @@ lib_sources += files(
     'send/send-poll.vala',
     'send/send-dice.vala',
     'send/send-chat-action.vala',
+    'send/set-message-reaction.vala',
     
     'chat/member/ban-chat-member.vala',
     'chat/member/unban-chat-member.vala',
@@ -82,6 +85,7 @@ lib_sources += files(
     'edit/edit-message-reply-markup.vala',
     'edit/stop-poll.vala',
     'edit/delete-message.vala',
+    'edit/delete-messages.vala',
     
     'send/media/send-sticker.vala',
     

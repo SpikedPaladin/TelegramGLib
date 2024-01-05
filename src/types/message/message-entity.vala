@@ -81,6 +81,7 @@ namespace Telegram {
             UNDERLINE,
             STRIKETHROUGH,
             SPOILER,
+            BLOCKQUOTE,
             CODE,
             PRE,
             TEXT_LINK,
@@ -113,6 +114,8 @@ namespace Telegram {
                         return STRIKETHROUGH;
                     case "spoiler":
                         return SPOILER;
+                    case "blockquote":
+                        return BLOCKQUOTE;
                     case "code":
                         return CODE;
                     case "pre":
@@ -154,6 +157,8 @@ namespace Telegram {
                         return "strikethrough";
                     case SPOILER:
                         return "spoiler";
+                    case BLOCKQUOTE:
+                        return "blockquote";
                     case CODE:
                         return "code";
                     case PRE:

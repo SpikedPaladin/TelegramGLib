@@ -1,21 +1,18 @@
 namespace Telegram {
     
-    public class Message : Object {
+    public class Message : MaybeInaccessibleMessage, Object {
         public int message_id;
         public int? message_thread_id;
         public User? from;
         public Chat? sender_chat;
         public int64 date;
         public Chat chat;
-        public User? forward_from;
-        public Chat? forward_from_chat;
-        public int? forward_from_message_id;
-        public string? forward_signature;
-        public string? forward_sender_name;
-        public int64? forward_date;
+        public MessageOrigin forward_origin;
         public bool is_topic_message;
         public bool is_automatic_forward;
         public Message? reply_to_message;
+        public ExternalReplyInfo? external_reply;
+        public TextQuote? quote;
         public User? via_bot;
         public int64? edit_date;
         public bool has_protected_content;
@@ -23,6 +20,7 @@ namespace Telegram {
         public string? author_signature;
         public string? text;
         public MessageEntity[]? entities;
+        public LinkPreviewOptions? link_preview_options;
         public Animation? animation;
         public Audio? audio;
         public Document? document;
@@ -52,10 +50,10 @@ namespace Telegram {
         public MessageAutoDeleteTimerChanged? message_auto_delete_timer_changed;
         public int64? migrate_to_chat_id;
         public int64? migrate_from_chat_id;
-        public Message? pinned_message;
+        public MaybeInaccessibleMessage? pinned_message;
         public Invoice? invoice;
         public SuccessfulPayment? successful_payment;
-        public UserShared? user_shared;
+        public UsersShared? users_shared;
         public ChatShared? chat_shared;
         public string? connected_website;
         public WriteAccessAllowed? write_access_allowed;
@@ -67,6 +65,10 @@ namespace Telegram {
         public ForumTopicReopened? forum_topic_reopened;
         public GeneralForumTopicHidden? general_forum_topic_hidden;
         public GeneralForumTopicUnhidden? general_forum_topic_unhidden;
+        public GiveawayCreated? giveaway_created;
+        public Giveaway? giveaway;
+        public GiveawayWinners? giveaway_winners;
+        public GiveawayCompleted? giveaway_completed;
         public VideoChatScheduled? video_chat_scheduled;
         public VideoChatStarted? video_chat_started;
         public VideoChatEnded? video_chat_ended;
@@ -88,23 +90,8 @@ namespace Telegram {
             if (object.has_member("sender_chat"))
                 sender_chat = new Chat(object.get_object_member("sender_chat"));
             
-            if (object.has_member("forward_from"))
-                forward_from = new User(object.get_object_member("forward_from"));
-            
-            if (object.has_member("forward_from_chat"))
-                forward_from_chat = new Chat(object.get_object_member("forward_from_chat"));
-            
-            if (object.has_member("forward_from_message_id"))
-                forward_from_message_id = (int) object.get_int_member("forward_from_message_id");
-            
-            if (object.has_member("forward_signature"))
-                forward_signature = object.get_string_member("forward_signature");
-            
-            if (object.has_member("forward_sender_name"))
-                forward_sender_name = object.get_string_member("forward_sender_name");
-            
-            if (object.has_member("forward_date"))
-                forward_date = object.get_int_member("forward_date");
+            if (object.has_member("forward_origin"))
+                forward_origin = MessageOrigin.from_json(object.get_object_member("forward_origin"));
             
             if (object.has_member("is_topic_message"))
                 is_topic_message = object.get_boolean_member("is_topic_message");
@@ -114,6 +101,12 @@ namespace Telegram {
             
             if (object.has_member("reply_to_message"))
                 reply_to_message = new Message(object.get_object_member("reply_to_message"));
+            
+            if (object.has_member("external_reply"))
+                external_reply = new ExternalReplyInfo(object.get_object_member("external_reply"));
+            
+            if (object.has_member("quote"))
+                quote = new TextQuote(object.get_object_member("quote"));
             
             if (object.has_member("via_bot"))
                 via_bot = new User(object.get_object_member("via_bot"));
@@ -140,6 +133,9 @@ namespace Telegram {
                 }
                 entities = temp;
             }
+            
+            if (object.has_member("link_preview_options"))
+                link_preview_options = new LinkPreviewOptions(object.get_object_member("link_preview_options"));
             
             if (object.has_member("animation"))
                 animation = new Animation(object.get_object_member("animation"));
@@ -249,7 +245,7 @@ namespace Telegram {
                 migrate_from_chat_id = object.get_int_member("migrate_from_chat_id");
             
             if (object.has_member("pinned_message"))
-                pinned_message = new Message(object.get_object_member("pinned_message"));
+                pinned_message = MaybeInaccessibleMessage.from_json(object.get_object_member("pinned_message"));
             
             if (object.has_member("invoice"))
                 invoice = new Invoice(object.get_object_member("invoice"));
@@ -257,8 +253,8 @@ namespace Telegram {
             if (object.has_member("successful_payment"))
                 successful_payment = new SuccessfulPayment(object.get_object_member("successful_payment"));
             
-            if (object.has_member("user_shared"))
-                user_shared = new UserShared(object.get_object_member("user_shared"));
+            if (object.has_member("users_shared"))
+                users_shared = new UsersShared(object.get_object_member("users_shared"));
             
             if (object.has_member("chat_shared"))
                 chat_shared = new ChatShared(object.get_object_member("chat_shared"));
@@ -292,6 +288,18 @@ namespace Telegram {
             
             if (object.has_member("general_forum_topic_unhidden"))
                 general_forum_topic_unhidden = new GeneralForumTopicUnhidden();
+            
+            if (object.has_member("giveaway_created"))
+                giveaway_created = new GiveawayCreated();
+            
+            if (object.has_member("giveaway"))
+                giveaway = new Giveaway(object.get_object_member("giveaway"));
+            
+            if (object.has_member("giveaway_winners"))
+                giveaway_winners = new GiveawayWinners(object.get_object_member("giveaway_winners"));
+            
+            if (object.has_member("giveaway_completed"))
+                giveaway_completed = new GiveawayCompleted(object.get_object_member("giveaway_completed"));
             
             if (object.has_member("video_chat_scheduled"))
                 video_chat_scheduled = new VideoChatScheduled(object.get_object_member("video_chat_scheduled"));

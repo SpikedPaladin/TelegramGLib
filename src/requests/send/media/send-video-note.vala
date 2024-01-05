@@ -10,8 +10,7 @@ namespace Telegram {
         public Bytes? thumbnail_bytes;
         public bool? disable_notification;
         public bool? protect_content;
-        public int? reply_to_message_id;
-        public bool? allow_sending_without_reply;
+        public ReplyParameters? reply_parameters;
         public ReplyMarkup? reply_markup;
         
         public override string method() {
@@ -42,11 +41,8 @@ namespace Telegram {
             if (protect_content != null)
                 queue += @"&protect_content=$protect_content";
             
-            if (reply_to_message_id != null)
-                queue += @"&reply_to_message_id=$reply_to_message_id";
-            
-            if (allow_sending_without_reply != null)
-                queue += @"&allow_sending_without_reply=$allow_sending_without_reply";
+            if (reply_parameters != null)
+                queue += @"&reply_parameters=$reply_parameters";
             
             if (reply_markup != null)
                 queue += @"&reply_markup=$reply_markup";

@@ -2,7 +2,7 @@ namespace Telegram {
     
     public class KeyboardButton : Object, Serializable {
         public string text;
-        public KeyboardButtonRequestUser? request_user;
+        public KeyboardButtonRequestUsers? request_users;
         public KeyboardButtonRequestChat? request_chat;
         public bool? request_contact;
         public bool? request_location;
@@ -17,9 +17,9 @@ namespace Telegram {
             builder.set_member_name("text");
             builder.add_string_value(text);
             
-            if (request_user != null) {
-                builder.set_member_name("request_user");
-                builder.add_value(request_user.serialize());
+            if (request_users != null) {
+                builder.set_member_name("request_users");
+                builder.add_value(request_users.serialize());
             }
             
             if (request_chat != null) {

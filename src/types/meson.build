@@ -8,7 +8,19 @@ lib_sources += files(
     
     'message/message.vala',
     'message/message-id.vala',
+    'message/inaccessible-message.vala',
+    'message/maybe-inaccessible-message.vala',
     'message/message-entity.vala',
+    
+    'text-quote.vala',
+    'external-reply-info.vala',
+    'reply-parameters.vala',
+    
+    'message/origin/message-origin.vala',
+    'message/origin/message-origin-user.vala',
+    'message/origin/message-origin-hidden-user.vala',
+    'message/origin/message-origin-chat.vala',
+    'message/origin/message-origin-channel.vala',
     
     'photo-size.vala',
     'animation.vala',
@@ -34,7 +46,7 @@ lib_sources += files(
     'message/chat-event/forum/general-forum-topic-hidden.vala',
     'message/chat-event/forum/general-forum-topic-unhidden.vala',
     
-    'user-shared.vala',
+    'users-shared.vala',
     'chat-shared.vala',
     
     'message/chat-event/write-access-allowed.vala',
@@ -43,13 +55,19 @@ lib_sources += files(
     'message/chat-event/video/video-chat-ended.vala',
     'message/chat-event/video/video-chat-participants-invited.vala',
     
+    'message/chat-event/giveaway/giveaway-created.vala',
+    'message/chat-event/giveaway/giveaway.vala',
+    'message/chat-event/giveaway/giveaway-winners.vala',
+    'message/chat-event/giveaway/giveaway-completed.vala',
+    
+    'link-preview-options.vala',
     'user-profile-photos.vala',
     'file.vala',
     'web-app/web-app-info.vala',
     
     'keyboard/reply-keyboard-markup.vala',
     'keyboard/buttons/keyboard-button.vala',
-    'keyboard/buttons/keyboard-button-request-user.vala',
+    'keyboard/buttons/keyboard-button-request-users.vala',
     'keyboard/buttons/keyboard-button-request-chat.vala',
     'keyboard/buttons/keyboard-button-poll-type.vala',
     'keyboard/reply-keyboard-remove.vala',
@@ -78,6 +96,13 @@ lib_sources += files(
     'chat/chat-location.vala',
     'chat/chat-id.vala',
     
+    'reaction/reaction-type.vala',
+    'reaction/reaction-type-emoji.vala',
+    'reaction/reaction-type-custom-emoji.vala',
+    'reaction/reaction-count.vala',
+    'reaction/message-reaction-updated.vala',
+    'reaction/message-reaction-count-updated.vala',
+    
     'forum-topic.vala',
     
     'bot/bot-command.vala',
@@ -94,6 +119,16 @@ lib_sources += files(
     'bot/bot-short-description.vala',
     
     'menu-button.vala',
+    
+    'chat/boost/source/chat-boost-source.vala',
+    'chat/boost/source/chat-boost-source-premium.vala',
+    'chat/boost/source/chat-boost-source-gift-code.vala',
+    'chat/boost/source/chat-boost-source-giveaway.vala',
+    'chat/boost/chat-boost.vala',
+    'chat/boost/chat-boost-updated.vala',
+    'chat/boost/chat-boost-removed.vala',
+    'chat/boost/user-chat-boosts.vala',
+    
     'response-parameters.vala',
     
     'input-media/input-media.vala',
