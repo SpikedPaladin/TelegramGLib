@@ -1,6 +1,9 @@
 namespace Telegram {
     
-    public interface MaybeInaccessibleMessage : Object {
+    public abstract class MaybeInaccessibleMessage : Object {
+        public Chat chat;
+        public int message_id;
+        public int64 date;
         
         public static MaybeInaccessibleMessage from_json(Json.Object object) {
             if (object.get_int_member("date") == 0)

@@ -1,12 +1,9 @@
 namespace Telegram {
     
-    public class Message : MaybeInaccessibleMessage, Object {
-        public int message_id;
+    public class Message : MaybeInaccessibleMessage {
         public int? message_thread_id;
         public User? from;
         public Chat? sender_chat;
-        public int64 date;
-        public Chat chat;
         public MessageOrigin forward_origin;
         public bool is_topic_message;
         public bool is_automatic_forward;
