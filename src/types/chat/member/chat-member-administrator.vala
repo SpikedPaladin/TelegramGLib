@@ -1,7 +1,6 @@
 namespace Telegram {
     
     public class ChatMemberAdministrator : Object, ChatMember {
-        public Status status;
         public User user;
         public bool can_be_edited;
         public bool is_anonymous;
@@ -22,7 +21,6 @@ namespace Telegram {
         public string? custom_title;
         
         public ChatMemberAdministrator(Json.Object object) {
-            status = Status.parse(object.get_string_member("status"));
             user = new User(object.get_object_member("user"));
             can_be_edited = object.get_boolean_member("can_be_edited");
             is_anonymous = object.get_boolean_member("is_anonymous");

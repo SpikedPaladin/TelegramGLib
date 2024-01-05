@@ -3,7 +3,7 @@ namespace Telegram {
     public interface ChatMember : Object {
         
         public static ChatMember from_json(Json.Object object) {
-            Status status = Status.parse(object.get_string_member("status"));
+            var status = Status.parse(object.get_string_member("status"));
             
             switch (status) {
                 case Status.CREATOR:

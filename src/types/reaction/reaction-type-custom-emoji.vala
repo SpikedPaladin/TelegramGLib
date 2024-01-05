@@ -1,7 +1,6 @@
 namespace Telegram {
     
     public class ReactionTypeCustomEmoji : ReactionType, Serializable, Object {
-        public Type type = Type.CUSTOM_EMOJI;
         public string custom_emoji_id;
         
         public ReactionTypeCustomEmoji(Json.Object? object = null) {
@@ -15,7 +14,7 @@ namespace Telegram {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value(type.to_string());
+            builder.add_string_value(Type.CUSTOM_EMOJI.to_string());
             
             builder.set_member_name("custom_emoji_id");
             builder.add_string_value(custom_emoji_id);

@@ -4,7 +4,6 @@ namespace Telegram {
      * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
      */
     public class BotCommandScopeChatMember : Object, Serializable, BotCommandScope {
-        public Type type = Type.CHAT_MEMBER;
         /**
          * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
          */
@@ -20,7 +19,7 @@ namespace Telegram {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value(type.to_string());
+            builder.add_string_value(Type.CHAT_MEMBER.to_string());
             
             chat_id.append(builder);
             

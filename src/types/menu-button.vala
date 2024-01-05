@@ -3,15 +3,15 @@ namespace Telegram {
     public interface MenuButton : Object, Serializable {
     
         public static MenuButton from_json(Json.Object object) {
-            Type type = Type.parse(object.get_string_member("type"));
+            var type = Type.parse(object.get_string_member("type"));
             
             switch (type) {
                 case COMMANDS:
-                    return new MenuButtonCommands(object);
+                    return new MenuButtonCommands();
                 case WEB_APP:
                     return new MenuButtonWebApp(object);
                 default:
-                    return new MenuButtonDefault(object);
+                    return new MenuButtonDefault();
             }
         }
         
@@ -48,12 +48,7 @@ namespace Telegram {
         }
     }
     
-    public class MenuButtonCommands : Object, Serializable, MenuButton {
-        public Type type;
-        
-        public MenuButtonCommands(Json.Object object) {
-            type = Type.parse(object.get_string_member("type"));
-        }
+    public class MenuButtonCommands : MenuButton, Serializable, Object {
         
         public Json.Node serialize() {
             var builder = new Json.Builder();
@@ -61,7 +56,7 @@ namespace Telegram {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value(type.to_string());
+            builder.add_string_value(Type.COMMANDS.to_string());
             
             builder.end_object();
             
@@ -69,13 +64,11 @@ namespace Telegram {
         }
     }
     
-    public class MenuButtonWebApp : Object, Serializable, MenuButton {
-        public Type type;
+    public class MenuButtonWebApp : MenuButton, Serializable, Object {
         public string text;
         public WebAppInfo web_app;
         
         public MenuButtonWebApp(Json.Object object) {
-            type = Type.parse(object.get_string_member("type"));
             text = object.get_string_member("text");
             web_app = new WebAppInfo(object.get_object_member("web_app"));
         }
@@ -86,7 +79,7 @@ namespace Telegram {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value(type.to_string());
+            builder.add_string_value(Type.WEB_APP.to_string());
             
             builder.set_member_name("text");
             builder.add_string_value(text);
@@ -100,12 +93,7 @@ namespace Telegram {
         }
     }
     
-    public class MenuButtonDefault : Object, Serializable, MenuButton {
-        public Type type;
-        
-        public MenuButtonDefault(Json.Object object) {
-            type = Type.parse(object.get_string_member("type"));
-        }
+    public class MenuButtonDefault : MenuButton, Serializable, Object {
         
         public Json.Node serialize() {
             var builder = new Json.Builder();
@@ -113,7 +101,7 @@ namespace Telegram {
             builder.begin_object();
             
             builder.set_member_name("type");
-            builder.add_string_value(type.to_string());
+            builder.add_string_value(Type.DEFAULT.to_string());
             
             builder.end_object();
             

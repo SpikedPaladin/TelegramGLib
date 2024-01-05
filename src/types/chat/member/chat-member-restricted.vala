@@ -1,7 +1,6 @@
 namespace Telegram {
     
     public class ChatMemberRestricted : Object, ChatMember {
-        public Status status;
         public User user;
         public bool is_member;
         public bool can_send_messages;
@@ -21,7 +20,6 @@ namespace Telegram {
         public int64 until_date;
         
         public ChatMemberRestricted(Json.Object object) {
-            status = Status.parse(object.get_string_member("status"));
             user = new User(object.get_object_member("user"));
             is_member = object.get_boolean_member("is_member");
             can_send_messages = object.get_boolean_member("can_send_messages");
