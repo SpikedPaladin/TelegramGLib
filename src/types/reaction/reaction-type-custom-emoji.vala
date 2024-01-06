@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ReactionTypeCustomEmoji : ReactionType, Serializable, Object {
+    public class ReactionTypeCustomEmoji : Object, Serializable, ReactionType {
         public string custom_emoji_id;
         
         public ReactionTypeCustomEmoji(Json.Object? object = null) {

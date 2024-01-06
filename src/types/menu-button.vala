@@ -48,7 +48,7 @@ namespace Telegram {
         }
     }
     
-    public class MenuButtonCommands : MenuButton, Serializable, Object {
+    public class MenuButtonCommands : Object, Serializable, MenuButton {
         
         public Json.Node serialize() {
             var builder = new Json.Builder();
@@ -64,7 +64,7 @@ namespace Telegram {
         }
     }
     
-    public class MenuButtonWebApp : MenuButton, Serializable, Object {
+    public class MenuButtonWebApp : Object, Serializable, MenuButton {
         public string text;
         public WebAppInfo web_app;
         
@@ -93,7 +93,7 @@ namespace Telegram {
         }
     }
     
-    public class MenuButtonDefault : MenuButton, Serializable, Object {
+    public class MenuButtonDefault : Object, Serializable, MenuButton {
         
         public Json.Node serialize() {
             var builder = new Json.Builder();

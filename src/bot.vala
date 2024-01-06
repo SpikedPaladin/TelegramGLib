@@ -623,11 +623,11 @@ namespace Telegram {
         public virtual signal bool on_removed_chat_boost(ChatBoostRemoved removed_chat_boost) { return false; }
     }
     
-    protected interface InputMediaGroupable : Serializable, InputMedia, Object {}
+    protected interface InputMediaGroupable : Object, Serializable, InputMedia {}
     
-    protected interface InlineQueryResult : Serializable, Object {}
+    protected interface InlineQueryResult : Object, Serializable {}
     
-    protected interface ReplyMarkup : Serializable, Object {}
+    protected interface ReplyMarkup : Object, Serializable {}
     
     protected interface Serializable : Object {
         public abstract Json.Node serialize();

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public interface ReactionType : Serializable, Object {
+    public interface ReactionType : Object, Serializable {
         
         public static ReactionType? from_json(Json.Object object) {
             var type = Type.parse(object.get_string_member("type"));

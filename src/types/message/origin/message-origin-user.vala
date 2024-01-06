@@ -1,7 +1,6 @@
 namespace Telegram {
     
-    public class MessageOriginUser : MessageOrigin, Object {
-        public int64 date;
+    public class MessageOriginUser : MessageOrigin {
         public User sender_user;
         
         public MessageOriginUser(Json.Object object) {

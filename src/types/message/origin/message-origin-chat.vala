@@ -1,7 +1,6 @@
 namespace Telegram {
     
-    public class MessageOriginChat : MessageOrigin, Object {
-        public int64 date;
+    public class MessageOriginChat : MessageOrigin {
         public Chat sender_chat;
         public string? author_signature;
         

@@ -1,6 +1,7 @@
 namespace Telegram {
     
-    public interface MessageOrigin : Object {
+    public abstract class MessageOrigin : Object {
+        public int64 date;
         
         public static MessageOrigin? from_json(Json.Object object) {
             var status = Type.parse(object.get_string_member("status"));

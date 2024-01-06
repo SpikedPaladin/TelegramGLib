@@ -1,7 +1,6 @@
 namespace Telegram {
     
-    public class MessageOriginHiddenUser : MessageOrigin, Object {
-        public int64 date;
+    public class MessageOriginHiddenUser : MessageOrigin {
         public string sender_user_name;
         
         public MessageOriginHiddenUser(Json.Object object) {

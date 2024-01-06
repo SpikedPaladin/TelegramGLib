@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class LinkPreviewOptions : Serializable, Object {
+    public class LinkPreviewOptions : Object, Serializable {
         public bool? is_disabled;
         public string? url;
         public bool? prefer_small_media;

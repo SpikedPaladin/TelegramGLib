@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ChatBoostSourcePremium : ChatBoostSource, Object {
+    public class ChatBoostSourcePremium : Object, ChatBoostSource {
         public User user;
         
         public ChatBoostSourcePremium(Json.Object object) {

@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ChatBoostSourceGiveaway : ChatBoostSource, Object {
+    public class ChatBoostSourceGiveaway : Object, ChatBoostSource {
         public int giveaway_message_id;
         public User? user;
         public bool? is_unclaimed;

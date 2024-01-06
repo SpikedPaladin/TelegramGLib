@@ -1,6 +1,6 @@
 namespace Telegram {
     
-    public class ReplyParameters : Serializable, Object {
+    public class ReplyParameters : Object, Serializable {
         public int message_id;
         public ChatId? chat_id;
         public bool? allow_sending_without_reply;

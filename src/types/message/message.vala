@@ -4,7 +4,7 @@ namespace Telegram {
         public int? message_thread_id;
         public User? from;
         public Chat? sender_chat;
-        public MessageOrigin forward_origin;
+        public MessageOrigin? forward_origin;
         public bool is_topic_message;
         public bool is_automatic_forward;
         public Message? reply_to_message;
