@@ -28,11 +28,13 @@ namespace Telegram {
          * {@link GLib.MainLoop} which created when bot started with {@link BotConfig.create_main_loop} set to ''True''
          */
         public MainLoop? main_loop;
-        public Thread<void>? updates_thread;
-        public Thread<void>? processing_thread;
-        private AsyncQueue<Update>? async_queue;
+        public Thread<void> updates_thread;
+        public Thread<void> processing_thread;
+        private AsyncQueue<Update> async_queue;
         
         construct {
+            async_queue = new AsyncQueue<Update>();
+            
             session = new Soup.Session() {
                 timeout = 30
             };
@@ -42,24 +44,27 @@ namespace Telegram {
             if (config.create_main_loop)
                 main_loop = new MainLoop();
             
-            if (config.threading)
-                start_threaded();
-            else
-                get_updates.begin();
+            get_me.begin((obj, res) => {
+                self = get_me.end(res);
+                
+                if (self == null) {
+                    Util.log("Failed to authorize", Util.LogLevel.ERROR);
+                    
+                    main_loop?.quit();
+                    return;
+                }
+                
+                Util.log(@"Authorized on account $(self.username)");
+                
+                updates_thread = new Thread<void>("updates", get_updates);
+                processing_thread = new Thread<void>("processing", () => {
+                    while (true) {
+                        process_update(async_queue.pop());
+                    }
+                });
+            });
             
             main_loop?.run();
-        }
-        
-        private void start_threaded() {
-            async_queue = new AsyncQueue<Update>();
-            updates_thread = new Thread<void>("updates", () => {
-                get_updates.begin();
-            });
-            processing_thread = new Thread<void>("processing", () => {
-                while (true) {
-                    process_update(async_queue.pop());
-                }
-            });
         }
         
         public void add_handler(AbstractHandler handler) {
@@ -71,7 +76,7 @@ namespace Telegram {
          * @return Basic information about the bot in form of a {@link User} object.
          */
         public async User? get_me() {
-            var response = yield make_request("getMe");
+            var response = yield make_request_async("getMe");
             
             if (response == null || !response.ok)
                 return null;
@@ -92,7 +97,7 @@ namespace Telegram {
             if (limit != null)
                 queue += @"&limit=$limit";
             
-            var response = yield make_request("getUserProfilePhotos", queue);
+            var response = yield make_request_async("getUserProfilePhotos", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -109,7 +114,7 @@ namespace Telegram {
          * When the link expires, a new one can be requested by calling getFile again.
          */
         public async TelegramFile? get_file(string file_id) {
-            var response = yield make_request("getFile", @"file_id=$file_id");
+            var response = yield make_request_async("getFile", @"file_id=$file_id");
             
             if (response == null || !response.ok)
                 return null;
@@ -123,7 +128,7 @@ namespace Telegram {
          * @return A {@link Chat} object on success.
          */
         public async Chat? get_chat(ChatId chat_id) {
-            var response = yield make_request("getChat", @"chat_id=$chat_id");
+            var response = yield make_request_async("getChat", @"chat_id=$chat_id");
             
             if (response == null || !response.ok)
                 return null;
@@ -136,7 +141,7 @@ namespace Telegram {
          * @return An Array of {@link ChatMember} objects.
          */
         public async ChatMember[]? get_chat_administrators(ChatId chat_id) {
-            var response = yield make_request("getChatAdministrators", @"chat_id=$chat_id");
+            var response = yield make_request_async("getChatAdministrators", @"chat_id=$chat_id");
             
             if (response == null || !response.ok)
                 return null;
@@ -153,7 +158,7 @@ namespace Telegram {
          * @return Member count on success.
          */
         public async int? get_chat_member_count(ChatId chat_id) {
-            var response = yield make_request("getChatMemberCount", @"chat_id=$chat_id");
+            var response = yield make_request_async("getChatMemberCount", @"chat_id=$chat_id");
             
             if (response == null || !response.ok)
                 return null;
@@ -167,7 +172,7 @@ namespace Telegram {
          * @returns A {@link ChatMember} object on success.
          */
         public async ChatMember? get_chat_member(ChatId chat_id, int64 user_id) {
-            var response = yield make_request("getChatMember", @"chat_id=$chat_id&user_id=$user_id");
+            var response = yield make_request_async("getChatMember", @"chat_id=$chat_id&user_id=$user_id");
             
             if (response == null || !response.ok)
                 return null;
@@ -176,7 +181,7 @@ namespace Telegram {
         }
         
         public async Sticker[]? get_forum_topic_icon_stickers() {
-            var response = yield make_request("getForumTopicIconStickers");
+            var response = yield make_request_async("getForumTopicIconStickers");
             
             if (response == null || !response.ok)
                 return null;
@@ -189,7 +194,7 @@ namespace Telegram {
         }
         
         public async UserChatBoosts? get_user_chat_boosts(ChatId chat_id, int64 user_id) {
-            var response = yield make_request("getUserChatBoosts", @"chat_id=$chat_id&user_id=$user_id");
+            var response = yield make_request_async("getUserChatBoosts", @"chat_id=$chat_id&user_id=$user_id");
             
             if (response == null || !response.ok)
                 return null;
@@ -208,7 +213,7 @@ namespace Telegram {
                 queue += @"language_code=$language_code";
             }
             
-            var response = yield make_request("getMyCommands", queue);
+            var response = yield make_request_async("getMyCommands", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -226,7 +231,7 @@ namespace Telegram {
             if (language_code != null)
                 queue += @"language_code=$language_code";
             
-            var response = yield make_request("getMyName", queue);
+            var response = yield make_request_async("getMyName", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -240,7 +245,7 @@ namespace Telegram {
             if (language_code != null)
                 queue += @"language_code=$language_code";
             
-            var response = yield make_request("getMyDescription", queue);
+            var response = yield make_request_async("getMyDescription", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -254,7 +259,7 @@ namespace Telegram {
             if (language_code != null)
                 queue += @"language_code=$language_code";
             
-            var response = yield make_request("getMyShortDescription", queue);
+            var response = yield make_request_async("getMyShortDescription", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -268,7 +273,7 @@ namespace Telegram {
             if (chat_id != null)
                 queue += @"chat_id=$chat_id";
             
-            var response = yield make_request("getChatMenuButton", queue);
+            var response = yield make_request_async("getChatMenuButton", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -282,7 +287,7 @@ namespace Telegram {
             if (for_channels != null)
                 queue += @"for_channels=$for_channels";
             
-            var response = yield make_request("getMyDefaultAdministratorRights", queue);
+            var response = yield make_request_async("getMyDefaultAdministratorRights", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -291,7 +296,7 @@ namespace Telegram {
         }
         
         public async StickerSet? get_sticker_set(string name) {
-            var response = yield make_request("getStickerSet", @"name=$name");
+            var response = yield make_request_async("getStickerSet", @"name=$name");
             
             if (response == null || !response.ok)
                 return null;
@@ -300,7 +305,7 @@ namespace Telegram {
         }
         
         public async Sticker[]? get_custom_emoji_stickers(string[] custom_emoji_ids) {
-            var response = yield make_request("getCustomEmojiStickers", @"custom_emoji_ids=$(Util.serialize_array(custom_emoji_ids))");
+            var response = yield make_request_async("getCustomEmojiStickers", @"custom_emoji_ids=$(Util.serialize_array(custom_emoji_ids))");
             
             if (response == null || !response.ok)
                 return null;
@@ -324,7 +329,7 @@ namespace Telegram {
             if (inline_message_id != null)
                 queue += @"&inline_message_id=$inline_message_id";
             
-            var response = yield make_request("getGameHighScores", queue);
+            var response = yield make_request_async("getGameHighScores", queue);
             
             if (response == null || !response.ok)
                 return null;
@@ -336,7 +341,33 @@ namespace Telegram {
             return result;
         }
         
-        public async Response? make_request(string endpoint, string? @params = null) {
+        public Response? make_request(string endpoint, string? @params = null) {
+            var message = new Soup.Message("GET", @"https://api.telegram.org/bot$token/$endpoint?$(params ?? "")");
+            
+            try {
+                var stream = session.send(message);
+                var parser = new Json.Parser();
+                parser.load_from_stream(stream);
+                
+                var node = parser.get_root();
+                var response = new Response(node.get_object());
+                
+                if (config.debug)
+                    Util.log(@"$endpoint: $(Json.to_string(node, false))", Util.LogLevel.DEBUG);
+                
+                if (!response.ok && config.warnings)
+                    Util.log(@"$endpoint: $(response.description)", Util.LogLevel.WARNING);
+                
+                return response;
+            } catch (Error e) {
+                if (config.warnings)
+                    Util.log(@"Error while making request ($(endpoint)): $(e.message)", Util.LogLevel.WARNING);
+                
+                return null;
+            }
+        }
+        
+        public async Response? make_request_async(string endpoint, string? @params = null) {
             var message = new Soup.Message("GET", @"https://api.telegram.org/bot$token/$endpoint?$(params ?? "")");
             
             try {
@@ -362,17 +393,7 @@ namespace Telegram {
             }
         }
         
-        private async void get_updates() {
-            self = yield get_me();
-            
-            if (self == null) {
-                Util.log("Failed to authorize", Util.LogLevel.ERROR);
-                
-                return;
-            }
-            
-            Util.log(@"Authorized on account $(self.username)");
-            
+        private void get_updates() {
             while (true) {
                 var @params = @"timeout=$(config.timeout)";
                 
@@ -385,19 +406,14 @@ namespace Telegram {
                 if (update_id != 0)
                     @params += @"&offset=$update_id";
                 
-                var response = yield make_request("getUpdates", @params);
+                var response = make_request("getUpdates", @params);
                 
                 // Response will be null if something wrong with connection
                 // Like timed out or no network
                 if (response == null) {
-                    
                     // Retry after one second to protect from log spaming
-                    Timeout.add(1000,
-                        () => get_updates.callback(),
-                        Priority.DEFAULT
-                    );
-                    
-                    yield; continue;
+                    Thread.usleep(1000);
+                    continue;
                 }
                 
                 var array = response.result.get_array();
@@ -408,10 +424,7 @@ namespace Telegram {
                     if (update.update_id >= update_id)
                         update_id = update.update_id + 1;
                     
-                    if (config.threading)
-                        async_queue.push(update);
-                    else
-                        process_update(update);
+                    async_queue.push(update);
                 });
             }
         }
@@ -511,7 +524,7 @@ namespace Telegram {
                         Util.log(@"Error while sending request $(request.method()): $(e.message)", Util.LogLevel.WARNING);
                 }
             }
-            return yield make_request(request.method(), request.queue());
+            return yield make_request_async(request.method(), request.queue());
         }
         
         /**

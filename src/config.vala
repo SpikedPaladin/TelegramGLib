@@ -33,11 +33,6 @@ namespace Telegram {
          */
         public bool warnings;
         /**
-         * Enable threading
-         * Experimental!
-         */
-        public bool threading;
-        /**
          * Enable {@link GLib.MainLoop} creation inside bot
          * Don't change it if you're only running one {@link Bot} at a time
          */
