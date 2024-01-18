@@ -5,7 +5,7 @@ project(
     default_options: [
         'warning_level=2'
     ],
-    version: '1.0.6',
+    version: '1.0.7',
     meson_version: '>= 0.50.0',
 )
 
