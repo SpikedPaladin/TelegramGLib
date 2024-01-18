@@ -4,7 +4,7 @@ namespace Telegram {
         public int64 date;
         
         public static MessageOrigin? from_json(Json.Object object) {
-            var status = Type.parse(object.get_string_member("status"));
+            var status = Type.parse(object.get_string_member("type"));
             
             switch (status) {
                 case Type.USER:
