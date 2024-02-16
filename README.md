@@ -1,4 +1,4 @@
-# TelegramGLib [![Supported version](https://img.shields.io/badge/Telegram%20Bot%20API-7.0-blue)](https://core.telegram.org/bots/api#december-29-2023)
+# TelegramGLib [![Supported version](https://img.shields.io/badge/Telegram%20Bot%20API-7.1-blue)](https://core.telegram.org/bots/api#february-16-2024)
 [![Telegram group badge](https://img.shields.io/badge/Telegram-Join_the_chat-2CA5E0?style=flat&logo=telegram)](https://t.me/vala_lang)  
 TelegramGLib is a bot api for telegram written in Vala
 

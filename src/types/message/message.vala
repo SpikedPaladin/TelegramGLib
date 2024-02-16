@@ -4,12 +4,14 @@ namespace Telegram {
         public int? message_thread_id;
         public User? from;
         public Chat? sender_chat;
+        public int? sender_boost_count;
         public MessageOrigin? forward_origin;
         public bool is_topic_message;
         public bool is_automatic_forward;
         public Message? reply_to_message;
         public ExternalReplyInfo? external_reply;
         public TextQuote? quote;
+        public Story? reply_to_story;
         public User? via_bot;
         public int64? edit_date;
         public bool has_protected_content;
@@ -56,6 +58,7 @@ namespace Telegram {
         public WriteAccessAllowed? write_access_allowed;
         public PassportData? passport_data;
         public ProximityAlertTriggered? proximity_alert_triggered;
+        public ChatBoostAdded boost_added;
         public ForumTopicCreated? forum_topic_created;
         public ForumTopicEdited? forum_topic_edited;
         public ForumTopicClosed? forum_topic_closed;
@@ -87,6 +90,9 @@ namespace Telegram {
             if (object.has_member("sender_chat"))
                 sender_chat = new Chat(object.get_object_member("sender_chat"));
             
+            if (object.has_member("sender_boost_count"))
+                sender_boost_count = (int) object.get_int_member("sender_boost_count");
+            
             if (object.has_member("forward_origin"))
                 forward_origin = MessageOrigin.from_json(object.get_object_member("forward_origin"));
             
@@ -101,6 +107,9 @@ namespace Telegram {
             
             if (object.has_member("external_reply"))
                 external_reply = new ExternalReplyInfo(object.get_object_member("external_reply"));
+            
+            if (object.has_member("reply_to_story"))
+                reply_to_story = new Story(object.get_object_member("reply_to_story"));
             
             if (object.has_member("quote"))
                 quote = new TextQuote(object.get_object_member("quote"));
@@ -267,6 +276,9 @@ namespace Telegram {
             
             if (object.has_member("proximity_alert_triggered"))
                 proximity_alert_triggered = new ProximityAlertTriggered(object.get_object_member("proximity_alert_triggered"));
+            
+            if (object.has_member("boost_added"))
+                boost_added = new ChatBoostAdded(object.get_object_member("boost_added"));
             
             if (object.has_member("forum_topic_created"))
                 forum_topic_created = new ForumTopicCreated(object.get_object_member("forum_topic_created"));

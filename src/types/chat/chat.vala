@@ -158,6 +158,12 @@ namespace Telegram {
         public int? slow_mode_delay;
         /**
          * //Optional.//
+         * For supergroups, the minimum number of boosts that a non-administrator user needs to add in order to ignore slow mode and chat permissions.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public int? unrestrict_boost_count;
+        /**
+         * //Optional.//
          * The time after which all messages sent to the chat will be automatically deleted; in seconds.
          * Returned only in {@link Bot.get_chat}.
          */
@@ -198,6 +204,13 @@ namespace Telegram {
          * Returned only in {@link Bot.get_chat}.
          */
         public bool can_set_sticker_set;
+        /**
+         * //Optional.//
+         * For supergroups, the name of the group's custom emoji sticker set.
+         * Custom emoji from this set can be used by all users and bots in the group.
+         * Returned only in {@link Bot.get_chat}.
+         */
+        public string? custom_emoji_sticker_set_name;
         /**
          * //Optional.//
          * Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats.
@@ -299,6 +312,9 @@ namespace Telegram {
             if (object.has_member("slow_mode_delay"))
                 slow_mode_delay = (int) object.get_int_member("slow_mode_delay");
             
+            if (object.has_member("unrestrict_boost_count"))
+                unrestrict_boost_count = (int) object.get_int_member("unrestrict_boost_count");
+            
             if (object.has_member("message_auto_delete_time"))
                 message_auto_delete_time = (int) object.get_int_member("message_auto_delete_time");
             
@@ -319,6 +335,9 @@ namespace Telegram {
             
             if (object.has_member("can_set_sticker_set"))
                 can_set_sticker_set = object.get_boolean_member("can_set_sticker_set");
+            
+            if (object.has_member("custom_emoji_sticker_set_name"))
+                custom_emoji_sticker_set_name = object.get_string_member("custom_emoji_sticker_set_name");
             
             if (object.has_member("linked_chat_id"))
                 linked_chat_id = object.get_int_member("linked_chat_id");

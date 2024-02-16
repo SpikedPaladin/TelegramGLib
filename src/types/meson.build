@@ -39,6 +39,7 @@ lib_sources += files(
     'message/chat-event/web-app-data.vala',
     'message/chat-event/proximity-alert-triggered.vala',
     'message/chat-event/message-auto-delete-timer-changed.vala',
+    'message/chat-event/chat-boost-added.vala',
     'message/chat-event/forum/forum-topic-created.vala',
     'message/chat-event/forum/forum-topic-closed.vala',
     'message/chat-event/forum/forum-topic-edited.vala',
